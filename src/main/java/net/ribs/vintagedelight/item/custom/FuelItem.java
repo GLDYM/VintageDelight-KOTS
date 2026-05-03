@@ -18,3 +18,4 @@ public class FuelItem extends Item {
         return this.burnTime;
     }
 }
+

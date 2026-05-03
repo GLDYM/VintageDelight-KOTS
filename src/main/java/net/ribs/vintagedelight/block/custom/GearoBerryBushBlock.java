@@ -1,5 +1,6 @@
 package net.ribs.vintagedelight.block.custom;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -29,6 +30,7 @@ import net.ribs.vintagedelight.item.ModItems;
 import java.util.Random;
 
 public class GearoBerryBushBlock extends BushBlock implements BonemealableBlock {
+    public static final MapCodec<GearoBerryBushBlock> CODEC = simpleCodec(GearoBerryBushBlock::new);
     public static final int MAX_AGE = 4;
     public static final IntegerProperty AGE = IntegerProperty.create("age", 0, MAX_AGE);
     private static final VoxelShape SAPLING_SHAPE = Block.box(3.0D, 0.0D, 3.0D, 13.0D, 8.0D, 13.0D);
@@ -39,7 +41,7 @@ public class GearoBerryBushBlock extends BushBlock implements BonemealableBlock 
         this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0));
     }
     @Override
-    public ItemStack getCloneItemStack(BlockGetter level, BlockPos pos, BlockState state) {
+    public ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state) {
         return new ItemStack(ModItems.GEARO_BERRY_ITEM.get());
     }
     @Override
@@ -56,17 +58,22 @@ public class GearoBerryBushBlock extends BushBlock implements BonemealableBlock 
     }
 
     @Override
+    protected MapCodec<? extends BushBlock> codec() {
+        return CODEC;
+    }
+
+    @Override
     public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         int currentAge = state.getValue(AGE);
-        if (currentAge < MAX_AGE && level.getRawBrightness(pos.above(), 0) >= 9 && net.minecraftforge.common.ForgeHooks.onCropsGrowPre(level, pos, state, random.nextInt(5) == 0)) {
+        if (currentAge < MAX_AGE && level.getRawBrightness(pos.above(), 0) >= 9 && net.neoforged.neoforge.common.CommonHooks.canCropGrow(level, pos, state, random.nextInt(5) == 0)) {
             BlockState newState = state.setValue(AGE, currentAge + 1);
             level.setBlock(pos, newState, 2);
-            net.minecraftforge.common.ForgeHooks.onCropsGrowPost(level, pos, state);
+            net.neoforged.neoforge.common.CommonHooks.fireCropGrowPost(level, pos, state);
         }
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
         int currentAge = state.getValue(AGE);
         if (currentAge == MAX_AGE) {
             int j = 1 + level.random.nextInt(2);
@@ -75,7 +82,7 @@ public class GearoBerryBushBlock extends BushBlock implements BonemealableBlock 
             level.setBlock(pos, state.setValue(AGE, MAX_AGE - 2), 2);
             return InteractionResult.sidedSuccess(level.isClientSide);
         } else {
-            return super.use(state, level, pos, player, hand, hit);
+            return super.useWithoutItem(state, level, pos, player, hit);
         }
     }
 
@@ -84,7 +91,7 @@ public class GearoBerryBushBlock extends BushBlock implements BonemealableBlock 
         builder.add(AGE);
     }
     @Override
-    public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state, boolean isClient) {
+    public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state) {
         return state.getValue(AGE) < MAX_AGE;
     }
 
@@ -102,3 +109,4 @@ public class GearoBerryBushBlock extends BushBlock implements BonemealableBlock 
         }
     }
 }
+

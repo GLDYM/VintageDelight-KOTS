@@ -13,8 +13,9 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.BlockGetter;
@@ -31,8 +32,6 @@ import net.minecraft.world.level.levelgen.feature.configurations.RandomPatchConf
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.lighting.LightEngine;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraftforge.common.IPlantable;
-import net.minecraftforge.common.PlantType;
 import vectorwing.farmersdelight.common.registry.ModBlocks;
 
 import java.util.List;
@@ -43,7 +42,7 @@ public class LushGrassBlock extends GrassBlock {
         super(properties);
     }
     @Override
-    public boolean isValidBonemealTarget(LevelReader world, BlockPos pos, BlockState state, boolean isClient) {
+    public boolean isValidBonemealTarget(LevelReader world, BlockPos pos, BlockState state) {
         return world.getBlockState(pos.above()).isAir();
     }
 
@@ -71,21 +70,20 @@ public class LushGrassBlock extends GrassBlock {
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        ItemStack itemInHand = player.getItemInHand(hand);
+    protected ItemInteractionResult useItemOn(ItemStack itemInHand, BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         Item usedItem = itemInHand.getItem();
 
         if (usedItem instanceof HoeItem) {
             if (!world.isClientSide && world.getBlockState(pos.above()).isAir()) {
                 world.setBlock(pos, ModBlocks.RICH_SOIL_FARMLAND.get().defaultBlockState(), 11);
                 world.playSound(null, pos, SoundEvents.HOE_TILL, SoundSource.BLOCKS, 1.0F, 1.0F);
-                itemInHand.hurtAndBreak(1, player, (p) -> p.broadcastBreakEvent(hand));
+                itemInHand.hurtAndBreak(1, player, LivingEntity.getSlotForHand(hand));
                 player.swing(hand, true);
-                return InteractionResult.sidedSuccess(false);
+                return ItemInteractionResult.sidedSuccess(false);
             }
         }
 
-        return super.use(state, world, pos, player, hand, hit);
+        return super.useItemOn(itemInHand, state, world, pos, player, hand, hit);
     }
     @Override
     public void randomTick(BlockState state, ServerLevel world, BlockPos pos, RandomSource random) {
@@ -116,3 +114,4 @@ public class LushGrassBlock extends GrassBlock {
         }
     }
 }
+

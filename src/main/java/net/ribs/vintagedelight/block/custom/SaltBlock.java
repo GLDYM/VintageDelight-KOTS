@@ -74,3 +74,4 @@ public class SaltBlock extends Block {
         return state.is(ModBlocks.SALT_LAYER.get()) && state.getValue(SaltLayerBlock.LAYERS) < SaltLayerBlock.MAX_HEIGHT;
     }
 }
+

@@ -7,8 +7,7 @@ import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.items.SlotItemHandler;
+import net.neoforged.neoforge.items.SlotItemHandler;
 import net.ribs.vintagedelight.block.ModBlocks;
 import net.ribs.vintagedelight.block.entity.FermentingJarBlockEntity;
 import net.ribs.vintagedelight.item.ModTags;
@@ -30,7 +29,7 @@ public class FermentingJarMenu extends AbstractContainerMenu {
         this.data = data;
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
-        this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(iItemHandler -> {
+        var iItemHandler = this.blockEntity.getItemHandler(null);
             int inputBaseX = 26;
             int yOffset = 6;
             int firstRowY = 21 + yOffset;
@@ -55,7 +54,6 @@ public class FermentingJarMenu extends AbstractContainerMenu {
 
             this.addSlot(new SlotItemHandler(iItemHandler, FIRST_OUTPUT_SLOT, inputBaseX + outputOffsetX, secondRowY));
             this.addSlot(new SlotItemHandler(iItemHandler, SECOND_OUTPUT_SLOT, inputBaseX + secondaryOutputX, secondRowY));
-        });
         addDataSlots(data);
     }
     public boolean isCrafting() {
@@ -138,3 +136,4 @@ public class FermentingJarMenu extends AbstractContainerMenu {
         }
     }
 }
+

@@ -21,9 +21,8 @@ import net.ribs.vintagedelight.recipe.FermentingRecipe;
 import java.awt.*;
 
 public class FermentingCategory implements IRecipeCategory<FermentingRecipe> {
-    public static final ResourceLocation UID = new ResourceLocation(VintageDelight.MODID, "fermenting");
-    public static final ResourceLocation TEXTURE = new ResourceLocation(VintageDelight.MODID,
-            "textures/gui/fermenting_jar_gui.png");
+    public static final ResourceLocation UID = ResourceLocation.fromNamespaceAndPath(VintageDelight.MODID, "fermenting");
+    public static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(VintageDelight.MODID, "textures/gui/fermenting_jar_gui.png");
     public static final RecipeType<FermentingRecipe> FERMENTING_TYPE =
             new RecipeType<>(UID, FermentingRecipe.class);
     private final IDrawable background;

@@ -1,5 +1,5 @@
 package net.ribs.vintagedelight.worldgen.tree;
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
@@ -20,7 +20,7 @@ public class VineTrunkPlacer extends TrunkPlacer {
     public VineTrunkPlacer(int baseHeight, int heightRandA, int heightRandB) {
         super(baseHeight, heightRandA, heightRandB);
     }
-    public static final Codec<VineTrunkPlacer> CODEC = RecordCodecBuilder.create(instance ->
+    public static final MapCodec<VineTrunkPlacer> CODEC = RecordCodecBuilder.mapCodec(instance ->
             trunkPlacerParts(instance).apply(instance, VineTrunkPlacer::new));
 
     @Override
@@ -84,3 +84,4 @@ public class VineTrunkPlacer extends TrunkPlacer {
     }
 
 }
+

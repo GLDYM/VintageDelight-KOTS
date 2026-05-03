@@ -17,3 +17,4 @@ public class SaltPillarBlock extends RotatedPillarBlock {
         super.createBlockStateDefinition(builder);
     }
 }
+

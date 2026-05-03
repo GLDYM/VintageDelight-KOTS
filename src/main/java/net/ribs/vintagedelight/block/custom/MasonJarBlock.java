@@ -1,7 +1,6 @@
 package net.ribs.vintagedelight.block.custom;
 
 import net.minecraft.core.Direction;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -147,9 +146,8 @@ public class MasonJarBlock extends Block implements SimpleWaterloggedBlock {
         return state.rotate(mirror.getRotation(state.getValue(FACING)));
     }
     @Override
-    public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        ItemStack itemInHand = player.getItemInHand(hand);
-        if (!world.isClientSide && hand == InteractionHand.MAIN_HAND && itemInHand.isEmpty()) {
+    protected InteractionResult useWithoutItem(BlockState state, Level world, BlockPos pos, Player player, BlockHitResult hit) {
+        if (!world.isClientSide) {
             int jars = state.getValue(JARS);
             if (jars > 1) {
                 world.setBlock(pos, state.setValue(JARS, jars - 1), 3);
@@ -161,9 +159,10 @@ public class MasonJarBlock extends Block implements SimpleWaterloggedBlock {
                 return InteractionResult.SUCCESS;
             }
         }
-        return super.use(state, world, pos, player, hand, hit);
+        return super.useWithoutItem(state, world, pos, player, hit);
     }
 
 }
+
 
 

@@ -20,7 +20,7 @@ public class SaltLayerBlock extends SnowLayerBlock {
         super(properties);
     }
     @Override
-    public ItemStack getCloneItemStack(BlockGetter world, BlockPos pos, BlockState state) {
+    public ItemStack getCloneItemStack(LevelReader world, BlockPos pos, BlockState state) {
         return new ItemStack(ModItems.SALT_DUST.get());
     }
     @Override
@@ -31,3 +31,4 @@ public class SaltLayerBlock extends SnowLayerBlock {
         }
     }
 }
+

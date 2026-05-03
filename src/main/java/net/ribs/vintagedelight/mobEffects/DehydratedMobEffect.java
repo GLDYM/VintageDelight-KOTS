@@ -18,15 +18,16 @@ public class DehydratedMobEffect extends MobEffect {
     }
 
     @Override
-    public boolean isDurationEffectTick(int duration, int amplifier) {
+    public boolean shouldApplyEffectTickThisTick(int duration, int amplifier) {
         return duration % 30 == 0;
     }
 
     @Override
-    public void applyEffectTick(LivingEntity entity, int amplifier) {
+    public boolean applyEffectTick(LivingEntity entity, int amplifier) {
         if (entity.level() instanceof ServerLevel serverLevel) {
             absorbWaterAroundEntity(serverLevel, entity.blockPosition(), amplifier);
         }
+        return true;
     }
 
     private void absorbWaterAroundEntity(ServerLevel level, BlockPos entityPos, int amplifier) {
@@ -51,3 +52,4 @@ public class DehydratedMobEffect extends MobEffect {
         }
     }
 }
+

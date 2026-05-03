@@ -54,8 +54,8 @@ public class HoneyItem extends ConsumableItem {
         return super.use(world, player, hand);
     }
     @Override
-    public void appendHoverText(ItemStack itemStack, @Nullable Level world, List<Component> tooltip, TooltipFlag flag) {
-        super.appendHoverText(itemStack, world, tooltip, flag);
+    public void appendHoverText(ItemStack itemStack, net.minecraft.world.item.Item.TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+        super.appendHoverText(itemStack, context, tooltip, flag);
         tooltip.add(Component.translatable("item.vintagedelight.mason_jar.tooltip")
                 .withStyle(ChatFormatting.GRAY)
                 .withStyle(style -> style.withItalic(true)));

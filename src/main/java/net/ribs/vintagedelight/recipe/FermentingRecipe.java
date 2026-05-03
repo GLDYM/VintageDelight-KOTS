@@ -1,46 +1,50 @@
 package net.ribs.vintagedelight.recipe;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.GsonHelper;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.*;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
-import net.ribs.vintagedelight.VintageDelight;
 
-public class FermentingRecipe implements Recipe<SimpleContainer> {
+public class FermentingRecipe implements Recipe<FermentingRecipeInput> {
     private static final int FIRST_INPUT_SLOT = 0;
     private static final int LAST_INPUT_SLOT = 5;
     private static final int CONTAINER_SLOT = 6;
+    private static final int DEFAULT_PROCESSING_TIME = 100;
+
     private final NonNullList<Ingredient> inputItems;
     private final Ingredient containerIngredient;
     private final ItemStack output;
     private final ItemStack secondaryOutput;
     private final int processingTime;
-    private final ResourceLocation id;
-    private static final int defaultProcessingTime = 100;
-    public FermentingRecipe(NonNullList<Ingredient> inputItems, Ingredient containerIngredient, ItemStack output, ItemStack secondaryOutput, int processingTime, ResourceLocation id) {
+
+    public FermentingRecipe(NonNullList<Ingredient> inputItems, Ingredient containerIngredient, ItemStack output, ItemStack secondaryOutput, int processingTime) {
         this.inputItems = inputItems;
         this.containerIngredient = containerIngredient;
         this.output = output;
         this.secondaryOutput = secondaryOutput;
         this.processingTime = processingTime;
-        this.id = id;
     }
+
     @Override
-    public boolean matches(SimpleContainer pContainer, Level pLevel) {
-        if (pLevel.isClientSide()) {
+    public boolean matches(FermentingRecipeInput input, Level level) {
+        if (level.isClientSide()) {
             return false;
         }
+
         NonNullList<Ingredient> requiredIngredients = NonNullList.create();
         requiredIngredients.addAll(inputItems);
         for (int i = FIRST_INPUT_SLOT; i <= LAST_INPUT_SLOT; i++) {
-            ItemStack itemInSlot = pContainer.getItem(i);
+            ItemStack itemInSlot = input.getItem(i);
             if (!itemInSlot.isEmpty()) {
                 boolean matched = false;
                 for (Ingredient ingredient : requiredIngredients) {
@@ -55,113 +59,112 @@ public class FermentingRecipe implements Recipe<SimpleContainer> {
                 }
             }
         }
-        if (!containerIngredient.isEmpty()) {
-            ItemStack containerItem = pContainer.getItem(CONTAINER_SLOT);
-            if (!containerIngredient.test(containerItem)) {
-                return false;
-            }
+
+        if (!containerIngredient.isEmpty() && !containerIngredient.test(input.getItem(CONTAINER_SLOT))) {
+            return false;
         }
 
         return requiredIngredients.isEmpty();
     }
 
-    public ItemStack getSecondaryResultItem() {
-        return secondaryOutput != null ? secondaryOutput.copy() : ItemStack.EMPTY;
+    public boolean matches(SimpleContainer container, Level level) {
+        return matches(new FermentingRecipeInput(container), level);
     }
+
+    public ItemStack getSecondaryResultItem() {
+        return secondaryOutput.copy();
+    }
+
     public int getProcessingTime() {
         return processingTime;
     }
+
     @Override
     public NonNullList<Ingredient> getIngredients() {
         return inputItems;
     }
+
     @Override
-    public ItemStack assemble(SimpleContainer pContainer, RegistryAccess pRegistryAccess) {
+    public ItemStack assemble(FermentingRecipeInput input, HolderLookup.Provider registries) {
         return output.copy();
     }
+
     @Override
-    public boolean canCraftInDimensions(int pWidth, int pHeight) {
+    public boolean canCraftInDimensions(int width, int height) {
         return true;
     }
+
     @Override
-    public ItemStack getResultItem(RegistryAccess pRegistryAccess) {
+    public ItemStack getResultItem(HolderLookup.Provider registries) {
         return output.copy();
     }
-    @Override
-    public ResourceLocation getId() {
-        return id;
-    }
+
     @Override
     public RecipeSerializer<?> getSerializer() {
         return Serializer.INSTANCE;
     }
+
     @Override
     public RecipeType<?> getType() {
         return Type.INSTANCE;
+    }
+
+    public ItemStack getContainerItemStack() {
+        return containerIngredient.getItems().length > 0 ? containerIngredient.getItems()[0] : ItemStack.EMPTY;
     }
 
     public static class Type implements RecipeType<FermentingRecipe> {
         public static final Type INSTANCE = new Type();
         public static final String ID = "fermenting";
     }
-    public ItemStack getContainerItemStack() {
-        return containerIngredient.getItems().length > 0 ? containerIngredient.getItems()[0] : ItemStack.EMPTY;
-    }
+
     public static class Serializer implements RecipeSerializer<FermentingRecipe> {
         public static final Serializer INSTANCE = new Serializer();
-        public static final ResourceLocation ID = new ResourceLocation(VintageDelight.MODID, "fermenting");
+
+        private static final MapCodec<FermentingRecipe> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
+                Ingredient.LIST_CODEC_NONEMPTY.xmap(ingredients -> {
+                    NonNullList<Ingredient> list = NonNullList.create();
+                    list.addAll(ingredients);
+                    return list;
+                }, ingredients -> ingredients).fieldOf("ingredients").forGetter(FermentingRecipe::getIngredients),
+                Ingredient.CODEC.optionalFieldOf("container", Ingredient.EMPTY).forGetter(recipe -> recipe.containerIngredient),
+                ItemStack.STRICT_CODEC.fieldOf("output").forGetter(recipe -> recipe.output),
+                ItemStack.OPTIONAL_CODEC.optionalFieldOf("secondaryOutput", ItemStack.EMPTY).forGetter(recipe -> recipe.secondaryOutput),
+                Codec.INT.optionalFieldOf("processingTime", DEFAULT_PROCESSING_TIME).forGetter(FermentingRecipe::getProcessingTime)
+        ).apply(instance, FermentingRecipe::new));
+
+        private static final StreamCodec<RegistryFriendlyByteBuf, FermentingRecipe> STREAM_CODEC =
+                StreamCodec.of(Serializer::toNetwork, Serializer::fromNetwork);
 
         @Override
-        public FermentingRecipe fromJson(ResourceLocation pRecipeId, JsonObject pSerializedRecipe) {
-            ItemStack output = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(pSerializedRecipe, "output"));
-            ItemStack secondaryOutput = ItemStack.EMPTY;
-            if (pSerializedRecipe.has("secondaryOutput")) {
-                secondaryOutput = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(pSerializedRecipe, "secondaryOutput"));
-            }
-            JsonArray ingredients = GsonHelper.getAsJsonArray(pSerializedRecipe, "ingredients");
-            NonNullList<Ingredient> inputs = NonNullList.withSize(ingredients.size(), Ingredient.EMPTY);
-            for (int i = 0; i < ingredients.size(); i++) {
-                inputs.set(i, Ingredient.fromJson(ingredients.get(i)));
-            }
-            Ingredient containerIngredient = Ingredient.EMPTY;
-            if (pSerializedRecipe.has("container")) {
-                containerIngredient = Ingredient.fromJson(pSerializedRecipe.get("container"));
-            }
-            int processingTime = GsonHelper.getAsInt(pSerializedRecipe, "processingTime", defaultProcessingTime);
-            return new FermentingRecipe(inputs, containerIngredient, output, secondaryOutput, processingTime, pRecipeId);
+        public MapCodec<FermentingRecipe> codec() {
+            return CODEC;
         }
 
         @Override
-        public void toNetwork(FriendlyByteBuf pBuffer, FermentingRecipe pRecipe) {
-            pBuffer.writeInt(pRecipe.inputItems.size());
-            for (Ingredient ingredient : pRecipe.getIngredients()) {
-                ingredient.toNetwork(pBuffer);
-            }
-            pBuffer.writeItemStack(pRecipe.getResultItem(null), false);
-            boolean hasSecondaryOutput = !pRecipe.getSecondaryResultItem().isEmpty();
-            pBuffer.writeBoolean(hasSecondaryOutput);
-            if (hasSecondaryOutput) {
-                pBuffer.writeItemStack(pRecipe.getSecondaryResultItem(), false);
-            }
-            pBuffer.writeInt(pRecipe.getProcessingTime());
-            pRecipe.containerIngredient.toNetwork(pBuffer);
+        public StreamCodec<RegistryFriendlyByteBuf, FermentingRecipe> streamCodec() {
+            return STREAM_CODEC;
         }
 
-        @Override
-        public FermentingRecipe fromNetwork(ResourceLocation pRecipeId, FriendlyByteBuf pBuffer) {
-            NonNullList<Ingredient> inputs = NonNullList.withSize(pBuffer.readInt(), Ingredient.EMPTY);
-            for (int i = 0; i < inputs.size(); i++) {
-                inputs.set(i, Ingredient.fromNetwork(pBuffer));
+        private static FermentingRecipe fromNetwork(RegistryFriendlyByteBuf buffer) {
+            NonNullList<Ingredient> inputs = NonNullList.withSize(buffer.readVarInt(), Ingredient.EMPTY);
+            inputs.replaceAll(ignored -> Ingredient.CONTENTS_STREAM_CODEC.decode(buffer));
+            ItemStack output = ItemStack.STREAM_CODEC.decode(buffer);
+            ItemStack secondaryOutput = ItemStack.OPTIONAL_STREAM_CODEC.decode(buffer);
+            int processingTime = buffer.readVarInt();
+            Ingredient containerIngredient = Ingredient.CONTENTS_STREAM_CODEC.decode(buffer);
+            return new FermentingRecipe(inputs, containerIngredient, output, secondaryOutput, processingTime);
+        }
+
+        private static void toNetwork(RegistryFriendlyByteBuf buffer, FermentingRecipe recipe) {
+            buffer.writeVarInt(recipe.inputItems.size());
+            for (Ingredient ingredient : recipe.inputItems) {
+                Ingredient.CONTENTS_STREAM_CODEC.encode(buffer, ingredient);
             }
-            ItemStack output = pBuffer.readItem();
-            ItemStack secondaryOutput = ItemStack.EMPTY;
-            boolean hasSecondaryOutput = pBuffer.readBoolean();
-            if (hasSecondaryOutput) {
-                secondaryOutput = pBuffer.readItem();
-            }
-            int processingTime = pBuffer.readInt();
-            Ingredient containerIngredient = Ingredient.fromNetwork(pBuffer);
-            return new FermentingRecipe(inputs, containerIngredient, output, secondaryOutput, processingTime, pRecipeId);
+            ItemStack.STREAM_CODEC.encode(buffer, recipe.output);
+            ItemStack.OPTIONAL_STREAM_CODEC.encode(buffer, recipe.secondaryOutput);
+            buffer.writeVarInt(recipe.processingTime);
+            Ingredient.CONTENTS_STREAM_CODEC.encode(buffer, recipe.containerIngredient);
         }
     }
 }

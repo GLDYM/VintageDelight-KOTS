@@ -68,3 +68,4 @@ public class FermentingJarBlockEntityRenderer implements BlockEntityRenderer<Fer
         return LightTexture.pack(bLight, sLight);
     }
 }
+

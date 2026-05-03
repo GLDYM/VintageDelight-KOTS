@@ -48,9 +48,8 @@ public class CheeseMoldBlock extends Block implements WorldlyContainerHolder, Si
     public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
         return SHAPE;
     }
-    public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    protected ItemInteractionResult useItemOn(ItemStack itemStack, BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         int level = state.getValue(LEVEL);
-        ItemStack itemStack = player.getItemInHand(hand);
 
         if (itemStack.getItem() == ModItems.CHEESE_CURDS.get() && level < 4) {
             BlockState newState = state.setValue(LEVEL, level + 1);
@@ -64,7 +63,7 @@ public class CheeseMoldBlock extends Block implements WorldlyContainerHolder, Si
             }
 
             player.swing(hand);
-            return InteractionResult.sidedSuccess(world.isClientSide);
+            return ItemInteractionResult.sidedSuccess(world.isClientSide);
         }
         if (itemStack.getItem() == ModItems.CHEESE_WHEEL.get() && level == 0) {
             world.setBlock(pos, state.setValue(LEVEL, 5), 3);
@@ -72,9 +71,16 @@ public class CheeseMoldBlock extends Block implements WorldlyContainerHolder, Si
                 itemStack.shrink(1);
             }
             player.swing(hand);
-            return InteractionResult.sidedSuccess(world.isClientSide);
+            return ItemInteractionResult.sidedSuccess(world.isClientSide);
         }
-        if (level == 5 && player.getItemInHand(hand).isEmpty()) {
+
+        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+    }
+
+    @Override
+    protected InteractionResult useWithoutItem(BlockState state, Level world, BlockPos pos, Player player, BlockHitResult hit) {
+        int level = state.getValue(LEVEL);
+        if (level == 5) {
             if (!world.isClientSide) {
                 ItemStack cheeseItem = new ItemStack(ModItems.CHEESE_WHEEL.get());
                 ItemEntity itemEntity = new ItemEntity(world, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, cheeseItem);
@@ -83,7 +89,6 @@ public class CheeseMoldBlock extends Block implements WorldlyContainerHolder, Si
                 world.playSound(null, pos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 1.0F, 1.0F);
                 world.setBlock(pos, state.setValue(LEVEL, 0), 3);
             }
-            player.swing(hand);
             return InteractionResult.sidedSuccess(world.isClientSide);
         }
 
@@ -204,3 +209,4 @@ public class CheeseMoldBlock extends Block implements WorldlyContainerHolder, Si
         return this.defaultBlockState().setValue(WATERLOGGED, fluidstate.getType() == Fluids.WATER);
     }
 }
+

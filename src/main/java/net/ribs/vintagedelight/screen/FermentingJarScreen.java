@@ -11,7 +11,7 @@ import net.ribs.vintagedelight.VintageDelight;
 
 public class FermentingJarScreen extends AbstractContainerScreen<FermentingJarMenu> {
     private static final ResourceLocation TEXTURE =
-            new ResourceLocation(VintageDelight.MODID, "textures/gui/fermenting_jar_gui.png");
+            ResourceLocation.fromNamespaceAndPath(VintageDelight.MODID, "textures/gui/fermenting_jar_gui.png");
 
     public FermentingJarScreen(FermentingJarMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
         super(pMenu, pPlayerInventory, pTitle);
@@ -49,8 +49,9 @@ public class FermentingJarScreen extends AbstractContainerScreen<FermentingJarMe
     }
     @Override
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float delta) {
-        renderBackground(guiGraphics);
+        renderBackground(guiGraphics, mouseX, mouseY, delta);
         super.render(guiGraphics, mouseX, mouseY, delta);
         renderTooltip(guiGraphics, mouseX, mouseY);
     }
 }
+

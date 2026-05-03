@@ -2,6 +2,7 @@ package net.ribs.vintagedelight.block.entity;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
@@ -20,14 +21,12 @@ import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.items.IItemHandler;
-import net.minecraftforge.items.IItemHandlerModifiable;
-import net.minecraftforge.items.ItemStackHandler;
+import net.neoforged.neoforge.items.IItemHandler;
+import net.neoforged.neoforge.items.IItemHandlerModifiable;
+import net.neoforged.neoforge.items.ItemStackHandler;
 import net.ribs.vintagedelight.item.ModTags;
 import net.ribs.vintagedelight.recipe.FermentingRecipe;
+import net.ribs.vintagedelight.recipe.FermentingRecipeInput;
 import net.ribs.vintagedelight.screen.FermentingJarMenu;
 import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
@@ -57,7 +56,8 @@ public class FermentingJarBlockEntity extends BlockEntity implements MenuProvide
     public static final int CONTAINER_SLOT = 6;
     public static final int FIRST_OUTPUT_SLOT = 7;
     public static final int SECOND_OUTPUT_SLOT = 8;
-    private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
+    private final IItemHandler outputItemHandler = new OutputItemHandler(itemHandler);
+    private final IItemHandler conditionalItemHandler = new ConditionalItemHandler(itemHandler);
     protected final ContainerData data;
     private int progress = 0;
     private int maxProgress = 78;
@@ -100,17 +100,8 @@ public class FermentingJarBlockEntity extends BlockEntity implements MenuProvide
 
             return stacks;
         }
-    @Override
-    public <T> LazyOptional<T> getCapability(Capability<T> cap, @Nullable Direction side) {
-        if (cap == ForgeCapabilities.ITEM_HANDLER) {
-            if (side == Direction.DOWN) {
-                return LazyOptional.of(() -> new OutputItemHandler(itemHandler)).cast();
-            } else {
-                // Use the ConditionalItemHandler for sides other than down
-                return LazyOptional.of(() -> new ConditionalItemHandler(itemHandler)).cast();
-            }
-        }
-        return super.getCapability(cap, side);
+    public IItemHandler getItemHandler(@Nullable Direction side) {
+        return side == Direction.DOWN ? outputItemHandler : conditionalItemHandler;
     }
 
 
@@ -196,16 +187,6 @@ public class FermentingJarBlockEntity extends BlockEntity implements MenuProvide
             return wrappedHandler.isItemValid(slot, stack);
         }
     }
-    @Override
-        public void onLoad() {
-            super.onLoad();
-            lazyItemHandler = LazyOptional.of(() -> itemHandler);
-        }
-        @Override
-        public void invalidateCaps() {
-            super.invalidateCaps();
-            lazyItemHandler.invalidate();
-        }
         public void drops() {
             SimpleContainer inventory = new SimpleContainer(itemHandler.getSlots());
             for(int i = 0; i < itemHandler.getSlots(); i++) {
@@ -223,15 +204,15 @@ public class FermentingJarBlockEntity extends BlockEntity implements MenuProvide
             return new FermentingJarMenu(pContainerId, pPlayerInventory, this, this.data);
         }
         @Override
-        protected void saveAdditional(CompoundTag pTag) {
-            super.saveAdditional(pTag);
-            pTag.put("inventory", itemHandler.serializeNBT());
+        protected void saveAdditional(CompoundTag pTag, HolderLookup.Provider registries) {
+            super.saveAdditional(pTag, registries);
+            pTag.put("inventory", itemHandler.serializeNBT(registries));
             pTag.putInt("fermenting_jar.progress", progress);
         }
         @Override
-        public void load(CompoundTag pTag) {
-            super.load(pTag);
-            itemHandler.deserializeNBT(pTag.getCompound("inventory"));
+        protected void loadAdditional(CompoundTag pTag, HolderLookup.Provider registries) {
+            super.loadAdditional(pTag, registries);
+            itemHandler.deserializeNBT(registries, pTag.getCompound("inventory"));
             progress = pTag.getInt("fermenting_jar.progress");
         }
         public void tick(Level pLevel, BlockPos pPos, BlockState pState) {
@@ -311,7 +292,8 @@ public class FermentingJarBlockEntity extends BlockEntity implements MenuProvide
                 inventory.setItem(i, itemHandler.getStackInSlot(i));
             }
             return recipeManager.getAllRecipesFor(FermentingRecipe.Type.INSTANCE).stream()
-                    .filter(recipe -> recipe.matches(inventory, level))
+                    .filter(recipe -> recipe.value().matches(new FermentingRecipeInput(inventory), level))
+                    .map(net.minecraft.world.item.crafting.RecipeHolder::value)
                     .findFirst();
         }
         private boolean canInsertItemIntoOutputSlot(Item item, int slot) {
@@ -350,7 +332,7 @@ public class FermentingJarBlockEntity extends BlockEntity implements MenuProvide
             return ClientboundBlockEntityDataPacket.create(this);
         }
         @Override
-        public CompoundTag getUpdateTag() {
-            return saveWithoutMetadata();
+        public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
+            return saveWithoutMetadata(registries);
         }
     }

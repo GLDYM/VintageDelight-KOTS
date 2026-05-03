@@ -1,27 +1,27 @@
 package net.ribs.vintagedelight;
 
 
-import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.block.ComposterBlock;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
-import net.minecraftforge.event.server.ServerStartingEvent;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
+import net.neoforged.neoforge.event.server.ServerStartingEvent;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
+import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
 import net.ribs.vintagedelight.block.ModBlocks;
 import net.ribs.vintagedelight.block.entity.ModBlockEntities;
 import net.ribs.vintagedelight.item.ModCreativeModTabs;
 import net.ribs.vintagedelight.item.ModItems;
-import net.ribs.vintagedelight.mobEffects.CustomPotionBrewing;
 import net.ribs.vintagedelight.mobEffects.ModPotions;
 import net.ribs.vintagedelight.mobEffects.VDModEffects;
 import net.ribs.vintagedelight.recipe.ModRecipes;
@@ -33,18 +33,16 @@ import net.ribs.vintagedelight.worldgen.tree.ModTrunkPlacerTypes;
 public class VintageDelight {
     public static final String MODID = "vintagedelight";
 
-    public VintageDelight() {
-        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-
-        modEventBus.addListener(this::setup);
+    public VintageDelight(IEventBus modEventBus) {
         ModCreativeModTabs.register(modEventBus);
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
         ModBlockEntities.register(modEventBus);
+        modEventBus.addListener(ModBlockEntities::registerCapabilities);
         modEventBus.addListener(this::commonSetup);
         ModMenuTypes.register(modEventBus);
         ModRecipes.register(modEventBus);
-        MinecraftForge.EVENT_BUS.register(this);
+        NeoForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);
         ModTrunkPlacerTypes.register(modEventBus);
         VDModEffects.MOB_EFFECTS.register(modEventBus);
@@ -74,12 +72,11 @@ public class VintageDelight {
         });
     }
 
-    private void setup(final FMLCommonSetupEvent event) {
-        event.enqueueWork(() -> {
-            CustomPotionBrewing.addMix(Potions.WATER, ModItems.SALT_DUST.get(), ModPotions.DEHYDRATED_POTION.get());
-            CustomPotionBrewing.addMix(ModPotions.DEHYDRATED_POTION.get(), Items.REDSTONE, ModPotions.LONG_DEHYDRATED_POTION.get());
-            CustomPotionBrewing.addMix(ModPotions.DEHYDRATED_POTION.get(), Items.GLOWSTONE_DUST, ModPotions.STRONG_DEHYDRATED_POTION.get());
-        });
+    @SubscribeEvent
+    public void registerBrewingRecipes(RegisterBrewingRecipesEvent event) {
+        event.getBuilder().addMix(Potions.WATER, ModItems.SALT_DUST.get(), ModPotions.DEHYDRATED_POTION);
+        event.getBuilder().addMix(ModPotions.DEHYDRATED_POTION, Items.REDSTONE, ModPotions.LONG_DEHYDRATED_POTION);
+        event.getBuilder().addMix(ModPotions.DEHYDRATED_POTION, Items.GLOWSTONE_DUST, ModPotions.STRONG_DEHYDRATED_POTION);
     }
 
 
@@ -92,11 +89,10 @@ public class VintageDelight {
 
     }
 
-    @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    @EventBusSubscriber(modid = MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
-            MenuScreens.register(ModMenuTypes.FERMENTING_MENU.get(), FermentingJarScreen::new);
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.FERMENTING_JAR.get(), RenderType.translucent());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.MAGIC_PEANUT.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.OAT_CROP.get(), RenderType.cutout());
@@ -119,6 +115,12 @@ public class VintageDelight {
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.VINEGAR_JAR.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.HONEY_JAR.get(), RenderType.cutout());
         }
+
+        @SubscribeEvent
+        public static void registerMenuScreens(RegisterMenuScreensEvent event) {
+            event.register(ModMenuTypes.FERMENTING_MENU.get(), FermentingJarScreen::new);
+        }
     }
 
 }
+

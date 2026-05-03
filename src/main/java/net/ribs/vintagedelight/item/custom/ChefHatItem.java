@@ -67,3 +67,4 @@ public class ChefHatItem extends Item {
         return new InteractionResultHolder<>(InteractionResult.SUCCESS, newChefHat);
     }
 }
+

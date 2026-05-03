@@ -44,3 +44,4 @@ public class OrganicMashItem extends BoneMealItem {
         return new InteractionResultHolder<>(InteractionResult.SUCCESS, player.getItemInHand(hand));
     }
 }
+

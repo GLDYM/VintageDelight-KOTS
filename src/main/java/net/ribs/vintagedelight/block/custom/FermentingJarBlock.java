@@ -1,8 +1,8 @@
 package net.ribs.vintagedelight.block.custom;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -24,12 +24,12 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.network.NetworkHooks;
 import net.ribs.vintagedelight.block.entity.FermentingJarBlockEntity;
 import net.ribs.vintagedelight.block.entity.ModBlockEntities;
 import org.jetbrains.annotations.Nullable;
 
 public class FermentingJarBlock extends BaseEntityBlock implements SimpleWaterloggedBlock {
+    public static final MapCodec<FermentingJarBlock> CODEC = simpleCodec(FermentingJarBlock::new);
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public static final VoxelShape SHAPE = Block.box(3.25, 0, 3.25, 12.75, 13.5, 12.75);
     public FermentingJarBlock(Properties pProperties) {
@@ -45,6 +45,12 @@ public class FermentingJarBlock extends BaseEntityBlock implements SimpleWaterlo
     public RenderShape getRenderShape(BlockState pState) {
         return RenderShape.MODEL;
     }
+
+    @Override
+    protected MapCodec<? extends BaseEntityBlock> codec() {
+        return CODEC;
+    }
+
     @Override
     public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pIsMoving) {
         if (pState.getBlock() != pNewState.getBlock()) {
@@ -56,11 +62,11 @@ public class FermentingJarBlock extends BaseEntityBlock implements SimpleWaterlo
         super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving);
     }
     @Override
-    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
+    protected InteractionResult useWithoutItem(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, BlockHitResult pHit) {
         if (!pLevel.isClientSide()) {
             BlockEntity entity = pLevel.getBlockEntity(pPos);
             if(entity instanceof FermentingJarBlockEntity) {
-                NetworkHooks.openScreen(((ServerPlayer)pPlayer), (FermentingJarBlockEntity)entity, pPos);
+                ((ServerPlayer) pPlayer).openMenu((FermentingJarBlockEntity) entity, buffer -> buffer.writeBlockPos(pPos));
             } else {
                 throw new IllegalStateException("Our Container provider is missing!");
             }
@@ -101,3 +107,4 @@ public class FermentingJarBlock extends BaseEntityBlock implements SimpleWaterlo
         return this.defaultBlockState().setValue(WATERLOGGED, fluidstate.getType() == Fluids.WATER);
     }
 }
+

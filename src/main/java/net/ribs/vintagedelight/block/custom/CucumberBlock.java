@@ -4,7 +4,6 @@ package net.ribs.vintagedelight.block.custom;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -47,7 +46,7 @@ public class CucumberBlock extends CropBlock {
         pBuilder.add(AGE);
     }
     @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
         int currentAge = state.getValue(AGE);
         if (currentAge == MAX_AGE) {
             int quantity = 1 + level.random.nextInt(2);
@@ -58,8 +57,9 @@ public class CucumberBlock extends CropBlock {
             level.setBlock(pos, state.setValue(AGE, MAX_AGE - 2), 2);
             return InteractionResult.sidedSuccess(level.isClientSide);
         } else {
-            return super.use(state, level, pos, player, hand, hit);
+            return super.useWithoutItem(state, level, pos, player, hit);
         }
     }
 }
+
 

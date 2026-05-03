@@ -31,7 +31,7 @@ import java.util.List;
 public class JEIVintagePlugin implements IModPlugin {
     @Override
     public ResourceLocation getPluginUid() {
-        return new ResourceLocation(VintageDelight.MODID, "jei_plugin");
+        return ResourceLocation.fromNamespaceAndPath(VintageDelight.MODID, "jei_plugin");
     }
 
     @Override
@@ -48,7 +48,9 @@ public class JEIVintagePlugin implements IModPlugin {
         registration.addIngredientInfo(new ItemStack(ModBlocks.EVAPORATOR.get()), VanillaTypes.ITEM_STACK, getTranslation("jei.info.evaporator"));
         registration.addIngredientInfo(new ItemStack(ModItems.CHEESE_WHEEL.get()), VanillaTypes.ITEM_STACK, getTranslation("jei.info.cheese_wheel"));
         registration.addIngredientInfo(new ItemStack(ModItems.ORGANIC_MASH.get()), VanillaTypes.ITEM_STACK, getTranslation("jei.info.organic_compost"));
-        List<FermentingRecipe> fermentingRecipes = recipeManager.getAllRecipesFor(FermentingRecipe.Type.INSTANCE);
+        List<FermentingRecipe> fermentingRecipes = recipeManager.getAllRecipesFor(FermentingRecipe.Type.INSTANCE).stream()
+                .map(holder -> holder.value())
+                .toList();
         registration.addRecipes(FermentingCategory.FERMENTING_TYPE, fermentingRecipes);
     }
 

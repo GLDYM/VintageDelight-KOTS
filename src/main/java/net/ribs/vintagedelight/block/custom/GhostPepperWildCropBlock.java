@@ -1,6 +1,7 @@
 package net.ribs.vintagedelight.block.custom;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.level.BlockGetter;
@@ -8,7 +9,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import vectorwing.farmersdelight.common.block.WildCropBlock;
 
 public class GhostPepperWildCropBlock extends WildCropBlock {
-    public GhostPepperWildCropBlock(MobEffect suspiciousStewEffect, int effectDuration, Properties properties) {
+    public GhostPepperWildCropBlock(Holder<MobEffect> suspiciousStewEffect, int effectDuration, Properties properties) {
         super(suspiciousStewEffect, effectDuration, properties);
     }
     @Override
@@ -16,3 +17,4 @@ public class GhostPepperWildCropBlock extends WildCropBlock {
         return state.is(BlockTags.DIRT) || state.is(BlockTags.NYLIUM);
     }
 }
+
