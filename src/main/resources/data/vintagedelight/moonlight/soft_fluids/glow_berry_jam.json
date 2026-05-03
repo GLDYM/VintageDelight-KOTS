@@ -1,0 +1,29 @@
+{
+  "color": "#efe08c",
+  "containers": [
+    {
+      "filled": [
+        "vintagedelight:glow_berry_jam_bottle"
+      ],
+      "empty": "minecraft:glass_bottle",
+      "capacity": 1
+    },
+    {
+      "filled": [
+        "vintagedelight:glow_berry_mason_jar"
+      ],
+      "empty": "vintagedelight:mason_jar",
+      "capacity": 3
+    }
+  ],
+  
+  "flowing_texture": "moonlight:block/soft_fluids/potion_flow",
+  "food": {
+    "divider": 1,
+    "item": "vintagedelight:glow_berry_jam_bottle"
+  },
+  "luminosity": 7,
+  "from_mod": "vintagedelight",
+  "still_texture": "moonlight:block/soft_fluids/soup_liquid",
+  "translation_key": "item.vintagedelight.glow_berry_jam_bottle"
+}

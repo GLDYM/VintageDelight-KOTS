@@ -1,0 +1,21 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "minecraft:pitcher_plant"
+    }
+  ],
+  "result": [
+    {
+      "item": "minecraft:cyan_dye",
+      "count": 2
+    },
+    {
+      "chance": 0.75,
+      "item": "minecraft:pitcher_pod"
+    }
+  ],
+  "tool": {
+    "tag": "forge:tools/knives"
+  }
+}

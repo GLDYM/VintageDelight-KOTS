@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "vintagedelight:block/vine_tile_slab"
+    },
+    "type=double": {
+      "model": "vintagedelight:block/vine_tile"
+    },
+    "type=top": {
+      "model": "vintagedelight:block/vine_tile_slab_top"
+    }
+  }
+}

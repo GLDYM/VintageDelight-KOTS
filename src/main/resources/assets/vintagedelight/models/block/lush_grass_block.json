@@ -1,7 +1,7 @@
 {
     "parent": "minecraft:block/cube_bottom_top",
     "textures": {
-        "bottom": "minecraft:block/dirt",
+        "bottom": "farmersdelight:block/rich_soil",
         "side": "vintagedelight:block/lush_grass_block_side",
         "top": "vintagedelight:block/lush_grass_block_top"
     }

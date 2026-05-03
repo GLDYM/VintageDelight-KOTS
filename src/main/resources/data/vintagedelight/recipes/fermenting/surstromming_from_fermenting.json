@@ -1,6 +1,6 @@
 {
   "type": "vintagedelight:fermenting",
-  "processingTime": 5000,
+  "processingTime": 2400,
   "ingredients": [
     {"tag": "vintagedelight:raw_fish"},
     {"tag": "vintagedelight:raw_fish"},

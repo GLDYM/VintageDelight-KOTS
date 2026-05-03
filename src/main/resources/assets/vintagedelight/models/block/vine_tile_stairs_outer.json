@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "vintagedelight:block/vine_tile",
+    "side": "vintagedelight:block/vine_tile",
+    "top": "vintagedelight:block/vine_tile"
+  }
+}

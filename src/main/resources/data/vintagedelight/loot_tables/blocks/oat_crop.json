@@ -17,6 +17,12 @@
                   "properties": {
                     "age": "7"
                   }
+                },
+                {
+                  "condition": "minecraft:match_tool",
+                  "predicate": {
+                    "tag": "farmersdelight:tools/knives"
+                  }
                 }
               ],
               "name": "vintagedelight:raw_oats"
@@ -28,11 +34,11 @@
                   "condition": "minecraft:block_state_property",
                   "block": "vintagedelight:oat_crop",
                   "properties": {
-                    "age": "0-6"
+                    "age": "7"
                   }
                 }
               ],
-              "name": "vintagedelight:oat_seeds"
+              "name": "vintagedelight:oat"
             }
           ]
         }
@@ -53,6 +59,12 @@
                   "block": "vintagedelight:oat_crop",
                   "properties": {
                     "age": "7"
+                  }
+                },
+                {
+                  "condition": "minecraft:match_tool",
+                  "predicate": {
+                    "tag": "farmersdelight:tools/knives"
                   }
                 }
               ],

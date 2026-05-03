@@ -1,0 +1,28 @@
+{
+  "color": "#98764f",
+  "containers": [
+    {
+      "filled": [
+        "vintagedelight:nut_mash_bottle"
+      ],
+      "empty": "minecraft:glass_bottle",
+      "capacity": 1
+    },
+    {
+      "filled": [
+        "vintagedelight:nut_mash_mason_jar"
+      ],
+      "empty": "vintagedelight:mason_jar",
+      "capacity": 3
+    }
+  ],
+  
+  "flowing_texture": "moonlight:block/soft_fluids/potion_flow",
+  "food": {
+    "divider": 1,
+    "item": "vintagedelight:nut_mash_bottle"
+  },
+  "from_mod": "vintagedelight",
+  "still_texture": "moonlight:block/soft_fluids/soup_liquid",
+  "translation_key": "item.vintagedelight.nut_mash_bottle"
+}

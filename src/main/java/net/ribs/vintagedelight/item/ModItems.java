@@ -77,6 +77,8 @@ public class ModItems {
             () -> new Item(new Item.Properties().food(ModFoods.KIMCHI)));
     public static final RegistryObject<Item> PICKLED_ONION = ITEMS.register("pickled_onion",
             () -> new ConsumableItem( new Item.Properties().food(ModFoods.PICKLED_ONION), true));
+    public static final RegistryObject<Item> PICKLED_PITCHER_POD = ITEMS.register("pickled_pitcher_pod",
+            () -> new ConsumableItem(new Item.Properties().food(ModFoods.PICKLED_PITCHER_POD), true));
     public static final RegistryObject<Item> PICKLED_EGG = ITEMS.register("pickled_egg",
             () -> new ConsumableItem( new Item.Properties().food(ModFoods.PICKLED_EGG), true));
     public static final RegistryObject<Item> CENTURY_EGG = ITEMS.register("century_egg",

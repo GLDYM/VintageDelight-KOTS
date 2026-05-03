@@ -132,6 +132,9 @@ public class ModFoods {
     public static final FoodProperties PICKLED_ONION = (new FoodProperties.Builder()).fast()
             .nutrition(6).saturationMod(0.2f)
             .effect(() -> new MobEffectInstance(ModEffects.NOURISHMENT.get(), BRIEF_DURATION, 0), 1.0F).build();
+    public static final FoodProperties PICKLED_PITCHER_POD = (new FoodProperties.Builder()).fast()
+            .nutrition(8).saturationMod(0.4f)
+            .effect(() -> new MobEffectInstance(ModEffects.NOURISHMENT.get(), BRIEF_DURATION, 0), 0.6F).build();
     public static final FoodProperties PICKLED_BEETROOT = (new FoodProperties.Builder()).fast()
             .nutrition(5).saturationMod(0.4f)
             .effect(() -> new MobEffectInstance(ModEffects.NOURISHMENT.get(), BRIEF_DURATION, 0), 1.0F).build();

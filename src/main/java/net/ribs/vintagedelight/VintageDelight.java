@@ -4,6 +4,8 @@ package net.ribs.vintagedelight;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -19,6 +21,9 @@ import net.ribs.vintagedelight.block.ModBlocks;
 import net.ribs.vintagedelight.block.entity.ModBlockEntities;
 import net.ribs.vintagedelight.item.ModCreativeModTabs;
 import net.ribs.vintagedelight.item.ModItems;
+import net.ribs.vintagedelight.mobEffects.CustomPotionBrewing;
+import net.ribs.vintagedelight.mobEffects.ModPotions;
+import net.ribs.vintagedelight.mobEffects.VDModEffects;
 import net.ribs.vintagedelight.recipe.ModRecipes;
 import net.ribs.vintagedelight.screen.FermentingJarScreen;
 import net.ribs.vintagedelight.screen.ModMenuTypes;
@@ -31,6 +36,7 @@ public class VintageDelight {
     public VintageDelight() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
+        modEventBus.addListener(this::setup);
         ModCreativeModTabs.register(modEventBus);
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
@@ -41,6 +47,8 @@ public class VintageDelight {
         MinecraftForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);
         ModTrunkPlacerTypes.register(modEventBus);
+        VDModEffects.MOB_EFFECTS.register(modEventBus);
+        ModPotions.POTIONS.register(modEventBus);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
@@ -57,11 +65,20 @@ public class VintageDelight {
             ComposterBlock.COMPOSTABLES.put(ModItems.PICKLED_BEETROOT.get(), 0.6F);
             ComposterBlock.COMPOSTABLES.put(ModItems.PICKLED_EGG.get(), 0.6F);
             ComposterBlock.COMPOSTABLES.put(ModItems.PICKLED_ONION.get(), 0.6F);
+            ComposterBlock.COMPOSTABLES.put(ModItems.PICKLED_PITCHER_POD.get(), 0.6F);
             ComposterBlock.COMPOSTABLES.put(ModItems.CENTURY_EGG.get(), 0.9F);
             ComposterBlock.COMPOSTABLES.put(ModBlocks.MAGIC_PEANUT.get(), 0.85F);
             ComposterBlock.COMPOSTABLES.put(ModItems.OAT.get(), 0.3F);
 
 
+        });
+    }
+
+    private void setup(final FMLCommonSetupEvent event) {
+        event.enqueueWork(() -> {
+            CustomPotionBrewing.addMix(Potions.WATER, ModItems.SALT_DUST.get(), ModPotions.DEHYDRATED_POTION.get());
+            CustomPotionBrewing.addMix(ModPotions.DEHYDRATED_POTION.get(), Items.REDSTONE, ModPotions.LONG_DEHYDRATED_POTION.get());
+            CustomPotionBrewing.addMix(ModPotions.DEHYDRATED_POTION.get(), Items.GLOWSTONE_DUST, ModPotions.STRONG_DEHYDRATED_POTION.get());
         });
     }
 

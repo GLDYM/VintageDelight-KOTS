@@ -1,6 +1,6 @@
 {
   "type": "minecraft:smoking",
-  "cookingtime": 100,
+  "cookingtime": 75,
   "experience": 0.35,
   "ingredient": {
     "item": "vintagedelight:ghost_pepper"

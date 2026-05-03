@@ -157,6 +157,10 @@ public static final RegistryObject<Block> CUCUMBER_CRATE = registerBlock("cucumb
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.BRICKS)));
     public static final RegistryObject<Block> VINE_TILE = registerBlock("vine_tile",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
+    public static final RegistryObject<Block> VINE_TILE_STAIRS = registerBlock("vine_tile_stairs",
+            () -> new StairBlock(() -> VINE_TILE.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.OAK_STAIRS)));
+    public static final RegistryObject<Block> VINE_TILE_SLAB = registerBlock("vine_tile_slab",
+            () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SLAB)));
     public static final RegistryObject<Block> SALT_PILLAR = registerBlock("salt_pillar",
             () -> new SaltPillarBlock(BlockBehaviour.Properties.copy(Blocks.BRICKS)));
     public static final RegistryObject<Block> SALT_BRICKS = registerBlock("salt_bricks",

@@ -1,6 +1,6 @@
 {
   "type": "minecraft:smelting",
-  "cookingtime": 200,
+  "cookingtime": 150,
   "experience": 0.35,
   "ingredient": {
     "item": "vintagedelight:ghost_pepper"

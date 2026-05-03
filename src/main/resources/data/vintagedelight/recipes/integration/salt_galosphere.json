@@ -1,0 +1,29 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "create"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "galosphere"
+    }
+  ],
+  "type": "create:milling",
+  "ingredients": [
+    {
+      "item": "galosphere:pink_salt_shard"
+    }
+  ],
+  "processingTime": 150,
+  "results": [
+    {
+      "item": "vintagedelight:salt_dust",
+      "count": 2
+    },
+    {
+      "chance": 0.25,
+      "item": "vintagedelight:salt_dust"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "type": "vintagedelight:fermenting",
+  "processingTime": 2400,
+  "ingredients": [
+    {"item": "minecraft:pitcher_pod"},
+    {"item": "minecraft:pitcher_pod"},
+    {"item": "minecraft:pitcher_pod"},
+    {"item": "minecraft:pitcher_pod"},
+    {"item": "minecraft:pitcher_pod"},
+    {"item": "minecraft:sugar"}
+  ],
+  "output": {
+    "count": 5,
+    "item": "vintagedelight:pickled_pitcher_pod"
+  }
+}

@@ -1,6 +1,6 @@
 {
   "type": "vintagedelight:fermenting",
-  "processingTime": 5000,
+  "processingTime": 2400,
   "ingredients": [
     {"item": "minecraft:egg"},
     {"item": "minecraft:egg"},
