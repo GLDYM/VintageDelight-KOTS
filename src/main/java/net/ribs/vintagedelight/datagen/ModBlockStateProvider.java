@@ -24,8 +24,12 @@ public class ModBlockStateProvider extends BlockStateProvider {
     }
     @Override
     protected void registerStatesAndModels() {
-        simpleBlockWithItem(ModBlocks.FERMENTING_JAR.get(),
-                new ModelFile.UncheckedModelFile(modLoc("block/fermenting_jar")));
+        Block fermentingJar = ModBlocks.FERMENTING_JAR.get();
+        ModelFile fermentingJarModel = new ModelFile.UncheckedModelFile(modLoc("block/fermenting_jar"));
+        getVariantBuilder(fermentingJar).forAllStates(state -> ConfiguredModel.builder()
+                .modelFile(fermentingJarModel)
+                .build());
+        simpleBlockItem(fermentingJar, fermentingJarModel);
     }
 }
 
