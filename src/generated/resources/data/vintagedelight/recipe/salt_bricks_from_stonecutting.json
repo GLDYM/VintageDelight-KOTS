@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "vintagedelight:smooth_salt_block"
+  },
+  "result": {
+    "count": 1,
+    "id": "vintagedelight:salt_bricks"
+  }
+}

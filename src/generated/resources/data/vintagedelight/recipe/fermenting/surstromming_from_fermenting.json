@@ -1,0 +1,28 @@
+{
+  "type": "vintagedelight:fermenting",
+  "ingredients": [
+    {
+      "tag": "vintagedelight:raw_fish"
+    },
+    {
+      "tag": "vintagedelight:raw_fish"
+    },
+    {
+      "tag": "vintagedelight:raw_fish"
+    },
+    {
+      "tag": "vintagedelight:raw_fish"
+    },
+    {
+      "tag": "vintagedelight:raw_fish"
+    },
+    {
+      "tag": "c:salt"
+    }
+  ],
+  "output": {
+    "count": 5,
+    "id": "vintagedelight:surstromming"
+  },
+  "processingTime": 2400
+}

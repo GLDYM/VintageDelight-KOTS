@@ -1,0 +1,45 @@
+{
+  "type": "vintagedelight:fermenting",
+  "ingredients": [
+    {
+      "item": "vintagedelight:ghost_pepper_seeds"
+    },
+    {
+      "item": "farmersdelight:rotten_tomato"
+    },
+    {
+      "item": "farmersdelight:milk_bottle"
+    },
+    {
+      "item": "minecraft:snowball"
+    },
+    {
+      "item": "minecraft:kelp"
+    }
+  ],
+  "output": {
+    "components": {
+      "minecraft:custom_name": "{\"italic\":false,\"text\":\"Frost Fermenta\"}",
+      "minecraft:dyed_color": {
+        "rgb": 3937500
+      },
+      "minecraft:potion_contents": {
+        "custom_effects": [
+          {
+            "duration": 3600,
+            "id": "minecraft:fire_resistance",
+            "show_icon": true
+          },
+          {
+            "duration": 3600,
+            "id": "minecraft:slowness",
+            "show_icon": true
+          }
+        ]
+      }
+    },
+    "count": 1,
+    "id": "minecraft:potion"
+  },
+  "processingTime": 600
+}

@@ -10,10 +10,7 @@ import net.ribs.vintagedelight.VintageDelight;
 import net.ribs.vintagedelight.block.ModBlocks;
 import net.ribs.vintagedelight.item.custom.*;
 import vectorwing.farmersdelight.common.item.ConsumableItem;
-import vectorwing.farmersdelight.common.item.FuelBlockItem;
 import vectorwing.farmersdelight.common.item.MilkBottleItem;
-
-import static vectorwing.farmersdelight.common.registry.ModItems.registerWithTab;
 
 public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(VintageDelight.MODID);

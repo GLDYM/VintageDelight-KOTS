@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "snowy=false": {
+      "model": "vintagedelight:block/lush_grass_block"
+    },
+    "snowy=true": {
+      "model": "vintagedelight:block/lush_grass_block"
+    }
+  }
+}

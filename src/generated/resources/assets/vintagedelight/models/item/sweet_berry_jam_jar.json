@@ -1,0 +1,6 @@
+{
+  "parent": "vintagedelight:block/sweet_berry_jam_jar_one_jar",
+  "textures": {
+    "layer0": "vintagedelight:item/sweet_berry_jam_jar"
+  }
+}

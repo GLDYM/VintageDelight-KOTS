@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cross",
-  "textures": {
-    "cross": "vintagedelight:block/gearo_berry_bush_stage0"
-  }
-}

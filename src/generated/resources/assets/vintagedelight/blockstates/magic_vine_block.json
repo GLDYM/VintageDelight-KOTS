@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "vintagedelight:block/magic_vine_block_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "vintagedelight:block/magic_vine_block"
+    },
+    "axis=z": {
+      "model": "vintagedelight:block/magic_vine_block_horizontal",
+      "x": 90
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "vintagedelight:magic_vine"
+    }
+  },
+  "pattern": [
+    "# #",
+    " # ",
+    "# #"
+  ],
+  "result": {
+    "count": 1,
+    "id": "vintagedelight:vine_net"
+  }
+}

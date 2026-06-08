@@ -49,6 +49,9 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
     mavenCentral()
+    maven { url = 'https://maven.neoforged.net/releases' }
+    maven { url = 'https://maven.minecraftforge.net/' }
+    maven { url = 'https://maven.parchmentmc.org' }
     maven {
         name = "BlameJared"
         url = "https://maven.blamejared.com/"
@@ -56,19 +59,18 @@ repositories {
             includeGroup "mezz.jei"
         }
     }
+    maven {
+        url = "https://api.modrinth.com/maven"
+    }
 }
 
 dependencies {
-    compileOnly fileTree(dir: 'E:/upgrade/serverneoforge/mods', include: [
-            'FarmersDelight-1.21.1-*.jar',
-            'jei-1.21.1-neoforge-*.jar',
-            'appleskin-neoforge-mc1.21-*.jar'
-    ])
-    runtimeOnly fileTree(dir: 'E:/upgrade/serverneoforge/mods', include: [
-            'FarmersDelight-1.21.1-*.jar',
-            'jei-1.21.1-neoforge-*.jar',
-            'appleskin-neoforge-mc1.21-*.jar'
-    ])
+    compileOnly "maven.modrinth:farmers-delight:${farmers_delight_version}"
+    runtimeOnly "maven.modrinth:farmers-delight:${farmers_delight_version}"
+
+    compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"
+    compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
+    runtimeOnly "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
 }
 
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {

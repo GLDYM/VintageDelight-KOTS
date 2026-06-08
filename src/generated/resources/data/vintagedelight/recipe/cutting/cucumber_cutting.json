@@ -1,0 +1,19 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "vintagedelight:cucumber"
+    }
+  ],
+  "result": [
+    {
+      "item": {
+        "count": 1,
+        "id": "vintagedelight:cucumber_noodles"
+      }
+    }
+  ],
+  "tool": {
+    "tag": "c:tools/knives"
+  }
+}

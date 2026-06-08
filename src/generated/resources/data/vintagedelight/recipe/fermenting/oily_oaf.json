@@ -1,0 +1,49 @@
+{
+  "type": "vintagedelight:fermenting",
+  "container": {
+    "item": "minecraft:glass_bottle"
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:golden_carrot"
+    },
+    {
+      "item": "minecraft:redstone"
+    },
+    {
+      "item": "vintagedelight:pickled_onion"
+    },
+    {
+      "item": "minecraft:glow_berries"
+    }
+  ],
+  "output": {
+    "components": {
+      "minecraft:custom_name": "{\"italic\":false,\"text\":\"Oily Oaf\"}",
+      "minecraft:dyed_color": {
+        "rgb": 5521732
+      },
+      "minecraft:potion_contents": {
+        "custom_effects": [
+          {
+            "amplifier": 1,
+            "duration": 1200,
+            "id": "minecraft:haste",
+            "show_icon": true
+          },
+          {
+            "duration": 1200,
+            "id": "minecraft:hunger",
+            "show_icon": true
+          }
+        ]
+      }
+    },
+    "count": 1,
+    "id": "minecraft:potion"
+  },
+  "processingTime": 600
+}

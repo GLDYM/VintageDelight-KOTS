@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_chef_hat": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#vintagedelight:chef_hats"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "vintagedelight:chef_hats/black_chef_hat2"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_chef_hat"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "vintagedelight:chef_hats/black_chef_hat2"
+    ]
+  }
+}

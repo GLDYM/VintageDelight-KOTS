@@ -1,0 +1,14 @@
+{
+  "values": [
+    "minecraft:vine",
+    "minecraft:short_grass",
+    "minecraft:fern",
+    "minecraft:large_fern",
+    "minecraft:tall_grass",
+    "minecraft:seagrass",
+    "minecraft:sea_pickle",
+    "minecraft:sugar_cane",
+    "#minecraft:saplings",
+    "#minecraft:flowers"
+  ]
+}

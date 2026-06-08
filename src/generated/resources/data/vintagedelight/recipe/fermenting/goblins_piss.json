@@ -1,0 +1,47 @@
+{
+  "type": "vintagedelight:fermenting",
+  "ingredients": [
+    {
+      "item": "minecraft:brown_mushroom"
+    },
+    {
+      "item": "minecraft:honey_bottle"
+    },
+    {
+      "item": "vintagedelight:gearo_berry"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:bone_meal"
+    }
+  ],
+  "output": {
+    "components": {
+      "minecraft:custom_name": "{\"italic\":false,\"text\":\"Goblin's Piss\"}",
+      "minecraft:dyed_color": {
+        "rgb": 16771840
+      },
+      "minecraft:potion_contents": {
+        "custom_effects": [
+          {
+            "amplifier": 2,
+            "duration": 600,
+            "id": "minecraft:speed",
+            "show_icon": true
+          },
+          {
+            "amplifier": 1,
+            "duration": 600,
+            "id": "minecraft:weakness",
+            "show_icon": true
+          }
+        ]
+      }
+    },
+    "count": 1,
+    "id": "minecraft:potion"
+  },
+  "processingTime": 600
+}

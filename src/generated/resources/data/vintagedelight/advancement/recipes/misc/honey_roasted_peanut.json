@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_roasted_peanut": {
+      "conditions": {
+        "items": [
+          {
+            "items": "vintagedelight:roasted_peanut"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "vintagedelight:honey_roasted_peanut"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_roasted_peanut"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "vintagedelight:honey_roasted_peanut"
+    ]
+  }
+}

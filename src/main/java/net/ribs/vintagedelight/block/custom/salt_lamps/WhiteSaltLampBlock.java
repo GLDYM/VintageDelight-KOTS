@@ -1,6 +1,5 @@
 package net.ribs.vintagedelight.block.custom.salt_lamps;
 
-import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.ribs.vintagedelight.block.custom.SaltLampBlock;

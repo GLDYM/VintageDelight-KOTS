@@ -1,0 +1,6 @@
+{
+  "parent": "vintagedelight:block/honey_jar_one_jar",
+  "textures": {
+    "layer0": "vintagedelight:item/honey_jar"
+  }
+}

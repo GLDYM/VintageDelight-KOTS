@@ -20,27 +20,27 @@ public class ChefHatItem extends Item {
     public InteractionResult useOn(UseOnContext context) {
         return InteractionResult.PASS;
     }
-    @Override
-    public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
-        ItemStack heldStack = player.getItemInHand(hand);
-        EquipmentSlot slot = getEquipmentSlotForItem(heldStack);
-        if (slot != null) {
-            if (player.getItemBySlot(slot).getItem() instanceof ChefHatItem) {
-                return swapChefHat(player, heldStack, slot);
-            }
-            ItemStack currentHelmet = player.getItemBySlot(slot);
-            if (!currentHelmet.isEmpty() && currentHelmet.getItem() instanceof ArmorItem
-                    && ((ArmorItem) currentHelmet.getItem()).getEquipmentSlot() == EquipmentSlot.HEAD) {
-                if (!(currentHelmet.getItem() instanceof ChefHatItem)) {
-                    player.getInventory().add(currentHelmet);
-                }
-            }
-            player.setItemSlot(slot, new ItemStack(this, 1));
-            player.getInventory().removeItem(heldStack);
-            return new InteractionResultHolder<>(InteractionResult.SUCCESS, heldStack);
-        }
-        return new InteractionResultHolder<>(InteractionResult.PASS, heldStack);
-    }
+    // @Override
+    // public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
+    //     ItemStack heldStack = player.getItemInHand(hand);
+    //     EquipmentSlot slot = getEquipmentSlotForItem(heldStack);
+    //     if (slot != null) {
+    //         if (player.getItemBySlot(slot).getItem() instanceof ChefHatItem) {
+    //             return swapChefHat(player, heldStack, slot);
+    //         }
+    //         ItemStack currentHelmet = player.getItemBySlot(slot);
+    //         if (!currentHelmet.isEmpty() && currentHelmet.getItem() instanceof ArmorItem
+    //                 && ((ArmorItem) currentHelmet.getItem()).getEquipmentSlot() == EquipmentSlot.HEAD) {
+    //             if (!(currentHelmet.getItem() instanceof ChefHatItem)) {
+    //                 player.getInventory().add(currentHelmet);
+    //             }
+    //         }
+    //         player.setItemSlot(slot, new ItemStack(this, 1));
+    //         player.getInventory().removeItem(heldStack);
+    //         return new InteractionResultHolder<>(InteractionResult.SUCCESS, heldStack);
+    //     }
+    //     return new InteractionResultHolder<>(InteractionResult.PASS, heldStack);
+    // }
 
     @Override
     public UseAnim getUseAnimation(ItemStack stack) {

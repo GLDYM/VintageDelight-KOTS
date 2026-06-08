@@ -11,9 +11,6 @@ import net.minecraft.world.level.block.SnowLayerBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.ribs.vintagedelight.block.ModBlocks;
 
-
-import java.util.Properties;
-
 public class SaltDustItem extends Item {
     public SaltDustItem(Properties properties) {
         super(properties);

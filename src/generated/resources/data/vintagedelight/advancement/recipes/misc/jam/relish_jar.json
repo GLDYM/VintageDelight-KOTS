@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_relish_bottle": {
+      "conditions": {
+        "items": [
+          {
+            "items": "vintagedelight:relish_bottle"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "vintagedelight:jam/relish_jar"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_relish_bottle"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "vintagedelight:jam/relish_jar"
+    ]
+  }
+}

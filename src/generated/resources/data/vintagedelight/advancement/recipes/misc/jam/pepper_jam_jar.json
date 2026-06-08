@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_pepper_jam_bottle": {
+      "conditions": {
+        "items": [
+          {
+            "items": "vintagedelight:pepper_jam_bottle"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "vintagedelight:jam/pepper_jam_jar"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_pepper_jam_bottle"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "vintagedelight:jam/pepper_jam_jar"
+    ]
+  }
+}

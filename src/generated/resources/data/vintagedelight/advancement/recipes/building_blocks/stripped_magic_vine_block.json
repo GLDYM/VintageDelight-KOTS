@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_stripped_magic_vine": {
+      "conditions": {
+        "items": [
+          {
+            "items": "vintagedelight:stripped_magic_vine"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "vintagedelight:stripped_magic_vine_block"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_stripped_magic_vine"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "vintagedelight:stripped_magic_vine_block"
+    ]
+  }
+}

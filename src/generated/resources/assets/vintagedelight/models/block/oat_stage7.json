@@ -1,0 +1,6 @@
+{
+  "parent": "vintagedelight:block/tall_crop",
+  "textures": {
+    "tall_crop": "vintagedelight:block/oat_stage7"
+  }
+}

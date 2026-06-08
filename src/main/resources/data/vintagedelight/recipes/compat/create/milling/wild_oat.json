@@ -1,0 +1,25 @@
+{
+  "conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "type": "create:milling",
+  "ingredients": [
+    {
+      "item": "vintagedelight:wild_oats"
+    }
+  ],
+  "results": [
+    {
+      "id": "vintagedelight:oat_seeds",
+      "count": 1
+    },
+    {
+      "id": "minecraft:green_dye",
+      "count": 1
+    }
+  ],
+  "processing_time": 50
+}

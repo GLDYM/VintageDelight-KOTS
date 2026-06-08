@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_mixed_salt_bricks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "vintagedelight:mixed_salt_bricks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "vintagedelight:mixed_salt_brick_stairs"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_mixed_salt_bricks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "vintagedelight:mixed_salt_brick_stairs"
+    ]
+  }
+}

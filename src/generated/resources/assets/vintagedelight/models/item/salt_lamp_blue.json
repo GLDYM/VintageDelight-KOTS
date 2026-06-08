@@ -1,0 +1,6 @@
+{
+  "parent": "vintagedelight:block/salt_lamp_blue",
+  "textures": {
+    "layer0": "vintagedelight:item/salt_lamp_blue_icon"
+  }
+}

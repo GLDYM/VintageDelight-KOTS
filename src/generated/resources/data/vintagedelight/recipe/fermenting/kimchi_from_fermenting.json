@@ -1,0 +1,32 @@
+{
+  "type": "vintagedelight:fermenting",
+  "ingredients": [
+    {
+      "item": "farmersdelight:cabbage_leaf"
+    },
+    {
+      "item": "farmersdelight:cabbage_leaf"
+    },
+    {
+      "item": "farmersdelight:cabbage_leaf"
+    },
+    {
+      "item": "farmersdelight:cabbage_leaf"
+    },
+    {
+      "tag": "c:salt"
+    },
+    {
+      "tag": "c:foods/vegetable/chili_pepper"
+    }
+  ],
+  "output": {
+    "count": 4,
+    "id": "vintagedelight:kimchi"
+  },
+  "processingTime": 2400,
+  "secondaryOutput": {
+    "count": 1,
+    "id": "vintagedelight:pickled_pepper"
+  }
+}

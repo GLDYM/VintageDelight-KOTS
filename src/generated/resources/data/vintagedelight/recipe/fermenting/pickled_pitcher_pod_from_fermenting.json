@@ -1,0 +1,25 @@
+{
+  "type": "vintagedelight:fermenting",
+  "ingredients": [
+    {
+      "item": "minecraft:pitcher_pod"
+    },
+    {
+      "item": "minecraft:pitcher_pod"
+    },
+    {
+      "item": "minecraft:pitcher_pod"
+    },
+    {
+      "item": "minecraft:pitcher_pod"
+    },
+    {
+      "tag": "c:salt"
+    }
+  ],
+  "output": {
+    "count": 4,
+    "id": "vintagedelight:pickled_pitcher_pod"
+  },
+  "processingTime": 2400
+}

@@ -18,11 +18,6 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.ribs.vintagedelight.block.ModBlocks;
 import net.ribs.vintagedelight.block.custom.MasonJarBlock;
-import net.ribs.vintagedelight.item.ModFoods;
-import net.ribs.vintagedelight.item.ModItems;
-import vectorwing.farmersdelight.common.item.ConsumableItem;
-
-import javax.annotation.Nullable;
 import java.util.List;
 
 public class MasonJarItem extends Item {

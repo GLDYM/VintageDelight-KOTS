@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "vintagedelight:relish_bottle"
+    },
+    "X": {
+      "item": "vintagedelight:mason_jar"
+    }
+  },
+  "pattern": [
+    "X#",
+    "##"
+  ],
+  "result": {
+    "count": 1,
+    "id": "vintagedelight:relish_mason_jar"
+  }
+}

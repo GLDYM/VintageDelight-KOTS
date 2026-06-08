@@ -61,6 +61,7 @@ public class FermentingJarBlock extends BaseEntityBlock implements SimpleWaterlo
         }
         super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving);
     }
+
     @Override
     protected InteractionResult useWithoutItem(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, BlockHitResult pHit) {
         if (!pLevel.isClientSide()) {
@@ -71,9 +72,17 @@ public class FermentingJarBlock extends BaseEntityBlock implements SimpleWaterlo
                 throw new IllegalStateException("Our Container provider is missing!");
             }
         }
-
         return InteractionResult.sidedSuccess(pLevel.isClientSide());
     }
+
+    // @Override
+    // protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player,
+    //                                           InteractionHand hand, BlockHitResult hit) {
+    //     if (!stack.isEmpty() && level.getBlockEntity(pos) instanceof FermentingJarBlockEntity) {
+    //         return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+    //     }
+    //     return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+    // }
 
     @Nullable
     @Override

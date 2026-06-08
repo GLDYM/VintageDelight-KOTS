@@ -1,0 +1,55 @@
+{
+  "type": "vintagedelight:fermenting",
+  "container": {
+    "item": "minecraft:glass_bottle"
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:blaze_powder"
+    },
+    {
+      "item": "vintagedelight:salt_dust"
+    },
+    {
+      "item": "minecraft:crimson_fungus"
+    },
+    {
+      "item": "minecraft:fermented_spider_eye"
+    },
+    {
+      "item": "minecraft:ghast_tear"
+    }
+  ],
+  "output": {
+    "components": {
+      "minecraft:custom_name": "{\"italic\":false,\"text\":\"Berserker's Brew\"}",
+      "minecraft:dyed_color": {
+        "rgb": 11141120
+      },
+      "minecraft:potion_contents": {
+        "custom_effects": [
+          {
+            "amplifier": 2,
+            "duration": 600,
+            "id": "minecraft:strength",
+            "show_icon": true
+          },
+          {
+            "amplifier": 3,
+            "duration": 600,
+            "id": "minecraft:resistance",
+            "show_icon": true
+          },
+          {
+            "duration": 400,
+            "id": "minecraft:wither",
+            "show_icon": true
+          }
+        ]
+      }
+    },
+    "count": 1,
+    "id": "minecraft:potion"
+  },
+  "processingTime": 400
+}

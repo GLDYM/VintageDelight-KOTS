@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "vintagedelight:salt_bucket"
+    }
+  ],
+  "result": {
+    "count": 3,
+    "id": "vintagedelight:salt_dust"
+  }
+}

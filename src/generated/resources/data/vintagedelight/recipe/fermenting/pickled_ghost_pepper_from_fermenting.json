@@ -1,0 +1,25 @@
+{
+  "type": "vintagedelight:fermenting",
+  "ingredients": [
+    {
+      "item": "vintagedelight:ghost_pepper"
+    },
+    {
+      "item": "vintagedelight:ghost_pepper"
+    },
+    {
+      "item": "vintagedelight:ghost_pepper"
+    },
+    {
+      "item": "vintagedelight:ghost_pepper"
+    },
+    {
+      "tag": "c:salt"
+    }
+  ],
+  "output": {
+    "count": 4,
+    "id": "vintagedelight:pickled_pepper"
+  },
+  "processingTime": 2400
+}

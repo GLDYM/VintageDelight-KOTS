@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "c:foods/bread"
+    },
+    {
+      "item": "farmersdelight:beef_patty"
+    },
+    {
+      "tag": "c:foods/vegetable"
+    },
+    {
+      "tag": "c:crops/tomato"
+    },
+    {
+      "tag": "c:cheese"
+    },
+    {
+      "tag": "c:foods/vegetable/chili_pepper"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "vintagedelight:stuffed_burrito"
+  }
+}

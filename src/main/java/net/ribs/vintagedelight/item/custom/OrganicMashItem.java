@@ -10,8 +10,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 
-import javax.annotation.Nullable;
-
 public class OrganicMashItem extends BoneMealItem {
     public OrganicMashItem(Properties pProperties) {
         super(pProperties);

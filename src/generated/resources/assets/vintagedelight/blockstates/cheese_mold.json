@@ -1,0 +1,148 @@
+{
+  "variants": {
+    "facing=east,level=0,waterlogged=false": {
+      "model": "vintagedelight:block/cheese_mold"
+    },
+    "facing=east,level=0,waterlogged=true": {
+      "model": "vintagedelight:block/cheese_mold"
+    },
+    "facing=east,level=1,waterlogged=false": {
+      "model": "vintagedelight:block/cheese_mold"
+    },
+    "facing=east,level=1,waterlogged=true": {
+      "model": "vintagedelight:block/cheese_mold"
+    },
+    "facing=east,level=2,waterlogged=false": {
+      "model": "vintagedelight:block/cheese_mold"
+    },
+    "facing=east,level=2,waterlogged=true": {
+      "model": "vintagedelight:block/cheese_mold"
+    },
+    "facing=east,level=3,waterlogged=false": {
+      "model": "vintagedelight:block/cheese_mold"
+    },
+    "facing=east,level=3,waterlogged=true": {
+      "model": "vintagedelight:block/cheese_mold"
+    },
+    "facing=east,level=4,waterlogged=false": {
+      "model": "vintagedelight:block/cheese_mold"
+    },
+    "facing=east,level=4,waterlogged=true": {
+      "model": "vintagedelight:block/cheese_mold"
+    },
+    "facing=east,level=5,waterlogged=false": {
+      "model": "vintagedelight:block/cheese_mold"
+    },
+    "facing=east,level=5,waterlogged=true": {
+      "model": "vintagedelight:block/cheese_mold"
+    },
+    "facing=north,level=0,waterlogged=false": {
+      "model": "vintagedelight:block/cheese_mold"
+    },
+    "facing=north,level=0,waterlogged=true": {
+      "model": "vintagedelight:block/cheese_mold"
+    },
+    "facing=north,level=1,waterlogged=false": {
+      "model": "vintagedelight:block/cheese_mold"
+    },
+    "facing=north,level=1,waterlogged=true": {
+      "model": "vintagedelight:block/cheese_mold"
+    },
+    "facing=north,level=2,waterlogged=false": {
+      "model": "vintagedelight:block/cheese_mold"
+    },
+    "facing=north,level=2,waterlogged=true": {
+      "model": "vintagedelight:block/cheese_mold"
+    },
+    "facing=north,level=3,waterlogged=false": {
+      "model": "vintagedelight:block/cheese_mold"
+    },
+    "facing=north,level=3,waterlogged=true": {
+      "model": "vintagedelight:block/cheese_mold"
+    },
+    "facing=north,level=4,waterlogged=false": {
+      "model": "vintagedelight:block/cheese_mold"
+    },
+    "facing=north,level=4,waterlogged=true": {
+      "model": "vintagedelight:block/cheese_mold"
+    },
+    "facing=north,level=5,waterlogged=false": {
+      "model": "vintagedelight:block/cheese_mold"
+    },
+    "facing=north,level=5,waterlogged=true": {
+      "model": "vintagedelight:block/cheese_mold"
+    },
+    "facing=south,level=0,waterlogged=false": {
+      "model": "vintagedelight:block/cheese_mold"
+    },
+    "facing=south,level=0,waterlogged=true": {
+      "model": "vintagedelight:block/cheese_mold"
+    },
+    "facing=south,level=1,waterlogged=false": {
+      "model": "vintagedelight:block/cheese_mold"
+    },
+    "facing=south,level=1,waterlogged=true": {
+      "model": "vintagedelight:block/cheese_mold"
+    },
+    "facing=south,level=2,waterlogged=false": {
+      "model": "vintagedelight:block/cheese_mold"
+    },
+    "facing=south,level=2,waterlogged=true": {
+      "model": "vintagedelight:block/cheese_mold"
+    },
+    "facing=south,level=3,waterlogged=false": {
+      "model": "vintagedelight:block/cheese_mold"
+    },
+    "facing=south,level=3,waterlogged=true": {
+      "model": "vintagedelight:block/cheese_mold"
+    },
+    "facing=south,level=4,waterlogged=false": {
+      "model": "vintagedelight:block/cheese_mold"
+    },
+    "facing=south,level=4,waterlogged=true": {
+      "model": "vintagedelight:block/cheese_mold"
+    },
+    "facing=south,level=5,waterlogged=false": {
+      "model": "vintagedelight:block/cheese_mold"
+    },
+    "facing=south,level=5,waterlogged=true": {
+      "model": "vintagedelight:block/cheese_mold"
+    },
+    "facing=west,level=0,waterlogged=false": {
+      "model": "vintagedelight:block/cheese_mold"
+    },
+    "facing=west,level=0,waterlogged=true": {
+      "model": "vintagedelight:block/cheese_mold"
+    },
+    "facing=west,level=1,waterlogged=false": {
+      "model": "vintagedelight:block/cheese_mold"
+    },
+    "facing=west,level=1,waterlogged=true": {
+      "model": "vintagedelight:block/cheese_mold"
+    },
+    "facing=west,level=2,waterlogged=false": {
+      "model": "vintagedelight:block/cheese_mold"
+    },
+    "facing=west,level=2,waterlogged=true": {
+      "model": "vintagedelight:block/cheese_mold"
+    },
+    "facing=west,level=3,waterlogged=false": {
+      "model": "vintagedelight:block/cheese_mold"
+    },
+    "facing=west,level=3,waterlogged=true": {
+      "model": "vintagedelight:block/cheese_mold"
+    },
+    "facing=west,level=4,waterlogged=false": {
+      "model": "vintagedelight:block/cheese_mold"
+    },
+    "facing=west,level=4,waterlogged=true": {
+      "model": "vintagedelight:block/cheese_mold"
+    },
+    "facing=west,level=5,waterlogged=false": {
+      "model": "vintagedelight:block/cheese_mold"
+    },
+    "facing=west,level=5,waterlogged=true": {
+      "model": "vintagedelight:block/cheese_mold"
+    }
+  }
+}

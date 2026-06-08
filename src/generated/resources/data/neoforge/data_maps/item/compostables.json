@@ -1,0 +1,52 @@
+{
+  "values": {
+    "vintagedelight:century_egg": {
+      "chance": 0.9
+    },
+    "vintagedelight:cucumber": {
+      "chance": 0.3
+    },
+    "vintagedelight:cucumber_seeds": {
+      "chance": 0.3
+    },
+    "vintagedelight:gearo_berry": {
+      "chance": 0.4
+    },
+    "vintagedelight:ghost_pepper": {
+      "chance": 0.4
+    },
+    "vintagedelight:ghost_pepper_seeds": {
+      "chance": 0.3
+    },
+    "vintagedelight:magic_peanut": {
+      "chance": 0.85
+    },
+    "vintagedelight:oat": {
+      "chance": 0.3
+    },
+    "vintagedelight:oat_seeds": {
+      "chance": 0.3
+    },
+    "vintagedelight:peanut": {
+      "chance": 0.4
+    },
+    "vintagedelight:pickle": {
+      "chance": 0.4
+    },
+    "vintagedelight:pickled_beetroot": {
+      "chance": 0.6
+    },
+    "vintagedelight:pickled_egg": {
+      "chance": 0.6
+    },
+    "vintagedelight:pickled_onion": {
+      "chance": 0.6
+    },
+    "vintagedelight:pickled_pepper": {
+      "chance": 0.4
+    },
+    "vintagedelight:pickled_pitcher_pod": {
+      "chance": 0.6
+    }
+  }
+}

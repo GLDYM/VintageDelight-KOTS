@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_nut_mash_bottle": {
+      "conditions": {
+        "items": [
+          {
+            "items": "vintagedelight:nut_mash_bottle"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "vintagedelight:jam/nut_mash_jar"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_nut_mash_bottle"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "vintagedelight:jam/nut_mash_jar"
+    ]
+  }
+}

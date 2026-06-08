@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_glow_berry_jam_bottle": {
+      "conditions": {
+        "items": [
+          {
+            "items": "vintagedelight:glow_berry_jam_bottle"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "vintagedelight:jam/glow_berry_jam_jar"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_glow_berry_jam_bottle"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "vintagedelight:jam/glow_berry_jam_jar"
+    ]
+  }
+}

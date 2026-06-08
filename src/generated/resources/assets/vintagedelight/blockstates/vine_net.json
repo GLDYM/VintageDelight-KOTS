@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "position=bottom,waterlogged=false": {
+      "model": "vintagedelight:block/vine_net_middle"
+    },
+    "position=bottom,waterlogged=true": {
+      "model": "vintagedelight:block/vine_net_middle"
+    },
+    "position=middle,waterlogged=false": {
+      "model": "vintagedelight:block/vine_net_middle"
+    },
+    "position=middle,waterlogged=true": {
+      "model": "vintagedelight:block/vine_net_middle"
+    },
+    "position=top,waterlogged=false": {
+      "model": "vintagedelight:block/vine_net_middle"
+    },
+    "position=top,waterlogged=true": {
+      "model": "vintagedelight:block/vine_net_middle"
+    }
+  }
+}

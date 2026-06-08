@@ -14,6 +14,18 @@ import net.ribs.vintagedelight.item.ModTags;
 
 import static net.ribs.vintagedelight.block.entity.FermentingJarBlockEntity.*;
 public class FermentingJarMenu extends AbstractContainerMenu {
+    private static final int HOTBAR_SLOT_COUNT = 9;
+    private static final int PLAYER_INVENTORY_ROW_COUNT = 3;
+    private static final int PLAYER_INVENTORY_COLUMN_COUNT = 9;
+    private static final int PLAYER_INVENTORY_SLOT_COUNT = PLAYER_INVENTORY_COLUMN_COUNT * PLAYER_INVENTORY_ROW_COUNT;
+    private static final int VANILLA_SLOT_COUNT = HOTBAR_SLOT_COUNT + PLAYER_INVENTORY_SLOT_COUNT;
+    private static final int VANILLA_FIRST_SLOT_INDEX = 0;
+    private static final int TE_INVENTORY_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
+    private static final int INPUT_SLOT_INDEX_START = TE_INVENTORY_FIRST_SLOT_INDEX + FIRST_INGREDIENT_SLOT;
+    private static final int INPUT_SLOT_INDEX_END = INPUT_SLOT_INDEX_START + INPUT_SLOT_COUNT;
+    private static final int CONTAINER_SLOT_INDEX = TE_INVENTORY_FIRST_SLOT_INDEX + CONTAINER_SLOT;
+    private static final int OUTPUT_SLOT_INDEX_START = TE_INVENTORY_FIRST_SLOT_INDEX + FIRST_OUTPUT_SLOT;
+
     public final FermentingJarBlockEntity blockEntity;
     private final Level level;
     private final ContainerData data;
@@ -65,14 +77,6 @@ public class FermentingJarMenu extends AbstractContainerMenu {
         int arrowWidth = 25;
         return maxProgress > 0 ? progress * arrowWidth / maxProgress : 0;
     }
-    private static final int HOTBAR_SLOT_COUNT = 9;
-    private static final int PLAYER_INVENTORY_ROW_COUNT = 3;
-    private static final int PLAYER_INVENTORY_COLUMN_COUNT = 9;
-    private static final int PLAYER_INVENTORY_SLOT_COUNT = PLAYER_INVENTORY_COLUMN_COUNT * PLAYER_INVENTORY_ROW_COUNT;
-    private static final int VANILLA_SLOT_COUNT = HOTBAR_SLOT_COUNT + PLAYER_INVENTORY_SLOT_COUNT;
-    private static final int VANILLA_FIRST_SLOT_INDEX = 0;
-    private static final int TE_INVENTORY_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
-    private static final int TE_INVENTORY_SLOT_COUNT = 9;
 
     @Override
     public ItemStack quickMoveStack(Player playerIn, int index) {
@@ -83,24 +87,27 @@ public class FermentingJarMenu extends AbstractContainerMenu {
         ItemStack stack = slot.getItem();
         ItemStack originalStack = stack.copy();
 
-        int adjustedContainerSlotIndex = VANILLA_SLOT_COUNT + CONTAINER_SLOT;
-        if (stack.is(ModTags.CONTAINER_ITEMS)) {
-            if (!moveItemStackTo(stack, adjustedContainerSlotIndex, adjustedContainerSlotIndex + 1, false)) {
-                if (!moveToPlayerInventory(stack, index)) {
+        if (index < VANILLA_SLOT_COUNT) {
+            if (stack.is(ModTags.CONTAINER_ITEMS)) {
+                if (!moveItemStackTo(stack, CONTAINER_SLOT_INDEX, CONTAINER_SLOT_INDEX + 1, false)
+                        && !moveItemStackTo(stack, INPUT_SLOT_INDEX_START, INPUT_SLOT_INDEX_END, false)) {
                     return ItemStack.EMPTY;
                 }
+            } else if (!moveItemStackTo(stack, INPUT_SLOT_INDEX_START, INPUT_SLOT_INDEX_END, false)) {
+                return ItemStack.EMPTY;
+            }
+        } else if (index < OUTPUT_SLOT_INDEX_START) {
+            if (!moveItemStackTo(stack, VANILLA_FIRST_SLOT_INDEX, VANILLA_SLOT_COUNT, false)) {
+                return ItemStack.EMPTY;
             }
         } else {
-            if (index < TE_INVENTORY_FIRST_SLOT_INDEX) {
-                if (!moveItemStackTo(stack, TE_INVENTORY_FIRST_SLOT_INDEX, TE_INVENTORY_FIRST_SLOT_INDEX + TE_INVENTORY_SLOT_COUNT, false)) {
-                    return ItemStack.EMPTY;
-                }
-            } else {
+            if (!moveItemStackTo(stack, VANILLA_FIRST_SLOT_INDEX, VANILLA_SLOT_COUNT, true)) {
                 if (!moveItemStackTo(stack, VANILLA_FIRST_SLOT_INDEX, VANILLA_SLOT_COUNT, false)) {
                     return ItemStack.EMPTY;
                 }
             }
         }
+
         if (stack.isEmpty()) {
             slot.set(ItemStack.EMPTY);
         } else {
@@ -110,13 +117,6 @@ public class FermentingJarMenu extends AbstractContainerMenu {
             slot.onTake(playerIn, stack);
         }
         return originalStack;
-    }
-    private boolean moveToPlayerInventory(ItemStack stack, int index) {
-        if (index < TE_INVENTORY_FIRST_SLOT_INDEX) {
-            return moveItemStackTo(stack, TE_INVENTORY_FIRST_SLOT_INDEX, TE_INVENTORY_FIRST_SLOT_INDEX + TE_INVENTORY_SLOT_COUNT, false);
-        } else {
-            return moveItemStackTo(stack, VANILLA_FIRST_SLOT_INDEX, VANILLA_SLOT_COUNT, false);
-        }
     }
     @Override
     public boolean stillValid(Player pPlayer) {

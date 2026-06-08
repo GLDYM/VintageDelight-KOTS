@@ -1,5 +1,5 @@
 {
-  "type": "farmersdelight:add_item",
+  "type": "neoforge:add_table",
   "conditions": [
     {
       "condition": "minecraft:match_tool",

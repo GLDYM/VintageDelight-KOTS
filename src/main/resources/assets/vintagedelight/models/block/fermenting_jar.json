@@ -1,5 +1,6 @@
 {
 	"credit": "Made by Leftchaotix",
+	"render_type": "minecraft:translucent",
 	"texture_size": [32, 32],
 	"textures": {
 		"0": "vintagedelight:block/jar_contents",

@@ -20,7 +20,6 @@ import net.ribs.vintagedelight.block.ModBlocks;
 import net.ribs.vintagedelight.item.ModItems;
 import net.ribs.vintagedelight.recipe.FermentingRecipe;
 import net.ribs.vintagedelight.screen.FermentingJarScreen;
-import vectorwing.farmersdelight.common.utility.TextUtils;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
