@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "count": 1,
-  "ingredient": {
-    "item": "vintagedelight:mixed_salt_bricks"
-  },
-  "result": "vintagedelight:mixed_salt_brick_stairs"
-}

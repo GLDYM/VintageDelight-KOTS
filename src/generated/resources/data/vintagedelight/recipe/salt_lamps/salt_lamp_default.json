@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "minecraft:deepslate_tiles"
+    },
+    "M": {
+      "tag": "c:salt"
+    },
+    "Q": {
+      "item": "minecraft:glowstone"
+    },
+    "X": {
+      "item": "vintagedelight:salt_block"
+    }
+  },
+  "pattern": [
+    " M ",
+    "XQX",
+    " # "
+  ],
+  "result": {
+    "count": 1,
+    "id": "vintagedelight:salt_lamp_default"
+  }
+}

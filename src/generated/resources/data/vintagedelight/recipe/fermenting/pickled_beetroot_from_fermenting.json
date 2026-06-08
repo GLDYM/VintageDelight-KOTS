@@ -1,0 +1,25 @@
+{
+  "type": "vintagedelight:fermenting",
+  "ingredients": [
+    {
+      "item": "minecraft:beetroot"
+    },
+    {
+      "item": "minecraft:beetroot"
+    },
+    {
+      "item": "minecraft:beetroot"
+    },
+    {
+      "item": "minecraft:beetroot"
+    },
+    {
+      "tag": "c:salt"
+    }
+  ],
+  "output": {
+    "count": 4,
+    "id": "vintagedelight:pickled_beetroot"
+  },
+  "processingTime": 2400
+}

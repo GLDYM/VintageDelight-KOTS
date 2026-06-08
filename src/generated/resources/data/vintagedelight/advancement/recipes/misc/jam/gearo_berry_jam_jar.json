@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_gearo_berry_jam_bottle": {
+      "conditions": {
+        "items": [
+          {
+            "items": "vintagedelight:gearo_berry_jam_bottle"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "vintagedelight:jam/gearo_berry_jam_jar"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_gearo_berry_jam_bottle"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "vintagedelight:jam/gearo_berry_jam_jar"
+    ]
+  }
+}

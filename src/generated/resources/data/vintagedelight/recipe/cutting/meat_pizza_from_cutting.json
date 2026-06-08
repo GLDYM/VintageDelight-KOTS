@@ -1,0 +1,25 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "vintagedelight:meat_pizza"
+    }
+  ],
+  "result": [
+    {
+      "item": {
+        "count": 1,
+        "id": "vintagedelight:meat_pizza_slice"
+      }
+    },
+    {
+      "item": {
+        "count": 3,
+        "id": "vintagedelight:meat_pizza_slice"
+      }
+    }
+  ],
+  "tool": {
+    "tag": "c:tools/knives"
+  }
+}

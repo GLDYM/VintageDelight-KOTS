@@ -1,6 +1,0 @@
-{
-  "type": "forge:add_features",
-  "biomes": "#vintagedelight:is_salt_spawn",
-  "features": "vintagedelight:patch_salt",
-  "step": "vegetal_decoration"
-}

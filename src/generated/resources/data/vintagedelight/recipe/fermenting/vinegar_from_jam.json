@@ -1,0 +1,20 @@
+{
+  "type": "vintagedelight:fermenting",
+  "ingredients": [
+    {
+      "tag": "c:jam_jars"
+    },
+    {
+      "tag": "c:mushrooms"
+    }
+  ],
+  "output": {
+    "count": 1,
+    "id": "vintagedelight:vinegar_mason_jar"
+  },
+  "processingTime": 2400,
+  "secondaryOutput": {
+    "count": 3,
+    "id": "vintagedelight:organic_mash"
+  }
+}

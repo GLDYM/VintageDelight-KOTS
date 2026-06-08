@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cucumber_noodles": {
+      "conditions": {
+        "items": [
+          {
+            "items": "vintagedelight:cucumber_noodles"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "vintagedelight:cooking/pad_thai"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_cucumber_noodles"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "vintagedelight:cooking/pad_thai"
+    ]
+  }
+}

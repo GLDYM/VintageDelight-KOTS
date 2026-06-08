@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cross",
-  "textures": {
-    "cross": "vintagedelight:block/ghost_pepper_stage2"
-  }
-}

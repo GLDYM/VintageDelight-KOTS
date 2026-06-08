@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column_horizontal",
+  "textures": {
+    "end": "vintagedelight:block/stripped_magic_vine",
+    "side": "vintagedelight:block/stripped_magic_vine"
+  }
+}

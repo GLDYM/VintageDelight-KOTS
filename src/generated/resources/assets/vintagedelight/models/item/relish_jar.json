@@ -1,0 +1,6 @@
+{
+  "parent": "vintagedelight:block/relish_jar_one_jar",
+  "textures": {
+    "layer0": "vintagedelight:item/relish_jar"
+  }
+}

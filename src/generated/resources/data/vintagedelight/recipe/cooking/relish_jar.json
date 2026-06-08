@@ -1,0 +1,31 @@
+{
+  "type": "farmersdelight:cooking",
+  "container": {
+    "count": 1,
+    "id": "vintagedelight:mason_jar"
+  },
+  "cookingtime": 400,
+  "experience": 2.0,
+  "ingredients": [
+    {
+      "item": "vintagedelight:cucumber"
+    },
+    {
+      "item": "vintagedelight:cucumber"
+    },
+    {
+      "item": "vintagedelight:cucumber"
+    },
+    {
+      "item": "vintagedelight:cucumber"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
+  "recipe_book_tab": "drinks",
+  "result": {
+    "count": 1,
+    "id": "vintagedelight:relish_mason_jar"
+  }
+}

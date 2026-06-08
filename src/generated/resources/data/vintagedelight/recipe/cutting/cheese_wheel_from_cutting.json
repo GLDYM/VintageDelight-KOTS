@@ -1,0 +1,19 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "vintagedelight:cheese_wheel"
+    }
+  ],
+  "result": [
+    {
+      "item": {
+        "count": 4,
+        "id": "vintagedelight:cheese_slice"
+      }
+    }
+  ],
+  "tool": {
+    "tag": "c:tools/knives"
+  }
+}

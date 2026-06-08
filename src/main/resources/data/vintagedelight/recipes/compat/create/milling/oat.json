@@ -1,0 +1,32 @@
+{
+  "conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "type": "create:milling",
+  "ingredients": [
+    {
+      "item": "vintagedelight:oat"
+    }
+  ],
+  "processing_time": 150,
+  "results": [
+    {
+      "id": "vintagedelight:raw_oats"
+    },
+    {
+      "chance": 0.25,
+      "id": "farmersdelight:straw"
+    },
+    {
+      "chance": 0.25,
+      "id": "vintagedelight:raw_oats"
+    },
+    {
+      "chance": 0.25,
+      "id": "vintagedelight:oat_seeds"
+    }
+  ]
+}

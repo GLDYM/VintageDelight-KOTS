@@ -1,0 +1,11 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "vintagedelight:block/oat_bag_side",
+    "east": "vintagedelight:block/oat_bag_side",
+    "north": "vintagedelight:block/oat_bag_bottom",
+    "south": "vintagedelight:block/oat_bag_side_tied",
+    "up": "vintagedelight:block/oat_bag_top",
+    "west": "vintagedelight:block/oat_bag_side_tied"
+  }
+}

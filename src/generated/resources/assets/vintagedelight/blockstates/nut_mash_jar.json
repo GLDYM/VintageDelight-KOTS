@@ -1,0 +1,100 @@
+{
+  "variants": {
+    "facing=east,jars=1,waterlogged=false": {
+      "model": "vintagedelight:block/nut_mash_jar_one_jar"
+    },
+    "facing=east,jars=1,waterlogged=true": {
+      "model": "vintagedelight:block/nut_mash_jar_one_jar"
+    },
+    "facing=east,jars=2,waterlogged=false": {
+      "model": "vintagedelight:block/nut_mash_jar_two_jar"
+    },
+    "facing=east,jars=2,waterlogged=true": {
+      "model": "vintagedelight:block/nut_mash_jar_two_jar"
+    },
+    "facing=east,jars=3,waterlogged=false": {
+      "model": "vintagedelight:block/nut_mash_jar_three_jar"
+    },
+    "facing=east,jars=3,waterlogged=true": {
+      "model": "vintagedelight:block/nut_mash_jar_three_jar"
+    },
+    "facing=east,jars=4,waterlogged=false": {
+      "model": "vintagedelight:block/nut_mash_jar_four_jar"
+    },
+    "facing=east,jars=4,waterlogged=true": {
+      "model": "vintagedelight:block/nut_mash_jar_four_jar"
+    },
+    "facing=north,jars=1,waterlogged=false": {
+      "model": "vintagedelight:block/nut_mash_jar_one_jar"
+    },
+    "facing=north,jars=1,waterlogged=true": {
+      "model": "vintagedelight:block/nut_mash_jar_one_jar"
+    },
+    "facing=north,jars=2,waterlogged=false": {
+      "model": "vintagedelight:block/nut_mash_jar_two_jar"
+    },
+    "facing=north,jars=2,waterlogged=true": {
+      "model": "vintagedelight:block/nut_mash_jar_two_jar"
+    },
+    "facing=north,jars=3,waterlogged=false": {
+      "model": "vintagedelight:block/nut_mash_jar_three_jar"
+    },
+    "facing=north,jars=3,waterlogged=true": {
+      "model": "vintagedelight:block/nut_mash_jar_three_jar"
+    },
+    "facing=north,jars=4,waterlogged=false": {
+      "model": "vintagedelight:block/nut_mash_jar_four_jar"
+    },
+    "facing=north,jars=4,waterlogged=true": {
+      "model": "vintagedelight:block/nut_mash_jar_four_jar"
+    },
+    "facing=south,jars=1,waterlogged=false": {
+      "model": "vintagedelight:block/nut_mash_jar_one_jar"
+    },
+    "facing=south,jars=1,waterlogged=true": {
+      "model": "vintagedelight:block/nut_mash_jar_one_jar"
+    },
+    "facing=south,jars=2,waterlogged=false": {
+      "model": "vintagedelight:block/nut_mash_jar_two_jar"
+    },
+    "facing=south,jars=2,waterlogged=true": {
+      "model": "vintagedelight:block/nut_mash_jar_two_jar"
+    },
+    "facing=south,jars=3,waterlogged=false": {
+      "model": "vintagedelight:block/nut_mash_jar_three_jar"
+    },
+    "facing=south,jars=3,waterlogged=true": {
+      "model": "vintagedelight:block/nut_mash_jar_three_jar"
+    },
+    "facing=south,jars=4,waterlogged=false": {
+      "model": "vintagedelight:block/nut_mash_jar_four_jar"
+    },
+    "facing=south,jars=4,waterlogged=true": {
+      "model": "vintagedelight:block/nut_mash_jar_four_jar"
+    },
+    "facing=west,jars=1,waterlogged=false": {
+      "model": "vintagedelight:block/nut_mash_jar_one_jar"
+    },
+    "facing=west,jars=1,waterlogged=true": {
+      "model": "vintagedelight:block/nut_mash_jar_one_jar"
+    },
+    "facing=west,jars=2,waterlogged=false": {
+      "model": "vintagedelight:block/nut_mash_jar_two_jar"
+    },
+    "facing=west,jars=2,waterlogged=true": {
+      "model": "vintagedelight:block/nut_mash_jar_two_jar"
+    },
+    "facing=west,jars=3,waterlogged=false": {
+      "model": "vintagedelight:block/nut_mash_jar_three_jar"
+    },
+    "facing=west,jars=3,waterlogged=true": {
+      "model": "vintagedelight:block/nut_mash_jar_three_jar"
+    },
+    "facing=west,jars=4,waterlogged=false": {
+      "model": "vintagedelight:block/nut_mash_jar_four_jar"
+    },
+    "facing=west,jars=4,waterlogged=true": {
+      "model": "vintagedelight:block/nut_mash_jar_four_jar"
+    }
+  }
+}

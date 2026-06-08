@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "vintagedelight:vine_tile_slab"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_vine_tile": {
+      "conditions": {
+        "items": [
+          {
+            "items": "vintagedelight:vine_tile"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_vine_tile"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "vintagedelight:vine_tile_slab"
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "type": "vintagedelight:fermenting",
+  "ingredients": [
+    {
+      "tag": "vintagedelight:slime_ball_fermenting"
+    },
+    {
+      "tag": "vintagedelight:slime_ball_fermenting"
+    },
+    {
+      "tag": "vintagedelight:slime_ball_fermenting"
+    },
+    {
+      "tag": "vintagedelight:slime_ball_fermenting"
+    },
+    {
+      "tag": "vintagedelight:slime_ball_fermenting"
+    },
+    {
+      "tag": "vintagedelight:slime_ball_fermenting"
+    }
+  ],
+  "output": {
+    "count": 1,
+    "id": "minecraft:slime_block"
+  },
+  "processingTime": 2400
+}

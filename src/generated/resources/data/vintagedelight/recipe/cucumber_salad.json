@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "c:foods/vegetable"
+    },
+    {
+      "item": "vintagedelight:pickled_beetroot"
+    },
+    {
+      "item": "vintagedelight:pickled_onion"
+    },
+    {
+      "tag": "c:foods/vegetable/cucumber"
+    },
+    {
+      "item": "minecraft:bowl"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "vintagedelight:cucumber_salad"
+  }
+}

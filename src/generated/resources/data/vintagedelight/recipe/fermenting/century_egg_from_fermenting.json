@@ -1,0 +1,19 @@
+{
+  "type": "vintagedelight:fermenting",
+  "ingredients": [
+    {
+      "item": "minecraft:sniffer_egg"
+    },
+    {
+      "item": "minecraft:coal"
+    },
+    {
+      "tag": "c:salt"
+    }
+  ],
+  "output": {
+    "count": 1,
+    "id": "vintagedelight:century_egg"
+  },
+  "processingTime": 216000
+}

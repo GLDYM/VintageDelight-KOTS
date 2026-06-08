@@ -1,0 +1,6 @@
+{
+  "parent": "vintagedelight:block/nut_mash_jar_one_jar",
+  "textures": {
+    "layer0": "vintagedelight:item/nut_mash_jar"
+  }
+}

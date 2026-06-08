@@ -1,0 +1,25 @@
+{
+  "conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "immersiveengineering"
+    }
+  ],
+  "type": "immersiveengineering:crusher",
+  "secondaries": [
+    {
+      "chance": 1.0,
+      "output": {
+        "item": "minecraft:green_dye",
+        "count": 1
+      }
+    }
+  ],
+  "result": {
+    "id": "vintagedelight:cucumber_seeds"
+  },
+  "input": {
+    "item": "vintagedelight:wild_cucumbers"
+  },
+  "energy": 3200
+}

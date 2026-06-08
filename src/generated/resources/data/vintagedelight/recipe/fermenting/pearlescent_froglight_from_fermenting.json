@@ -1,0 +1,32 @@
+{
+  "type": "vintagedelight:fermenting",
+  "ingredients": [
+    {
+      "item": "minecraft:slime_block"
+    },
+    {
+      "item": "minecraft:slime_block"
+    },
+    {
+      "item": "minecraft:prismarine_crystals"
+    },
+    {
+      "item": "minecraft:sea_pickle"
+    },
+    {
+      "item": "vintagedelight:salt_block"
+    },
+    {
+      "item": "vintagedelight:vinegar_bottle"
+    }
+  ],
+  "output": {
+    "count": 3,
+    "id": "minecraft:pearlescent_froglight"
+  },
+  "processingTime": 2400,
+  "secondaryOutput": {
+    "count": 1,
+    "id": "minecraft:glass_bottle"
+  }
+}

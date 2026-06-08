@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "minecraft:glass_bottle"
+    },
+    "X": {
+      "item": "vintagedelight:nut_mash_mason_jar"
+    }
+  },
+  "pattern": [
+    "X#",
+    "##"
+  ],
+  "result": {
+    "count": 3,
+    "id": "vintagedelight:nut_mash_mason_jar"
+  }
+}

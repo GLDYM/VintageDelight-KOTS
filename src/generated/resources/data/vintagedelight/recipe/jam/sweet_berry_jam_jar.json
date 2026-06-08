@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "vintagedelight:sweet_berry_jam_bottle"
+    },
+    "X": {
+      "item": "vintagedelight:mason_jar"
+    }
+  },
+  "pattern": [
+    "X#",
+    "##"
+  ],
+  "result": {
+    "count": 1,
+    "id": "vintagedelight:sweet_berry_mason_jar"
+  }
+}

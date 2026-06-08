@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_peanut_crate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "vintagedelight:peanut_crate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "vintagedelight:peanut_crate_deconstruct"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_peanut_crate"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "vintagedelight:peanut_crate_deconstruct"
+    ]
+  }
+}

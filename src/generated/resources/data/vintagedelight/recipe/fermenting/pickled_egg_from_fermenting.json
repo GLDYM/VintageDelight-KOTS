@@ -1,0 +1,25 @@
+{
+  "type": "vintagedelight:fermenting",
+  "ingredients": [
+    {
+      "item": "minecraft:egg"
+    },
+    {
+      "item": "minecraft:egg"
+    },
+    {
+      "item": "minecraft:egg"
+    },
+    {
+      "item": "minecraft:egg"
+    },
+    {
+      "tag": "c:salt"
+    }
+  ],
+  "output": {
+    "count": 4,
+    "id": "vintagedelight:pickled_egg"
+  },
+  "processingTime": 2400
+}

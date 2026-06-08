@@ -1,0 +1,6 @@
+{
+  "parent": "vintagedelight:block/pepper_jam_jar_one_jar",
+  "textures": {
+    "layer0": "vintagedelight:item/pepper_jam_jar"
+  }
+}

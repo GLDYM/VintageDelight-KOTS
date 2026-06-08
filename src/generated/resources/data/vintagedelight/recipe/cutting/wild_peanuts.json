@@ -1,0 +1,19 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "vintagedelight:wild_peanuts"
+    }
+  ],
+  "result": [
+    {
+      "item": {
+        "count": 2,
+        "id": "vintagedelight:peanut"
+      }
+    }
+  ],
+  "tool": {
+    "tag": "c:tools/knives"
+  }
+}

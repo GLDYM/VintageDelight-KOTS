@@ -1,0 +1,25 @@
+{
+  "type": "vintagedelight:fermenting",
+  "ingredients": [
+    {
+      "tag": "c:crops/onion"
+    },
+    {
+      "tag": "c:crops/onion"
+    },
+    {
+      "tag": "c:crops/onion"
+    },
+    {
+      "tag": "c:crops/onion"
+    },
+    {
+      "tag": "c:salt"
+    }
+  ],
+  "output": {
+    "count": 4,
+    "id": "vintagedelight:pickled_onion"
+  },
+  "processingTime": 2400
+}

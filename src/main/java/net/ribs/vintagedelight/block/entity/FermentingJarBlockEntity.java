@@ -22,160 +22,28 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.items.IItemHandler;
-import net.neoforged.neoforge.items.IItemHandlerModifiable;
 import net.neoforged.neoforge.items.ItemStackHandler;
-import net.ribs.vintagedelight.item.ModTags;
+import net.ribs.vintagedelight.init.ModBlockEntities;
+import net.ribs.vintagedelight.init.ModTags;
 import net.ribs.vintagedelight.recipe.FermentingRecipe;
 import net.ribs.vintagedelight.recipe.FermentingRecipeInput;
 import net.ribs.vintagedelight.screen.FermentingJarMenu;
 import org.jetbrains.annotations.Nullable;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 public class FermentingJarBlockEntity extends BlockEntity implements MenuProvider {
-    private final ItemStackHandler itemHandler = new ItemStackHandler(9) {
-        @Override
-        protected void onContentsChanged(int slot) {
-            setChanged();
-            if (!level.isClientSide()) {
-                level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
-                if (isInputSlot(slot)) {
-                    if (!isRecipeValid()) {
-                        resetProgress();
-                    }
-                }
-            }
-        }
-        private boolean isInputSlot(int slot) {
-            return slot >= FIRST_INGREDIENT_SLOT && slot <= CONTAINER_SLOT;
-        }
-    };
     public static final int FIRST_INGREDIENT_SLOT = 0;
     public static final int LAST_INPUT_SLOT = 5;
+    public static final int INPUT_SLOT_COUNT = LAST_INPUT_SLOT - FIRST_INGREDIENT_SLOT + 1;
     public static final int CONTAINER_SLOT = 6;
     public static final int FIRST_OUTPUT_SLOT = 7;
     public static final int SECOND_OUTPUT_SLOT = 8;
-    private final IItemHandler outputItemHandler = new OutputItemHandler(itemHandler);
-    private final IItemHandler conditionalItemHandler = new ConditionalItemHandler(itemHandler);
-    protected final ContainerData data;
-    private int progress = 0;
-    private int maxProgress = 78;
+    public static final int SLOT_COUNT = 9;
 
-        public FermentingJarBlockEntity(BlockPos pPos, BlockState pBlockState) {
-            super(ModBlockEntities.FERMENTING_JAR_BE.get(), pPos, pBlockState);
-            this.data = new ContainerData() {
-                @Override
-                public int get(int pIndex) {
-                    return switch (pIndex) {
-                        case 0 -> FermentingJarBlockEntity.this.progress;
-                        case 1 -> FermentingJarBlockEntity.this.maxProgress;
-                        default -> 0;
-                    };
-                }
-                @Override
-                public void set(int pIndex, int pValue) {
-                    switch (pIndex) {
-                        case 0 -> FermentingJarBlockEntity.this.progress = pValue;
-                        case 1 -> FermentingJarBlockEntity.this.maxProgress = pValue;
-                    }
-                }
-                @Override
-                public int getCount() {
-                    return 2;
-                }
-            };
-        }
-        public List<ItemStack> getRenderStacks() {
-            List<ItemStack> stacks = new ArrayList<>();
-            for (int i = 0; i <= LAST_INPUT_SLOT; i++) {
-                ItemStack stack = itemHandler.getStackInSlot(i);
-                if (!stack.isEmpty()) {
-                    stacks.add(stack);
-                }
-            }
-            if (FIRST_OUTPUT_SLOT < itemHandler.getSlots() && !itemHandler.getStackInSlot(FIRST_OUTPUT_SLOT).isEmpty()) {
-                stacks.add(itemHandler.getStackInSlot(FIRST_OUTPUT_SLOT));
-            }
-
-            return stacks;
-        }
-    public IItemHandler getItemHandler(@Nullable Direction side) {
-        return side == Direction.DOWN ? outputItemHandler : conditionalItemHandler;
-    }
-
-
-    private class OutputItemHandler implements IItemHandlerModifiable {
-            private final ItemStackHandler itemHandler;
-            public OutputItemHandler(ItemStackHandler itemHandler) {
-                this.itemHandler = itemHandler;
-            }
-            @Override
-            public void setStackInSlot(int slot, ItemStack stack) {
-            }
-
-            @Override
-            public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
-                return stack;
-            }
-            @Override
-            public ItemStack extractItem(int slot, int amount, boolean simulate) {
-                return itemHandler.extractItem(slot + FIRST_OUTPUT_SLOT, amount, simulate);
-            }
-            @Override
-            public int getSlots() {
-                return 2;
-            }
-            @Override
-            public ItemStack getStackInSlot(int slot) {
-                return itemHandler.getStackInSlot(slot + FIRST_OUTPUT_SLOT);
-            }
-
-            @Override
-            public int getSlotLimit(int slot) {
-                return itemHandler.getSlotLimit(slot + FIRST_OUTPUT_SLOT);
-            }
-
-            @Override
-            public boolean isItemValid(int slot, ItemStack stack) {
-                return false;
-            }
-        }
-    private class ConditionalItemHandler implements IItemHandlerModifiable {
-        private final ItemStackHandler wrappedHandler;
-        public ConditionalItemHandler(ItemStackHandler wrappedHandler) {
-            this.wrappedHandler = wrappedHandler;
-        }
-        @Override
-        public void setStackInSlot(int slot, ItemStack stack) {
-            wrappedHandler.setStackInSlot(slot, stack);
-        }
-        @Override
-        public int getSlots() {
-            return wrappedHandler.getSlots();
-        }
-        @Override
-        public ItemStack getStackInSlot(int slot) {
-            return wrappedHandler.getStackInSlot(slot);
-        }
-        @Override
-        public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
-            if (slot == FIRST_OUTPUT_SLOT || slot == SECOND_OUTPUT_SLOT) {
-                return stack;
-            }
-            if (slot == CONTAINER_SLOT && !stack.is(ModTags.CONTAINER_ITEMS)) {
-                return stack;
-            }
-            return wrappedHandler.insertItem(slot, stack, simulate);
-        }
-        @Override
-        public ItemStack extractItem(int slot, int amount, boolean simulate) {
-            return wrappedHandler.extractItem(slot, amount, simulate);
-        }
-        @Override
-        public int getSlotLimit(int slot) {
-            return wrappedHandler.getSlotLimit(slot);
-        }
+    private final ItemStackHandler itemHandler = new ItemStackHandler(SLOT_COUNT) {
         @Override
         public boolean isItemValid(int slot, ItemStack stack) {
             if (slot == FIRST_OUTPUT_SLOT || slot == SECOND_OUTPUT_SLOT) {
@@ -184,66 +52,135 @@ public class FermentingJarBlockEntity extends BlockEntity implements MenuProvide
             if (slot == CONTAINER_SLOT) {
                 return stack.is(ModTags.CONTAINER_ITEMS);
             }
-            return wrappedHandler.isItemValid(slot, stack);
+            return true;
         }
-    }
-        public void drops() {
-            SimpleContainer inventory = new SimpleContainer(itemHandler.getSlots());
-            for(int i = 0; i < itemHandler.getSlots(); i++) {
-                inventory.setItem(i, itemHandler.getStackInSlot(i));
-            }
-            Containers.dropContents(this.level, this.worldPosition, inventory);
-        }
+
         @Override
-        public Component getDisplayName() {
-            return Component.translatable("block.vintagedelight.fermenting_jar");
-        }
-        @Nullable
-        @Override
-        public AbstractContainerMenu createMenu(int pContainerId, Inventory pPlayerInventory, Player pPlayer) {
-            return new FermentingJarMenu(pContainerId, pPlayerInventory, this, this.data);
-        }
-        @Override
-        protected void saveAdditional(CompoundTag pTag, HolderLookup.Provider registries) {
-            super.saveAdditional(pTag, registries);
-            pTag.put("inventory", itemHandler.serializeNBT(registries));
-            pTag.putInt("fermenting_jar.progress", progress);
-        }
-        @Override
-        protected void loadAdditional(CompoundTag pTag, HolderLookup.Provider registries) {
-            super.loadAdditional(pTag, registries);
-            itemHandler.deserializeNBT(registries, pTag.getCompound("inventory"));
-            progress = pTag.getInt("fermenting_jar.progress");
-        }
-        public void tick(Level pLevel, BlockPos pPos, BlockState pState) {
-            if (!pLevel.isClientSide && hasRecipe()) {
-                Optional<FermentingRecipe> recipeOpt = getCurrentRecipe();
-                if (recipeOpt.isPresent()) {
-                    FermentingRecipe recipe = recipeOpt.get();
-                    ItemStack result = recipe.getResultItem(pLevel.registryAccess());
-                    ItemStack secondaryResult = recipe.getSecondaryResultItem();
-                    maxProgress = recipe.getProcessingTime();
-                    increaseCraftingProgress();
-                    if (hasProgressFinished() && canOutput(result, secondaryResult)) {
-                        craftItem();
-                        resetProgress();
-                    }
-                } else {
+        protected void onContentsChanged(int slot) {
+            setChanged();
+            if (level != null && !level.isClientSide()) {
+                level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
+                if (isInputSlot(slot) && !isRecipeValid()) {
                     resetProgress();
                 }
             }
         }
+    };
+    private final FermentingJarItemHandler sidedItemHandler = new FermentingJarItemHandler(itemHandler);
+    protected final ContainerData data;
+    private int progress = 0;
+    private int maxProgress = 78;
 
-        private boolean canOutput(ItemStack result, ItemStack secondaryResult) {
-            boolean canOutputPrimary = result.isEmpty() ||
-                    (canInsertItemIntoOutputSlot(result.getItem(), FIRST_OUTPUT_SLOT) &&
-                            canInsertAmountIntoOutputSlot(result.getCount(), FIRST_OUTPUT_SLOT));
-            boolean canOutputSecondary = secondaryResult.isEmpty() ||
-                    (canInsertItemIntoOutputSlot(secondaryResult.getItem(), SECOND_OUTPUT_SLOT) &&
-                            canInsertAmountIntoOutputSlot(secondaryResult.getCount(), SECOND_OUTPUT_SLOT));
+    public FermentingJarBlockEntity(BlockPos pPos, BlockState pBlockState) {
+        super(ModBlockEntities.FERMENTING_JAR_BE.get(), pPos, pBlockState);
+        this.data = new ContainerData() {
+            @Override
+            public int get(int pIndex) {
+                return switch (pIndex) {
+                    case 0 -> FermentingJarBlockEntity.this.progress;
+                    case 1 -> FermentingJarBlockEntity.this.maxProgress;
+                    default -> 0;
+                };
+            }
 
-            return canOutputPrimary && canOutputSecondary;
+            @Override
+            public void set(int pIndex, int pValue) {
+                switch (pIndex) {
+                    case 0 -> FermentingJarBlockEntity.this.progress = pValue;
+                    case 1 -> FermentingJarBlockEntity.this.maxProgress = pValue;
+                    default -> {
+                    }
+                }
+            }
+
+            @Override
+            public int getCount() {
+                return 2;
+            }
+        };
+    }
+
+    public List<ItemStack> getRenderStacks() {
+        List<ItemStack> stacks = new ArrayList<>();
+        for (int i = 0; i <= LAST_INPUT_SLOT; i++) {
+            ItemStack stack = itemHandler.getStackInSlot(i);
+            if (!stack.isEmpty()) {
+                stacks.add(stack);
+            }
         }
+        if (!itemHandler.getStackInSlot(FIRST_OUTPUT_SLOT).isEmpty()) {
+            stacks.add(itemHandler.getStackInSlot(FIRST_OUTPUT_SLOT));
+        }
+        return stacks;
+    }
+
+    public IItemHandler getItemHandler(@Nullable Direction side) {
+        return sidedItemHandler.forSide(side);
+    }
+
+    public void drops() {
+        SimpleContainer inventory = new SimpleContainer(itemHandler.getSlots());
+        for (int i = 0; i < itemHandler.getSlots(); i++) {
+            inventory.setItem(i, itemHandler.getStackInSlot(i));
+        }
+        Containers.dropContents(this.level, this.worldPosition, inventory);
+    }
+
+    @Override
+    public Component getDisplayName() {
+        return Component.translatable("block.vintagedelight.fermenting_jar");
+    }
+
+    @Nullable
+    @Override
+    public AbstractContainerMenu createMenu(int pContainerId, Inventory pPlayerInventory, Player pPlayer) {
+        return new FermentingJarMenu(pContainerId, pPlayerInventory, this, this.data);
+    }
+
+    @Override
+    protected void saveAdditional(CompoundTag pTag, HolderLookup.Provider registries) {
+        super.saveAdditional(pTag, registries);
+        pTag.put("inventory", itemHandler.serializeNBT(registries));
+        pTag.putInt("fermenting_jar.progress", progress);
+    }
+
+    @Override
+    protected void loadAdditional(CompoundTag pTag, HolderLookup.Provider registries) {
+        super.loadAdditional(pTag, registries);
+        itemHandler.deserializeNBT(registries, pTag.getCompound("inventory"));
+        progress = pTag.getInt("fermenting_jar.progress");
+    }
+
+    public void tick(Level pLevel, BlockPos pPos, BlockState pState) {
+        if (!pLevel.isClientSide && hasRecipe()) {
+            Optional<FermentingRecipe> recipeOpt = getCurrentRecipe();
+            if (recipeOpt.isPresent()) {
+                FermentingRecipe recipe = recipeOpt.get();
+                ItemStack result = recipe.getResultItem(pLevel.registryAccess());
+                ItemStack secondaryResult = recipe.getSecondaryResultItem();
+                maxProgress = recipe.getProcessingTime();
+                increaseCraftingProgress();
+                if (hasProgressFinished() && canOutput(result, secondaryResult)) {
+                    craftItem();
+                    resetProgress();
+                }
+            } else {
+                resetProgress();
+            }
+        }
+    }
+
+    private boolean canOutput(ItemStack result, ItemStack secondaryResult) {
+        boolean canOutputPrimary = result.isEmpty()
+                || (canInsertItemIntoOutputSlot(result.getItem(), FIRST_OUTPUT_SLOT)
+                && canInsertAmountIntoOutputSlot(result.getCount(), FIRST_OUTPUT_SLOT));
+        boolean canOutputSecondary = secondaryResult.isEmpty()
+                || (canInsertItemIntoOutputSlot(secondaryResult.getItem(), SECOND_OUTPUT_SLOT)
+                && canInsertAmountIntoOutputSlot(secondaryResult.getCount(), SECOND_OUTPUT_SLOT));
+
+        return canOutputPrimary && canOutputSecondary;
+    }
+
     private boolean isRecipeValid() {
         SimpleContainer inventory = new SimpleContainer(itemHandler.getSlots());
         for (int i = 0; i < itemHandler.getSlots(); i++) {
@@ -251,17 +188,16 @@ public class FermentingJarBlockEntity extends BlockEntity implements MenuProvide
         }
 
         Optional<FermentingRecipe> currentRecipe = getCurrentRecipe();
-        if (currentRecipe.isPresent()) {
-            FermentingRecipe recipe = currentRecipe.get();
-            return recipe.matches(inventory, level);
-        }
-        return false;
+        return currentRecipe.isPresent() && currentRecipe.get().matches(inventory, level);
     }
 
+    private boolean isInputSlot(int slot) {
+        return slot >= FIRST_INGREDIENT_SLOT && slot <= CONTAINER_SLOT;
+    }
 
     private void craftItem() {
         Optional<FermentingRecipe> recipeOpt = getCurrentRecipe();
-        if (!recipeOpt.isPresent()) {
+        if (recipeOpt.isEmpty() || level == null) {
             return;
         }
 
@@ -281,58 +217,69 @@ public class FermentingJarBlockEntity extends BlockEntity implements MenuProvide
             }
         }
     }
-        private boolean hasRecipe() {
-            return getCurrentRecipe().isPresent();
-        }
-        private Optional<FermentingRecipe> getCurrentRecipe() {
-            if (level == null) return Optional.empty();
-            RecipeManager recipeManager = level.getRecipeManager();
-            SimpleContainer inventory = new SimpleContainer(itemHandler.getSlots());
-            for (int i = 0; i < itemHandler.getSlots(); i++) {
-                inventory.setItem(i, itemHandler.getStackInSlot(i));
-            }
-            return recipeManager.getAllRecipesFor(FermentingRecipe.Type.INSTANCE).stream()
-                    .filter(recipe -> recipe.value().matches(new FermentingRecipeInput(inventory), level))
-                    .map(net.minecraft.world.item.crafting.RecipeHolder::value)
-                    .findFirst();
-        }
-        private boolean canInsertItemIntoOutputSlot(Item item, int slot) {
-            ItemStack existingStack = itemHandler.getStackInSlot(slot);
-            if (existingStack.isEmpty()) {
-                return true;
-            }
-            if (!existingStack.is(item)) {
-                return false;
-            }
-            int itemCount = existingStack.getCount();
-            int maxStackSize = existingStack.getMaxStackSize();
-            return itemCount < maxStackSize;
-        }
-        private boolean canInsertAmountIntoOutputSlot(int count, int slot) {
-            ItemStack existingStack = itemHandler.getStackInSlot(slot);
-            if (existingStack.isEmpty()) {
-                return true;
-            }
-            int existingCount = existingStack.getCount();
-            int maxStackSize = existingStack.getMaxStackSize();
-            return existingCount + count <= maxStackSize;
-        }
-        private boolean hasProgressFinished() {
-            return progress >= maxProgress;
-        }
-        private void increaseCraftingProgress() {
-            progress++;
-        }
-        private void resetProgress() {
-            progress = 0;
-        }
-        @Nullable
-        @Override
-        public Packet<ClientGamePacketListener> getUpdatePacket() {
-            return ClientboundBlockEntityDataPacket.create(this);
-        }
-        @Override
-        public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
-            return saveWithoutMetadata(registries);
-        }
+
+    private boolean hasRecipe() {
+        return getCurrentRecipe().isPresent();
     }
+
+    private Optional<FermentingRecipe> getCurrentRecipe() {
+        if (level == null) {
+            return Optional.empty();
+        }
+        RecipeManager recipeManager = level.getRecipeManager();
+        SimpleContainer inventory = new SimpleContainer(itemHandler.getSlots());
+        for (int i = 0; i < itemHandler.getSlots(); i++) {
+            inventory.setItem(i, itemHandler.getStackInSlot(i));
+        }
+        return recipeManager.getAllRecipesFor(FermentingRecipe.Type.INSTANCE).stream()
+                .filter(recipe -> recipe.value().matches(new FermentingRecipeInput(inventory), level))
+                .map(net.minecraft.world.item.crafting.RecipeHolder::value)
+                .findFirst();
+    }
+
+    private boolean canInsertItemIntoOutputSlot(Item item, int slot) {
+        ItemStack existingStack = itemHandler.getStackInSlot(slot);
+        if (existingStack.isEmpty()) {
+            return true;
+        }
+        if (!existingStack.is(item)) {
+            return false;
+        }
+        int itemCount = existingStack.getCount();
+        int maxStackSize = existingStack.getMaxStackSize();
+        return itemCount < maxStackSize;
+    }
+
+    private boolean canInsertAmountIntoOutputSlot(int count, int slot) {
+        ItemStack existingStack = itemHandler.getStackInSlot(slot);
+        if (existingStack.isEmpty()) {
+            return true;
+        }
+        int existingCount = existingStack.getCount();
+        int maxStackSize = existingStack.getMaxStackSize();
+        return existingCount + count <= maxStackSize;
+    }
+
+    private boolean hasProgressFinished() {
+        return progress >= maxProgress;
+    }
+
+    private void increaseCraftingProgress() {
+        progress++;
+    }
+
+    private void resetProgress() {
+        progress = 0;
+    }
+
+    @Nullable
+    @Override
+    public Packet<ClientGamePacketListener> getUpdatePacket() {
+        return ClientboundBlockEntityDataPacket.create(this);
+    }
+
+    @Override
+    public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
+        return saveWithoutMetadata(registries);
+    }
+}

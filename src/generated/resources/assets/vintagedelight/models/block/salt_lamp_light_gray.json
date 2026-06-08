@@ -1,0 +1,7 @@
+{
+  "parent": "vintagedelight:block/salt_lamp_default",
+  "textures": {
+    "0": "vintagedelight:block/salt_lamp_light_gray",
+    "particle": "vintagedelight:block/salt_lamp_light_gray"
+  }
+}

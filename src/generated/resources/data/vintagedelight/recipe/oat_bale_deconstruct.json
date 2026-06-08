@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "vintagedelight:oat_bale"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "vintagedelight:oat"
+  }
+}

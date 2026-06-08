@@ -1,0 +1,6 @@
+{
+  "parent": "vintagedelight:block/apple_sauce_jar_one_jar",
+  "textures": {
+    "layer0": "vintagedelight:item/apple_sauce_jar"
+  }
+}

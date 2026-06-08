@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_pickle": {
+      "conditions": {
+        "items": [
+          {
+            "items": "vintagedelight:pickle"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "vintagedelight:cooking/pickle_soup"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_pickle"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "vintagedelight:cooking/pickle_soup"
+    ]
+  }
+}
