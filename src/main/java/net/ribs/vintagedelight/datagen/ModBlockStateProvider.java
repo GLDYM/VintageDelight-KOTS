@@ -15,6 +15,7 @@ import net.ribs.vintagedelight.block.GearoBerryBushBlock;
 import net.ribs.vintagedelight.block.MasonJarBlock;
 import net.ribs.vintagedelight.block.OatBlock;
 import net.ribs.vintagedelight.block.SaltLayerBlock;
+import net.ribs.vintagedelight.block.VineNetBlock;
 import net.ribs.vintagedelight.init.ModBlocks;
 import vectorwing.farmersdelight.common.block.PieBlock;
 
@@ -138,7 +139,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         stairsBlock((StairBlock) ModBlocks.VINE_TILE_STAIRS.get(), blockTexture(ModBlocks.VINE_TILE.get()));
         slabBlock((SlabBlock) ModBlocks.VINE_TILE_SLAB.get(), blockTexture(ModBlocks.VINE_TILE.get()),
                 blockTexture(ModBlocks.VINE_TILE.get()));
-        simpleExistingBlock(ModBlocks.VINE_NET.get(), "vine_net_middle");
+        vineNetBlock();
 
         cross("cucumber_stage0");
         cross("cucumber_stage1");
@@ -211,6 +212,13 @@ public class ModBlockStateProvider extends BlockStateProvider {
                     .end();
         }
         simpleBlockItem(ModBlocks.CHEESE_MOLD.get(), baseModel);
+    }
+
+    private void vineNetBlock() {
+        getVariantBuilder(ModBlocks.VINE_NET.get()).forAllStates(state -> ConfiguredModel.builder()
+                .modelFile(existingModel("vine_net_" + state.getValue(VineNetBlock.POSITION).getSerializedName()))
+                .build());
+        simpleBlockItem(ModBlocks.VINE_NET.get(), existingModel("vine_net_middle"));
     }
 
     private void simpleExistingBlock(Block block, String modelName) {

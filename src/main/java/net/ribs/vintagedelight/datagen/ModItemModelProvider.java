@@ -63,7 +63,6 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         simpleBlockItem(ModBlocks.CHEESE_MOLD.get());
         simpleBlockItem(ModBlocks.CUCUMBER_CRATE.get());
-        simpleBlockItem(ModBlocks.DEFAULT_SALT_LAMP.get());
         simpleBlockItem(ModBlocks.EVAPORATOR.get());
         aliasedBlockItem(ModBlocks.EMPTY_MASON_JAR.get(), "mason_jar_one_jar");
         simpleBlockItem(ModBlocks.GEARO_BERRY_BAG.get());
@@ -106,22 +105,6 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleGeneratedBlockItem(ModBlocks.WILD_OATS.get());
         simpleGeneratedBlockItem(ModBlocks.WILD_PEANUTS.get());
         aliasedBlockItem(ModBlocks.APPLE_SAUCE_JAR.get(), "apple_sauce_jar_one_jar");
-        simpleBlockItem(ModBlocks.BLACK_SALT_LAMP.get());
-        simpleBlockItem(ModBlocks.BLUE_SALT_LAMP.get());
-        simpleBlockItem(ModBlocks.BROWN_SALT_LAMP.get());
-        simpleBlockItem(ModBlocks.CYAN_SALT_LAMP.get());
-        simpleBlockItem(ModBlocks.GRAY_SALT_LAMP.get());
-        simpleBlockItem(ModBlocks.GREEN_SALT_LAMP.get());
-        simpleBlockItem(ModBlocks.LIGHT_BLUE_SALT_LAMP.get());
-        simpleBlockItem(ModBlocks.LIGHT_GRAY_SALT_LAMP.get());
-        simpleBlockItem(ModBlocks.LIME_SALT_LAMP.get());
-        simpleBlockItem(ModBlocks.MAGENTA_SALT_LAMP.get());
-        simpleBlockItem(ModBlocks.ORANGE_SALT_LAMP.get());
-        simpleBlockItem(ModBlocks.PINK_SALT_LAMP.get());
-        simpleBlockItem(ModBlocks.PURPLE_SALT_LAMP.get());
-        simpleBlockItem(ModBlocks.RED_SALT_LAMP.get());
-        simpleBlockItem(ModBlocks.WHITE_SALT_LAMP.get());
-        simpleBlockItem(ModBlocks.YELLOW_SALT_LAMP.get());
     }
 
     private void generated(String... names) {

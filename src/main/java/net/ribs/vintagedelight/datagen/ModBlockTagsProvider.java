@@ -3,6 +3,8 @@ package net.ribs.vintagedelight.datagen;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.ribs.vintagedelight.VintageDelight;
@@ -19,6 +21,12 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
+        tag(commonBlockTag("stripped_logs"))
+                .add(ModBlocks.STRIPPED_MAGIC_VINE.get());
+
+        tag(commonBlockTag("stripped_woods"))
+                .add(ModBlocks.STRIPPED_MAGIC_VINE_BLOCK.get());
+
         tag(BlockTags.CROPS)
                 .add(ModBlocks.OAT_CROP.get())
                 .add(ModBlocks.PEANUT_CROP.get())
@@ -66,5 +74,10 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.MIXED_SALT_BRICK_STAIRS.get())
                 .add(ModBlocks.MIXED_SALT_BRICK_SLAB.get())
                 .add(ModBlocks.MIXED_SALT_BRICK_WALL.get());
+    }
+
+    private static TagKey<Block> commonBlockTag(String path) {
+        return TagKey.create(net.minecraft.core.registries.Registries.BLOCK,
+                net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("c", path));
     }
 }

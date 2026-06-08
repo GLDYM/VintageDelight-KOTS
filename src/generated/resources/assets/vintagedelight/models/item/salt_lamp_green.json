@@ -1,5 +1,5 @@
 {
-  "parent": "vintagedelight:block/salt_lamp_green",
+  "parent": "minecraft:item/generated",
   "textures": {
     "layer0": "vintagedelight:item/salt_lamp_green_icon"
   }

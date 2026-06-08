@@ -2,12 +2,15 @@ package net.ribs.vintagedelight.datagen;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Items;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.ribs.vintagedelight.VintageDelight;
+import net.ribs.vintagedelight.init.ModBlocks;
 import net.ribs.vintagedelight.init.ModTags;
 import net.ribs.vintagedelight.init.items.ModItems;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -24,6 +27,15 @@ public class ModItemTagProvider extends ItemTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
+        copy(commonBlockTag("stripped_logs"), commonItemTag("stripped_logs"));
+        copy(commonBlockTag("stripped_woods"), commonItemTag("stripped_woods"));
+
+        tag(ItemTags.create(ResourceLocation.fromNamespaceAndPath(VintageDelight.MODID, "magic_vines")))
+                .add(ModBlocks.MAGIC_VINE.asItem())
+                .add(ModBlocks.STRIPPED_MAGIC_VINE.asItem())
+                .add(ModBlocks.MAGIC_VINE_BLOCK.asItem())
+                .add(ModBlocks.STRIPPED_MAGIC_VINE_BLOCK.asItem());
+
         tag(ModTags.CONTAINER_ITEMS)
                 .add(Items.GLASS_BOTTLE)
                 .add(Items.BOWL)
@@ -110,11 +122,26 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.PEANUT.get());
         tag(Tags.Items.FOODS_DOUGH).add(ModItems.OAT_DOUGH.get());
 
-        tag(ItemTags.create(net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("c", "cheese")))
+        tag(commonItemTag("seeds/oat"))
+                .add(ModItems.OAT_SEEDS.get());
+        tag(commonItemTag("seeds/peanut"))
+                .add(ModItems.PEANUT.get());
+        tag(commonItemTag("seeds/pepper"))
+                .add(ModItems.GHOST_PEPPER_SEEDS.get());
+        tag(commonItemTag("seeds/cucumber"))
+                .add(ModItems.CUCUMBER_SEEDS.get());
+        tag(commonItemTag("seeds"))
+                .add(ModItems.OAT_SEEDS.get())
+                .add(ModItems.PEANUT.get())
+                .add(ModItems.GHOST_PEPPER_SEEDS.get())
+                .add(ModItems.CUCUMBER_SEEDS.get())
+                .add(ModBlocks.MAGIC_PEANUT.asItem());
+
+        tag(commonItemTag("cheese"))
                 .add(ModItems.CHEESE_SLICE.get());
-        tag(ItemTags.create(net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("c", "salt")))
+        tag(commonItemTag("salt"))
                 .add(ModItems.SALT_DUST.get());
-        tag(ItemTags.create(net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("c", "jam_bottles")))
+        tag(commonItemTag("jam_bottles"))
                 .add(ModItems.PEPPER_JAM_BOTTLE.get())
                 .add(ModItems.RELISH_BOTTLE.get())
                 .add(ModItems.APPLE_SAUCE_BOTTLE.get())
@@ -122,7 +149,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.GLOW_BERRY_JAM_BOTTLE.get())
                 .add(ModItems.GEARO_BERRY_JAM_BOTTLE.get())
                 .add(Items.HONEY_BOTTLE);
-        tag(ItemTags.create(net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("c", "jam_jars")))
+        tag(commonItemTag("jam_jars"))
                 .add(ModItems.PEPPER_JAM_JAR.get())
                 .add(ModItems.RELISH.get())
                 .add(ModItems.APPLE_SAUCE.get())
@@ -130,41 +157,83 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.GLOW_BERRY_JAM.get())
                 .add(ModItems.GEARO_BERRY_JAM.get())
                 .add(ModItems.HONEY_JAR.get());
-        tag(ItemTags.create(net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("c", "foods/milk")))
+        tag(commonItemTag("foods/milk"))
                 .add(ModItems.NUT_MILK.get());
-        tag(ItemTags.create(net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("c", "crops/oat")))
+        tag(commonItemTag("crops/oat"))
                 .add(ModItems.OAT.get());
-        tag(ItemTags.create(net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("c", "crops/peanut")))
+        tag(commonItemTag("crops/peanut"))
                 .add(ModItems.PEANUT.get());
-        tag(ItemTags.create(net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("c", "foods/pasta")))
-                .add(ModItems.CUCUMBER_NOODLES.get());
-        tag(ItemTags.create(net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("c", "foods/protein")))
-                .addTag(ItemTags.create(net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("c", "foods/protein/peanut")));
-        tag(ItemTags.create(net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("c", "foods/protein/peanut")))
-                .add(ModItems.PEANUT.get());
-        tag(ItemTags.create(net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("c", "foods/vegetable/cucumber")))
+        tag(commonItemTag("crops/cucumber"))
                 .add(ModItems.CUCUMBER.get());
-        tag(ItemTags.create(net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("c", "foods/vegetable/chili_pepper")))
+        tag(commonItemTag("crops/pepper"))
                 .add(ModItems.GHOST_PEPPER.get());
-        tag(ItemTags.create(net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("c", "foods/vegetable/peanut")))
-                .add(ModItems.PEANUT.get());
-        tag(ItemTags.create(net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("c", "foods/fruit/gearo_berry")))
-                .add(ModItems.GEARO_BERRY_ITEM.get());
-        tag(ItemTags.create(net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("c", "foods/carbs")))
+        tag(commonItemTag("crops"))
+                .add(ModItems.OAT.get())
+                .add(ModItems.PEANUT.get())
+                .add(ModItems.CUCUMBER.get())
+                .add(ModItems.GHOST_PEPPER.get());
+        tag(commonItemTag("grain/oat"))
                 .add(ModItems.RAW_OAT.get());
-        tag(ItemTags.create(net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("c", "foods/fruits")))
-                .addTag(Tags.Items.FOODS_FRUIT);
-        tag(ItemTags.create(net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("c", "foods/proteins")))
-                .addTag(ItemTags.create(net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("c", "foods/protein")));
-        tag(ItemTags.create(net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("c", "foods/sugars")))
-                .addTag(Tags.Items.FOODS_BERRY);
-        tag(ItemTags.create(net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("c", "foods/vegetables")))
-                .addTag(Tags.Items.FOODS_VEGETABLE);
-        tag(ItemTags.create(net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("c", "tools/knives")))
-                .addOptional(net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("farmersdelight", "flint_knife"))
-                .addOptional(net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("farmersdelight", "iron_knife"))
-                .addOptional(net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("farmersdelight", "golden_knife"))
-                .addOptional(net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("farmersdelight", "diamond_knife"))
-                .addOptional(net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("farmersdelight", "netherite_knife"));
+        tag(commonItemTag("grain"))
+                .add(ModItems.RAW_OAT.get());
+        tag(commonItemTag("fruits/gearo_berry"))
+                .add(ModItems.GEARO_BERRY_ITEM.get());
+        tag(commonItemTag("fruits/berries"))
+                .add(ModItems.GEARO_BERRY_ITEM.get());
+        tag(commonItemTag("fruits"))
+                .add(ModItems.GEARO_BERRY_ITEM.get());
+        tag(commonItemTag("foods/fruits/berries"))
+                .add(ModItems.GEARO_BERRY_ITEM.get());
+        tag(commonItemTag("foods/fruits/gearo_berry"))
+                .add(ModItems.GEARO_BERRY_ITEM.get());
+        tag(commonItemTag("foods/pasta"))
+                .add(ModItems.CUCUMBER_NOODLES.get());
+        tag(commonItemTag("foods/protein"))
+                .add(ModItems.PEANUT.get());
+        tag(commonItemTag("foods/protein/peanut"))
+                .add(ModItems.PEANUT.get());
+        tag(commonItemTag("foods/vegetable/cucumber"))
+                .add(ModItems.CUCUMBER.get());
+        tag(commonItemTag("foods/vegetable/chili_pepper"))
+                .add(ModItems.GHOST_PEPPER.get());
+        tag(commonItemTag("foods/vegetable/peanut"))
+                .add(ModItems.PEANUT.get());
+        tag(commonItemTag("foods/fruit/gearo_berry"))
+                .add(ModItems.GEARO_BERRY_ITEM.get());
+        tag(commonItemTag("foods/carbs"))
+                .add(ModItems.RAW_OAT.get());
+        tag(commonItemTag("foods/fruits"))
+                .add(ModItems.GEARO_BERRY_ITEM.get());
+        tag(commonItemTag("foods/proteins"))
+                .add(ModItems.PEANUT.get());
+        tag(commonItemTag("vegetables/cucumber"))
+                .add(ModItems.CUCUMBER.get());
+        tag(commonItemTag("vegetables/chili_pepper"))
+                .add(ModItems.GHOST_PEPPER.get());
+        tag(commonItemTag("vegetables/peanut"))
+                .add(ModItems.PEANUT.get());
+        tag(commonItemTag("vegetables"))
+                .add(ModItems.CUCUMBER.get())
+                .add(ModItems.GHOST_PEPPER.get())
+                .add(ModItems.PEANUT.get());
+        tag(commonItemTag("foods/vegetables/cucumber"))
+                .add(ModItems.CUCUMBER.get());
+        tag(commonItemTag("foods/vegetables/chili_pepper"))
+                .add(ModItems.GHOST_PEPPER.get());
+        tag(commonItemTag("foods/vegetables/peanut"))
+                .add(ModItems.PEANUT.get());
+        tag(commonItemTag("foods/vegetables"))
+                .add(ModItems.CUCUMBER.get())
+                .add(ModItems.GHOST_PEPPER.get())
+                .add(ModItems.PEANUT.get());
+    }
+
+    private static TagKey<net.minecraft.world.level.block.Block> commonBlockTag(String path) {
+        return TagKey.create(net.minecraft.core.registries.Registries.BLOCK,
+                ResourceLocation.fromNamespaceAndPath("c", path));
+    }
+
+    private static TagKey<net.minecraft.world.item.Item> commonItemTag(String path) {
+        return ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", path));
     }
 }
