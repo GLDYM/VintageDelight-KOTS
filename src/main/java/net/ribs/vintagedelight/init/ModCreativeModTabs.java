@@ -152,24 +152,6 @@ public class ModCreativeModTabs {
                         pOutput.accept(ModItems.DELUXE_BURGER.get());
                         pOutput.accept(ModItems.STUFFED_BURRITO.get());
 
-
-
-                        pOutput.accept(ModItems.BLACK_CHEF_HAT.get());
-                        pOutput.accept(ModItems.BLUE_CHEF_HAT.get());
-                        pOutput.accept(ModItems.BROWN_CHEF_HAT.get());
-                        pOutput.accept(ModItems.CYAN_CHEF_HAT.get());
-                        pOutput.accept(ModItems.GRAY_CHEF_HAT.get());
-                        pOutput.accept(ModItems.GREEN_CHEF_HAT.get());
-                        pOutput.accept(ModItems.LIGHT_BLUE_CHEF_HAT.get());
-                        pOutput.accept(ModItems.LIGHT_GRAY_CHEF_HAT.get());
-                        pOutput.accept(ModItems.LIME_CHEF_HAT.get());
-                        pOutput.accept(ModItems.MAGENTA_CHEF_HAT.get());
-                        pOutput.accept(ModItems.ORANGE_CHEF_HAT.get());
-                        pOutput.accept(ModItems.PINK_CHEF_HAT.get());
-                        pOutput.accept(ModItems.PURPLE_CHEF_HAT.get());
-                        pOutput.accept(ModItems.RED_CHEF_HAT.get());
-                        pOutput.accept(ModItems.WHITE_CHEF_HAT.get());
-                        pOutput.accept(ModItems.YELLOW_CHEF_HAT.get());
                     })
                     .build());
 

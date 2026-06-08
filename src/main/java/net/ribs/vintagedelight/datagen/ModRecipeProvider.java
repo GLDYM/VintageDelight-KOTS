@@ -33,7 +33,6 @@ public class ModRecipeProvider extends AbstractModRecipeProvider {
     @Override
     protected void buildRecipes(RecipeOutput output, HolderLookup.Provider registries) {
         registerBasicCrafting(output);
-        registerChefHatRecipes(output);
         registerSaltLampRecipes(output);
         registerCookingPotRecipes(output);
         registerCuttingRecipes(output);
@@ -409,25 +408,6 @@ public class ModRecipeProvider extends AbstractModRecipeProvider {
         bottleToJar(output, "jam/sweet_berry_jam_jar_deconstruct", ModItems.SWEET_BERRY_JAM.get(), ModItems.SWEET_BERRY_JAM.get(), 3);
         jarToBottle(output, "jam/vinegar_jar", ModItems.VINEGAR_BOTTLE.get(), ModItems.VINEGAR.get());
         bottleToJar(output, "jam/vinegar_jar_deconstruct", ModItems.VINEGAR.get(), ModItems.VINEGAR.get(), 3);
-    }
-
-    private void registerChefHatRecipes(RecipeOutput output) {
-        chefHat(output, "black", Items.BLACK_WOOL, ModItems.BLACK_CHEF_HAT.get(), "c:dyes/black");
-        chefHat(output, "blue", Items.BLUE_WOOL, ModItems.BLUE_CHEF_HAT.get(), "c:dyes/blue");
-        chefHat(output, "brown", Items.BROWN_WOOL, ModItems.BROWN_CHEF_HAT.get(), "c:dyes/brown");
-        chefHat(output, "cyan", Items.CYAN_WOOL, ModItems.CYAN_CHEF_HAT.get(), "c:dyes/cyan");
-        chefHat(output, "gray", Items.GRAY_WOOL, ModItems.GRAY_CHEF_HAT.get(), "c:dyes/gray");
-        chefHat(output, "green", Items.GREEN_WOOL, ModItems.GREEN_CHEF_HAT.get(), "c:dyes/green");
-        chefHat(output, "light_blue", Items.LIGHT_BLUE_WOOL, ModItems.LIGHT_BLUE_CHEF_HAT.get(), "c:dyes/light_blue");
-        chefHat(output, "light_gray", Items.LIGHT_GRAY_WOOL, ModItems.LIGHT_GRAY_CHEF_HAT.get(), "c:dyes/light_gray");
-        chefHat(output, "lime", Items.LIME_WOOL, ModItems.LIME_CHEF_HAT.get(), "c:dyes/lime");
-        chefHat(output, "magenta", Items.MAGENTA_WOOL, ModItems.MAGENTA_CHEF_HAT.get(), "c:dyes/magenta");
-        chefHat(output, "orange", Items.ORANGE_WOOL, ModItems.ORANGE_CHEF_HAT.get(), "c:dyes/orange");
-        chefHat(output, "pink", Items.PINK_WOOL, ModItems.PINK_CHEF_HAT.get(), "c:dyes/pink");
-        chefHat(output, "purple", Items.PURPLE_WOOL, ModItems.PURPLE_CHEF_HAT.get(), "c:dyes/purple");
-        chefHat(output, "red", Items.RED_WOOL, ModItems.RED_CHEF_HAT.get(), "c:dyes/red");
-        chefHat(output, "white", Items.WHITE_WOOL, ModItems.WHITE_CHEF_HAT.get(), "c:dyes/white");
-        chefHat(output, "yellow", Items.YELLOW_WOOL, ModItems.YELLOW_CHEF_HAT.get(), "c:dyes/yellow");
     }
 
     private void registerSaltLampRecipes(RecipeOutput output) {
@@ -870,22 +850,6 @@ public class ModRecipeProvider extends AbstractModRecipeProvider {
                 .requires(Items.GLOW_BERRIES)
                 .processingTime(600)
                 .save(output, id("fermenting/oily_oaf"));
-    }
-
-    private void chefHat(RecipeOutput output, String name, net.minecraft.world.level.ItemLike wool, net.minecraft.world.level.ItemLike result, String dyeTag) {
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, result)
-                .pattern("AAA")
-                .pattern("A A")
-                .pattern("   ")
-                .define('A', wool)
-                .unlockedBy(getHasName(wool), has(wool))
-                .save(output, id("chef_hats/" + name + "_chef_hat1"));
-
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, result)
-                .requires(ModTags.CHEF_HATS)
-                .requires(ItemTags.create(ResourceLocation.parse(dyeTag)))
-                .unlockedBy("has_chef_hat", has(ModTags.CHEF_HATS))
-                .save(output, id("chef_hats/" + name + "_chef_hat2"));
     }
 
     private void saltLamp(RecipeOutput output, String name, String dyeTag, net.minecraft.world.level.ItemLike result, ResourceLocation shapedId) {

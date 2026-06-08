@@ -42,24 +42,6 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(Items.BUCKET)
                 .add(ModItems.MASON_JAR.get());
 
-        tag(ModTags.CHEF_HATS)
-                .add(ModItems.BLACK_CHEF_HAT.get())
-                .add(ModItems.BLUE_CHEF_HAT.get())
-                .add(ModItems.BROWN_CHEF_HAT.get())
-                .add(ModItems.CYAN_CHEF_HAT.get())
-                .add(ModItems.GRAY_CHEF_HAT.get())
-                .add(ModItems.GREEN_CHEF_HAT.get())
-                .add(ModItems.LIGHT_BLUE_CHEF_HAT.get())
-                .add(ModItems.LIGHT_GRAY_CHEF_HAT.get())
-                .add(ModItems.LIME_CHEF_HAT.get())
-                .add(ModItems.MAGENTA_CHEF_HAT.get())
-                .add(ModItems.ORANGE_CHEF_HAT.get())
-                .add(ModItems.PINK_CHEF_HAT.get())
-                .add(ModItems.PURPLE_CHEF_HAT.get())
-                .add(ModItems.RED_CHEF_HAT.get())
-                .add(ModItems.WHITE_CHEF_HAT.get())
-                .add(ModItems.YELLOW_CHEF_HAT.get());
-
         tag(ModTags.RAW_FISH)
                 .add(Items.COD, Items.SALMON, Items.TROPICAL_FISH);
 
