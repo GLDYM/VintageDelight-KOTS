@@ -2,11 +2,13 @@ package net.ribs.vintagedelight.init.items;
 
 
 import net.minecraft.world.food.FoodProperties;
+import net.minecraft.core.Holder;
 import net.minecraft.world.item.*;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.ribs.vintagedelight.VintageDelight;
+import net.ribs.vintagedelight.init.ModArmorMaterials;
 import net.ribs.vintagedelight.init.ModBlocks;
 import net.ribs.vintagedelight.item.*;
 import vectorwing.farmersdelight.common.item.ConsumableItem;
@@ -179,38 +181,22 @@ public class ModItems {
             () -> new BlockItem(ModBlocks.CHEESE_PIZZA.get(), basicItem()));
     public static final DeferredItem<Item> MEAT_PIZZA = ITEMS.<Item>register("meat_pizza",
             () -> new BlockItem(ModBlocks.MEAT_PIZZA.get(), basicItem()));
-    public static final DeferredItem<Item> BLACK_CHEF_HAT = ITEMS.<Item>register("black_chefs_hat", () ->
-            new ChefHatItem(new Item.Properties().stacksTo(1)));
-    public static final DeferredItem<Item> BLUE_CHEF_HAT = ITEMS.<Item>register("blue_chefs_hat", () ->
-            new ChefHatItem(new Item.Properties().stacksTo(1)));
-    public static final DeferredItem<Item> BROWN_CHEF_HAT = ITEMS.<Item>register("brown_chefs_hat", () ->
-            new ChefHatItem(new Item.Properties().stacksTo(1)));
-    public static final DeferredItem<Item> CYAN_CHEF_HAT = ITEMS.<Item>register("cyan_chefs_hat", () ->
-            new ChefHatItem(new Item.Properties().stacksTo(1)));
-    public static final DeferredItem<Item> GRAY_CHEF_HAT = ITEMS.<Item>register("gray_chefs_hat", () ->
-            new ChefHatItem(new Item.Properties().stacksTo(1)));
-    public static final DeferredItem<Item> GREEN_CHEF_HAT = ITEMS.<Item>register("green_chefs_hat", () ->
-            new ChefHatItem(new Item.Properties().stacksTo(1)));
-    public static final DeferredItem<Item> LIGHT_BLUE_CHEF_HAT = ITEMS.<Item>register("light_blue_chefs_hat", () ->
-            new ChefHatItem(new Item.Properties().stacksTo(1)));
-    public static final DeferredItem<Item> LIGHT_GRAY_CHEF_HAT = ITEMS.<Item>register("light_gray_chefs_hat", () ->
-            new ChefHatItem(new Item.Properties().stacksTo(1)));
-    public static final DeferredItem<Item> LIME_CHEF_HAT = ITEMS.<Item>register("lime_chefs_hat", () ->
-            new ChefHatItem(new Item.Properties().stacksTo(1)));
-    public static final DeferredItem<Item> MAGENTA_CHEF_HAT = ITEMS.<Item>register("magenta_chefs_hat", () ->
-            new ChefHatItem(new Item.Properties().stacksTo(1)));
-    public static final DeferredItem<Item> ORANGE_CHEF_HAT = ITEMS.<Item>register("orange_chefs_hat", () ->
-            new ChefHatItem(new Item.Properties().stacksTo(1)));
-    public static final DeferredItem<Item> PINK_CHEF_HAT = ITEMS.<Item>register("pink_chefs_hat", () ->
-            new ChefHatItem(new Item.Properties().stacksTo(1)));
-    public static final DeferredItem<Item> PURPLE_CHEF_HAT = ITEMS.<Item>register("purple_chefs_hat", () ->
-            new ChefHatItem(new Item.Properties().stacksTo(1)));
-    public static final DeferredItem<Item> RED_CHEF_HAT = ITEMS.<Item>register("red_chefs_hat", () ->
-            new ChefHatItem(new Item.Properties().stacksTo(1)));
-    public static final DeferredItem<Item> WHITE_CHEF_HAT = ITEMS.<Item>register("white_chefs_hat", () ->
-            new ChefHatItem(new Item.Properties().stacksTo(1)));
-    public static final DeferredItem<Item> YELLOW_CHEF_HAT = ITEMS.<Item>register("yellow_chefs_hat", () ->
-            new ChefHatItem(new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> BLACK_CHEF_HAT = ITEMS.<Item>register("black_chefs_hat", () -> createChefHat(ModArmorMaterials.BLACK_CHEF_HAT));
+    public static final DeferredItem<Item> BLUE_CHEF_HAT = ITEMS.<Item>register("blue_chefs_hat", () -> createChefHat(ModArmorMaterials.BLUE_CHEF_HAT));
+    public static final DeferredItem<Item> BROWN_CHEF_HAT = ITEMS.<Item>register("brown_chefs_hat", () -> createChefHat(ModArmorMaterials.BROWN_CHEF_HAT));
+    public static final DeferredItem<Item> CYAN_CHEF_HAT = ITEMS.<Item>register("cyan_chefs_hat", () -> createChefHat(ModArmorMaterials.CYAN_CHEF_HAT));
+    public static final DeferredItem<Item> GRAY_CHEF_HAT = ITEMS.<Item>register("gray_chefs_hat", () -> createChefHat(ModArmorMaterials.GRAY_CHEF_HAT));
+    public static final DeferredItem<Item> GREEN_CHEF_HAT = ITEMS.<Item>register("green_chefs_hat", () -> createChefHat(ModArmorMaterials.GREEN_CHEF_HAT));
+    public static final DeferredItem<Item> LIGHT_BLUE_CHEF_HAT = ITEMS.<Item>register("light_blue_chefs_hat", () -> createChefHat(ModArmorMaterials.LIGHT_BLUE_CHEF_HAT));
+    public static final DeferredItem<Item> LIGHT_GRAY_CHEF_HAT = ITEMS.<Item>register("light_gray_chefs_hat", () -> createChefHat(ModArmorMaterials.LIGHT_GRAY_CHEF_HAT));
+    public static final DeferredItem<Item> LIME_CHEF_HAT = ITEMS.<Item>register("lime_chefs_hat", () -> createChefHat(ModArmorMaterials.LIME_CHEF_HAT));
+    public static final DeferredItem<Item> MAGENTA_CHEF_HAT = ITEMS.<Item>register("magenta_chefs_hat", () -> createChefHat(ModArmorMaterials.MAGENTA_CHEF_HAT));
+    public static final DeferredItem<Item> ORANGE_CHEF_HAT = ITEMS.<Item>register("orange_chefs_hat", () -> createChefHat(ModArmorMaterials.ORANGE_CHEF_HAT));
+    public static final DeferredItem<Item> PINK_CHEF_HAT = ITEMS.<Item>register("pink_chefs_hat", () -> createChefHat(ModArmorMaterials.PINK_CHEF_HAT));
+    public static final DeferredItem<Item> PURPLE_CHEF_HAT = ITEMS.<Item>register("purple_chefs_hat", () -> createChefHat(ModArmorMaterials.PURPLE_CHEF_HAT));
+    public static final DeferredItem<Item> RED_CHEF_HAT = ITEMS.<Item>register("red_chefs_hat", () -> createChefHat(ModArmorMaterials.RED_CHEF_HAT));
+    public static final DeferredItem<Item> WHITE_CHEF_HAT = ITEMS.<Item>register("white_chefs_hat", () -> createChefHat(ModArmorMaterials.WHITE_CHEF_HAT));
+    public static final DeferredItem<Item> YELLOW_CHEF_HAT = ITEMS.<Item>register("yellow_chefs_hat", () -> createChefHat(ModArmorMaterials.YELLOW_CHEF_HAT));
 
     public static final DeferredItem<Item> DEFAULT_SALT_LAMP_ITEM = ITEMS.<Item>register("salt_lamp_default",
             () -> new BlockItem(ModBlocks.DEFAULT_SALT_LAMP.get(), new Item.Properties()));
@@ -248,6 +234,10 @@ public class ModItems {
             () -> new BlockItem(ModBlocks.YELLOW_SALT_LAMP.get(), new Item.Properties()));
     public static final DeferredItem<Item> GHOST_CHARCOAL = ITEMS.<Item>register("ghost_charcoal",
             () -> new FuelItem(new Item.Properties(), 1200));
+
+    private static Item createChefHat(Holder<ArmorMaterial> material) {
+        return new ArmorItem(material, ArmorItem.Type.HELMET, new Item.Properties().stacksTo(1));
+    }
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

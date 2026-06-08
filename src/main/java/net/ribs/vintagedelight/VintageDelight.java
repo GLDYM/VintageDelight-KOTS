@@ -7,6 +7,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
 import net.ribs.vintagedelight.init.ModBlockEntities;
+import net.ribs.vintagedelight.init.ModArmorMaterials;
 import net.ribs.vintagedelight.init.ModBlocks;
 import net.ribs.vintagedelight.init.ModCreativeModTabs;
 import net.ribs.vintagedelight.init.ModMenuTypes;
@@ -22,6 +23,7 @@ public class VintageDelight {
 
     public VintageDelight(IEventBus modEventBus) {
         ModCreativeModTabs.register(modEventBus);
+        ModArmorMaterials.register(modEventBus);
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
         ModBlockEntities.register(modEventBus);
