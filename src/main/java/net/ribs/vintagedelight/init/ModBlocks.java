@@ -23,39 +23,39 @@ public class ModBlocks {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(VintageDelight.MODID);
 
     //salt lamps
-    public static final DeferredBlock<Block> DEFAULT_SALT_LAMP = BLOCKS.<Block>register("salt_lamp_default",
+    public static final DeferredBlock<Block> DEFAULT_SALT_LAMP = BLOCKS.register("salt_lamp_default",
             ModBlocks::createSaltLampBlock);
-    public static final DeferredBlock<Block> BLACK_SALT_LAMP = BLOCKS.<Block>register("salt_lamp_black",
+    public static final DeferredBlock<Block> BLACK_SALT_LAMP = BLOCKS.register("salt_lamp_black",
             ModBlocks::createSaltLampBlock);
-    public static final DeferredBlock<Block> BLUE_SALT_LAMP = BLOCKS.<Block>register("salt_lamp_blue",
+    public static final DeferredBlock<Block> BLUE_SALT_LAMP = BLOCKS.register("salt_lamp_blue",
             ModBlocks::createSaltLampBlock);
-    public static final DeferredBlock<Block> BROWN_SALT_LAMP = BLOCKS.<Block>register("salt_lamp_brown",
+    public static final DeferredBlock<Block> BROWN_SALT_LAMP = BLOCKS.register("salt_lamp_brown",
             ModBlocks::createSaltLampBlock);
-    public static final DeferredBlock<Block> CYAN_SALT_LAMP = BLOCKS.<Block>register("salt_lamp_cyan",
+    public static final DeferredBlock<Block> CYAN_SALT_LAMP = BLOCKS.register("salt_lamp_cyan",
             ModBlocks::createSaltLampBlock);
-    public static final DeferredBlock<Block> GRAY_SALT_LAMP = BLOCKS.<Block>register("salt_lamp_gray",
+    public static final DeferredBlock<Block> GRAY_SALT_LAMP = BLOCKS.register("salt_lamp_gray",
             ModBlocks::createSaltLampBlock);
-    public static final DeferredBlock<Block> GREEN_SALT_LAMP = BLOCKS.<Block>register("salt_lamp_green",
+    public static final DeferredBlock<Block> GREEN_SALT_LAMP = BLOCKS.register("salt_lamp_green",
             ModBlocks::createSaltLampBlock);
-    public static final DeferredBlock<Block> LIGHT_BLUE_SALT_LAMP = BLOCKS.<Block>register("salt_lamp_light_blue",
+    public static final DeferredBlock<Block> LIGHT_BLUE_SALT_LAMP = BLOCKS.register("salt_lamp_light_blue",
             ModBlocks::createSaltLampBlock);
-    public static final DeferredBlock<Block> LIGHT_GRAY_SALT_LAMP = BLOCKS.<Block>register("salt_lamp_light_gray",
+    public static final DeferredBlock<Block> LIGHT_GRAY_SALT_LAMP = BLOCKS.register("salt_lamp_light_gray",
             ModBlocks::createSaltLampBlock);
-    public static final DeferredBlock<Block> LIME_SALT_LAMP = BLOCKS.<Block>register("salt_lamp_lime",
+    public static final DeferredBlock<Block> LIME_SALT_LAMP = BLOCKS.register("salt_lamp_lime",
             ModBlocks::createSaltLampBlock);
-    public static final DeferredBlock<Block> MAGENTA_SALT_LAMP = BLOCKS.<Block>register("salt_lamp_magenta",
+    public static final DeferredBlock<Block> MAGENTA_SALT_LAMP = BLOCKS.register("salt_lamp_magenta",
             ModBlocks::createSaltLampBlock);
-    public static final DeferredBlock<Block> ORANGE_SALT_LAMP = BLOCKS.<Block>register("salt_lamp_orange",
+    public static final DeferredBlock<Block> ORANGE_SALT_LAMP = BLOCKS.register("salt_lamp_orange",
             ModBlocks::createSaltLampBlock);
-    public static final DeferredBlock<Block> PINK_SALT_LAMP = BLOCKS.<Block>register("salt_lamp_pink",
+    public static final DeferredBlock<Block> PINK_SALT_LAMP = BLOCKS.register("salt_lamp_pink",
             ModBlocks::createSaltLampBlock);
-    public static final DeferredBlock<Block> PURPLE_SALT_LAMP = BLOCKS.<Block>register("salt_lamp_purple",
+    public static final DeferredBlock<Block> PURPLE_SALT_LAMP = BLOCKS.register("salt_lamp_purple",
             ModBlocks::createSaltLampBlock);
-    public static final DeferredBlock<Block> RED_SALT_LAMP = BLOCKS.<Block>register("salt_lamp_red",
+    public static final DeferredBlock<Block> RED_SALT_LAMP = BLOCKS.register("salt_lamp_red",
             ModBlocks::createSaltLampBlock);
-    public static final DeferredBlock<Block> WHITE_SALT_LAMP = BLOCKS.<Block>register("salt_lamp_white",
+    public static final DeferredBlock<Block> WHITE_SALT_LAMP = BLOCKS.register("salt_lamp_white",
             ModBlocks::createSaltLampBlock);
-    public static final DeferredBlock<Block> YELLOW_SALT_LAMP = BLOCKS.<Block>register("salt_lamp_yellow",
+    public static final DeferredBlock<Block> YELLOW_SALT_LAMP = BLOCKS.register("salt_lamp_yellow",
             ModBlocks::createSaltLampBlock);
 
     //crates
@@ -85,15 +85,15 @@ public class ModBlocks {
     public static final DeferredBlock<Block> WILD_OATS = registerBlock("wild_oats",
             () -> new WildCropBlock(MobEffects.SATURATION, 6, Block.Properties.ofFullCopy(Blocks.TALL_GRASS)));
     //crops
-    public static final DeferredBlock<Block> OAT_CROP = BLOCKS.<Block>register("oat_crop",
+    public static final DeferredBlock<Block> OAT_CROP = BLOCKS.register("oat_crop",
             () -> new OatBlock(Block.Properties.ofFullCopy(Blocks.WHEAT)));
-    public static final DeferredBlock<Block> PEANUT_CROP = BLOCKS.<Block>register("peanut_crop",
+    public static final DeferredBlock<Block> PEANUT_CROP = BLOCKS.register("peanut_crop",
             () -> new PeanutBlock(Block.Properties.ofFullCopy(Blocks.WHEAT)));
-    public static final DeferredBlock<Block> GHOST_PEPPER_CROP = BLOCKS.<Block>register("ghost_pepper_crop",
+    public static final DeferredBlock<Block> GHOST_PEPPER_CROP = BLOCKS.register("ghost_pepper_crop",
             () -> new GhostPepperBlock(Block.Properties.ofFullCopy(Blocks.WHEAT)));
-    public static final DeferredBlock<Block> CUCUMBER_CROP = BLOCKS.<Block>register("cucumber_crop",
+    public static final DeferredBlock<Block> CUCUMBER_CROP = BLOCKS.register("cucumber_crop",
             () -> new CucumberBlock(Block.Properties.ofFullCopy(Blocks.WHEAT)));
-    public static final DeferredBlock<Block> GEARO_BERRY_BUSH = BLOCKS.<Block>register("gearo_berry_bush",
+    public static final DeferredBlock<Block> GEARO_BERRY_BUSH = BLOCKS.register("gearo_berry_bush",
             () -> new GearoBerryBushBlock(Block.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH)));
         
     public static final DeferredBlock<Block> LUSH_GRASS_BLOCK = registerBlock("lush_grass_block",
@@ -121,7 +121,7 @@ public class ModBlocks {
     public static final DeferredBlock<Block> HONEY_JAR = registerBlock("honey_jar",
             () -> createJamBlock(ModItems.HONEY_JAR));
     
-    public static final DeferredBlock<Block> CHEESE_WHEEL = BLOCKS.<Block>register("cheese_wheel",
+    public static final DeferredBlock<Block> CHEESE_WHEEL = BLOCKS.register("cheese_wheel",
             () -> new PieBlock(Block.Properties.ofFullCopy(Blocks.CAKE), ModItems.CHEESE_SLICE));
     public static final DeferredBlock<Block> MAGIC_VINE = registerBlock("magic_vine",
             () -> new MagicVineBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BAMBOO_BLOCK).strength(1.5f)));
@@ -171,9 +171,9 @@ public class ModBlocks {
     public static final DeferredBlock<Block> MIXED_SALT_BRICK_WALL = registerBlock("mixed_salt_brick_wall",
             () -> new WallBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BRICK_WALL)));
 
-    public static final DeferredBlock<Block> CHEESE_PIZZA = BLOCKS.<Block>register("cheese_pizza",
+    public static final DeferredBlock<Block> CHEESE_PIZZA = BLOCKS.register("cheese_pizza",
             () -> new PizzaBlock(Block.Properties.ofFullCopy(Blocks.CAKE), ModItems.CHEESE_PIZZA_SLICE));
-    public static final DeferredBlock<Block> MEAT_PIZZA = BLOCKS.<Block>register("meat_pizza",
+    public static final DeferredBlock<Block> MEAT_PIZZA = BLOCKS.register("meat_pizza",
             () -> new PizzaBlock(Block.Properties.ofFullCopy(Blocks.CAKE), ModItems.MEAT_PIZZA_SLICE));
 
     private static Block createSaltLampBlock() {
@@ -199,7 +199,7 @@ public class ModBlocks {
         return toReturn;
     }
     private static <T extends Block> DeferredItem<Item> registerBlockItem(String name, DeferredBlock<T> block) {
-        return ModItems.ITEMS.<Item>register(name, () -> new BlockItem(block.get(), new Item.Properties()));
+        return ModItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
     }
 
     public static void register(IEventBus eventBus) {

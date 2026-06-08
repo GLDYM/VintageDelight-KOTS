@@ -7,7 +7,6 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.ribs.vintagedelight.VintageDelight;
 import net.ribs.vintagedelight.recipe.FermentingRecipe;
-import net.ribs.vintagedelight.recipe.FermentingRecipe.Serializer;
 
 public class ModRecipes {
     public static final DeferredRegister<RecipeSerializer<?>> SERIALIZERS =
