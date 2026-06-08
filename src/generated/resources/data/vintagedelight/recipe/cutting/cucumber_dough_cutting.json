@@ -2,7 +2,7 @@
   "type": "farmersdelight:cutting",
   "ingredients": [
     {
-      "item": "vintagedelight:cucumber"
+      "item": "vintagedelight:cucumber_dough"
     }
   ],
   "result": [
@@ -14,6 +14,6 @@
     }
   ],
   "tool": {
-    "tag": "c:tools/knives"
+    "tag": "c:tools/knife"
   }
 }

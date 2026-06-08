@@ -31,8 +31,8 @@ public class ModCreativeModTabs {
                         pOutput.accept(ModBlocks.VINE_TILE_SLAB.get());
                         pOutput.accept(ModBlocks.VINE_NET.get());
                         pOutput.accept(ModBlocks.GOLDEN_EGG.get());
-                        pOutput.accept(ModBlocks.OAT_BAG.get());
                         pOutput.accept(ModBlocks.OAT_BALE.get());
+                        pOutput.accept(ModBlocks.OAT_BAG.get());
                         pOutput.accept(ModBlocks.GEARO_BERRY_BAG.get());
                         pOutput.accept(ModBlocks.GHOST_PEPPER_CRATE.get());
                         pOutput.accept(ModBlocks.CUCUMBER_CRATE.get());
@@ -92,6 +92,7 @@ public class ModCreativeModTabs {
                         pOutput.accept(ModItems.PICKLED_PEPPER.get());
                         pOutput.accept(ModItems.GHOST_CHARCOAL.get());
                         pOutput.accept(ModItems.PICKLE.get());
+                        pOutput.accept(ModItems.CUCUMBER_DOUGH.get());
                         pOutput.accept(ModItems.CUCUMBER_NOODLES.get());
                         pOutput.accept(ModItems.KIMCHI.get());
                         pOutput.accept(ModItems.PICKLED_ONION.get());

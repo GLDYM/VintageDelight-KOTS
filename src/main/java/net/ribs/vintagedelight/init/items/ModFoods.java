@@ -23,6 +23,8 @@ public class ModFoods {
             .effect(() -> new MobEffectInstance(ModEffects.NOURISHMENT, BRIEF_DURATION, 0), 1.0F).build();
     public static final FoodProperties CUCUMBER = new FoodProperties.Builder().nutrition(2)
             .saturationModifier(0.2f).build();
+    public static final FoodProperties CUCUMBER_DOUGH = new FoodProperties.Builder().nutrition(3)
+            .saturationModifier(0.2f).build();
     public static final FoodProperties CUCUMBER_NOODLES = new FoodProperties.Builder().nutrition(2)
             .saturationModifier(0.2f).build();
     public static final FoodProperties OAT = new FoodProperties.Builder().nutrition(2)

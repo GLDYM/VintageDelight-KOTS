@@ -62,6 +62,8 @@ public class ModItems {
             () -> new ConsumableItem( new Item.Properties().food(ModFoods.PICKLED_PEPPER), true));
     public static final DeferredItem<Item> CUCUMBER = ITEMS.register("cucumber",
             () -> new Item(new Item.Properties().food(ModFoods.CUCUMBER)));
+    public static final DeferredItem<Item> CUCUMBER_DOUGH = ITEMS.register("cucumber_dough",
+            () -> new Item(new Item.Properties().food(ModFoods.CUCUMBER_DOUGH)));
     public static final DeferredItem<Item> CUCUMBER_NOODLES = ITEMS.register("cucumber_noodles",
             () -> new Item(new Item.Properties().food(ModFoods.CUCUMBER_NOODLES)));
     public static final DeferredItem<Item> CUCUMBER_SEEDS = ITEMS.register("cucumber_seeds",

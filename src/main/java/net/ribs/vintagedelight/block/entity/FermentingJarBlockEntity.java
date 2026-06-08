@@ -207,15 +207,26 @@ public class FermentingJarBlockEntity extends BlockEntity implements MenuProvide
 
         if (canOutput(result, secondaryResult)) {
             if (!result.isEmpty()) {
-                itemHandler.insertItem(FIRST_OUTPUT_SLOT, result, false);
+                placeOutput(FIRST_OUTPUT_SLOT, result);
             }
             if (!secondaryResult.isEmpty()) {
-                itemHandler.insertItem(SECOND_OUTPUT_SLOT, secondaryResult, false);
+                placeOutput(SECOND_OUTPUT_SLOT, secondaryResult);
             }
             for (int i = FIRST_INGREDIENT_SLOT; i <= CONTAINER_SLOT; i++) {
                 itemHandler.extractItem(i, 1, false);
             }
         }
+    }
+
+    private void placeOutput(int slot, ItemStack output) {
+        ItemStack existingStack = itemHandler.getStackInSlot(slot);
+        if (existingStack.isEmpty()) {
+            itemHandler.setStackInSlot(slot, output.copy());
+            return;
+        }
+
+        existingStack.grow(output.getCount());
+        itemHandler.setStackInSlot(slot, existingStack);
     }
 
     private boolean hasRecipe() {
