@@ -148,7 +148,7 @@ public class ModRecipeProvider extends AbstractModRecipeProvider {
         slab(RecipeCategory.BUILDING_BLOCKS, ModBlocks.VINE_TILE_SLAB.get(), ModBlocks.VINE_TILE.get())
                 .save(output, id("vine_tile_slab"));
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.VINE_NET.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.VINE_NET.get(), 8)
                 .pattern("# #")
                 .pattern(" # ")
                 .pattern("# #")
