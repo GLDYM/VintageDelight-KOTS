@@ -2,8 +2,6 @@ package net.ribs.vintagedelight;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potions;
 import net.neoforged.neoforge.common.NeoForge;
-import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
-import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
@@ -31,7 +29,6 @@ public class VintageDelight {
         ModMenuTypes.register(modEventBus);
         ModRecipes.register(modEventBus);
         NeoForge.EVENT_BUS.register(this);
-        modEventBus.addListener(this::addCreative);
         ModTrunkPlacerTypes.register(modEventBus);
         VDModEffects.MOB_EFFECTS.register(modEventBus);
         ModPotions.POTIONS.register(modEventBus);
@@ -42,16 +39,6 @@ public class VintageDelight {
         event.getBuilder().addMix(Potions.WATER, ModItems.SALT_DUST.get(), ModPotions.DEHYDRATED_POTION);
         event.getBuilder().addMix(ModPotions.DEHYDRATED_POTION, Items.REDSTONE, ModPotions.LONG_DEHYDRATED_POTION);
         event.getBuilder().addMix(ModPotions.DEHYDRATED_POTION, Items.GLOWSTONE_DUST, ModPotions.STRONG_DEHYDRATED_POTION);
-    }
-
-
-    private void addCreative(BuildCreativeModeTabContentsEvent event) {
-
-    }
-
-    @SubscribeEvent
-    public void onServerStarting(ServerStartingEvent event) {
-
     }
 }
 

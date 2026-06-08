@@ -7,9 +7,11 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.client.model.generators.MultiPartBlockStateBuilder;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.ribs.vintagedelight.VintageDelight;
 import net.ribs.vintagedelight.block.ModBlocks;
+import net.ribs.vintagedelight.block.custom.CheeseMoldBlock;
 import net.ribs.vintagedelight.block.custom.GearoBerryBushBlock;
 import net.ribs.vintagedelight.block.custom.MasonJarBlock;
 import net.ribs.vintagedelight.block.custom.OatBlock;
@@ -25,7 +27,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     @Override
     protected void registerStatesAndModels() {
         simpleExistingBlock(ModBlocks.FERMENTING_JAR.get(), "fermenting_jar");
-        simpleExistingBlock(ModBlocks.CHEESE_MOLD.get(), "cheese_mold");
+        cheeseMoldBlock();
         simpleBlock(ModBlocks.DEFAULT_SALT_LAMP.get(), existingModel("salt_lamp_default"));
         simpleTintedParentBlock(ModBlocks.BLACK_SALT_LAMP.get(), "salt_lamp_default", "salt_lamp_black");
         simpleTintedParentBlock(ModBlocks.BLUE_SALT_LAMP.get(), "salt_lamp_default", "salt_lamp_blue");
@@ -195,6 +197,20 @@ public class ModBlockStateProvider extends BlockStateProvider {
         ModelFile model = existingModel(modelName);
         simpleBlock(block, model);
         simpleBlockItem(block, model);
+    }
+
+    private void cheeseMoldBlock() {
+        MultiPartBlockStateBuilder builder = getMultipartBuilder(ModBlocks.CHEESE_MOLD.get());
+        ModelFile baseModel = existingModel("cheese_mold");
+        builder.part().modelFile(baseModel).addModel().end();
+        for (int level = 1; level <= 5; level++) {
+            builder.part()
+                    .modelFile(existingModel("cheese_stage" + level))
+                    .addModel()
+                    .condition(CheeseMoldBlock.LEVEL, level)
+                    .end();
+        }
+        simpleBlockItem(ModBlocks.CHEESE_MOLD.get(), baseModel);
     }
 
     private void simpleExistingBlock(Block block, String modelName) {

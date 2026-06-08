@@ -13,6 +13,7 @@ import net.ribs.vintagedelight.block.entity.FermentingJarBlockEntity;
 import net.ribs.vintagedelight.item.ModTags;
 
 import static net.ribs.vintagedelight.block.entity.FermentingJarBlockEntity.*;
+
 public class FermentingJarMenu extends AbstractContainerMenu {
     private static final int HOTBAR_SLOT_COUNT = 9;
     private static final int PLAYER_INVENTORY_ROW_COUNT = 3;
