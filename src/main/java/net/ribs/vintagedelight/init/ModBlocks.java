@@ -11,9 +11,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.ribs.vintagedelight.VintageDelight;
-import net.ribs.vintagedelight.block.custom.*;
-import net.ribs.vintagedelight.block.custom.mason_jars.*;
-import net.ribs.vintagedelight.block.custom.salt_lamps.*;
+import net.ribs.vintagedelight.block.*;
 import net.ribs.vintagedelight.init.items.ModItems;
 import net.ribs.vintagedelight.worldgen.tree.MagicVineGrower;
 import vectorwing.farmersdelight.common.block.PieBlock;
@@ -26,39 +24,39 @@ public class ModBlocks {
 
     //salt lamps
     public static final DeferredBlock<Block> DEFAULT_SALT_LAMP = BLOCKS.<Block>register("salt_lamp_default",
-            DefaultSaltLampBlock::new);
+            ModBlocks::createSaltLampBlock);
     public static final DeferredBlock<Block> BLACK_SALT_LAMP = BLOCKS.<Block>register("salt_lamp_black",
-            BlackSaltLampBlock::new);
+            ModBlocks::createSaltLampBlock);
     public static final DeferredBlock<Block> BLUE_SALT_LAMP = BLOCKS.<Block>register("salt_lamp_blue",
-            BlueSaltLampBlock::new);
+            ModBlocks::createSaltLampBlock);
     public static final DeferredBlock<Block> BROWN_SALT_LAMP = BLOCKS.<Block>register("salt_lamp_brown",
-            BrownSaltLampBlock::new);
+            ModBlocks::createSaltLampBlock);
     public static final DeferredBlock<Block> CYAN_SALT_LAMP = BLOCKS.<Block>register("salt_lamp_cyan",
-            CyanSaltLampBlock::new);
+            ModBlocks::createSaltLampBlock);
     public static final DeferredBlock<Block> GRAY_SALT_LAMP = BLOCKS.<Block>register("salt_lamp_gray",
-            GraySaltLampBlock::new);
+            ModBlocks::createSaltLampBlock);
     public static final DeferredBlock<Block> GREEN_SALT_LAMP = BLOCKS.<Block>register("salt_lamp_green",
-            GreenSaltLampBlock::new);
+            ModBlocks::createSaltLampBlock);
     public static final DeferredBlock<Block> LIGHT_BLUE_SALT_LAMP = BLOCKS.<Block>register("salt_lamp_light_blue",
-            LightBlueSaltLampBlock::new);
+            ModBlocks::createSaltLampBlock);
     public static final DeferredBlock<Block> LIGHT_GRAY_SALT_LAMP = BLOCKS.<Block>register("salt_lamp_light_gray",
-            LightGraySaltLampBlock::new);
+            ModBlocks::createSaltLampBlock);
     public static final DeferredBlock<Block> LIME_SALT_LAMP = BLOCKS.<Block>register("salt_lamp_lime",
-            LimeSaltLampBlock::new);
+            ModBlocks::createSaltLampBlock);
     public static final DeferredBlock<Block> MAGENTA_SALT_LAMP = BLOCKS.<Block>register("salt_lamp_magenta",
-            MagentaSaltLampBlock::new);
+            ModBlocks::createSaltLampBlock);
     public static final DeferredBlock<Block> ORANGE_SALT_LAMP = BLOCKS.<Block>register("salt_lamp_orange",
-            OrangeSaltLampBlock::new);
+            ModBlocks::createSaltLampBlock);
     public static final DeferredBlock<Block> PINK_SALT_LAMP = BLOCKS.<Block>register("salt_lamp_pink",
-            PinkSaltLampBlock::new);
+            ModBlocks::createSaltLampBlock);
     public static final DeferredBlock<Block> PURPLE_SALT_LAMP = BLOCKS.<Block>register("salt_lamp_purple",
-            PurpleSaltLampBlock::new);
+            ModBlocks::createSaltLampBlock);
     public static final DeferredBlock<Block> RED_SALT_LAMP = BLOCKS.<Block>register("salt_lamp_red",
-            RedSaltLampBlock::new);
+            ModBlocks::createSaltLampBlock);
     public static final DeferredBlock<Block> WHITE_SALT_LAMP = BLOCKS.<Block>register("salt_lamp_white",
-            WhiteSaltLampBlock::new);
+            ModBlocks::createSaltLampBlock);
     public static final DeferredBlock<Block> YELLOW_SALT_LAMP = BLOCKS.<Block>register("salt_lamp_yellow",
-            YellowSaltLampBlock::new);
+            ModBlocks::createSaltLampBlock);
 
     //crates
     public static final DeferredBlock<Block> OAT_BAG = registerBlock("oat_bag",
@@ -67,7 +65,7 @@ public class ModBlocks {
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.WHITE_WOOL)));
     public static final DeferredBlock<Block> PEANUT_CRATE = registerBlock("peanut_crate",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
-public static final DeferredBlock<Block> CUCUMBER_CRATE = registerBlock("cucumber_crate",
+    public static final DeferredBlock<Block> CUCUMBER_CRATE = registerBlock("cucumber_crate",
         () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
     public static final DeferredBlock<Block> GHOST_PEPPER_CRATE = registerBlock("ghost_pepper_crate",
         () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
@@ -97,38 +95,32 @@ public static final DeferredBlock<Block> CUCUMBER_CRATE = registerBlock("cucumbe
             () -> new CucumberBlock(Block.Properties.ofFullCopy(Blocks.WHEAT)));
     public static final DeferredBlock<Block> GEARO_BERRY_BUSH = BLOCKS.<Block>register("gearo_berry_bush",
             () -> new GearoBerryBushBlock(Block.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH)));
+        
     public static final DeferredBlock<Block> LUSH_GRASS_BLOCK = registerBlock("lush_grass_block",
             () -> new LushGrassBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.GRASS_BLOCK)));
+
     public static final DeferredBlock<Block> EMPTY_MASON_JAR = registerBlock("empty_mason_jar",
-            () -> new EmptyMasonBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS)
+            () -> new MasonJarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS)
                     .strength(0.3f).sound(SoundType.GLASS)));
     public static final DeferredBlock<Block> VINEGAR_JAR = registerBlock("vinegar_jar",
-            () -> new VinegarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS)
-                    .strength(0.3f).sound(SoundType.GLASS)));
+            () -> createJamBlock(ModItems.VINEGAR));
     public static final DeferredBlock<Block> PEPPER_JAM_JAR = registerBlock("pepper_jam_jar",
-            () -> new PepperJamBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS)
-                    .strength(0.3f).sound(SoundType.GLASS)));
+            () -> createJamBlock(ModItems.PEPPER_JAM_JAR));
     public static final DeferredBlock<Block> GEARO_BERRY_JAM_JAR = registerBlock("gearo_berry_jam_jar",
-            () -> new GearoBerryJamBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS)
-                    .strength(0.3f).sound(SoundType.GLASS)));
+            () -> createJamBlock(ModItems.GEARO_BERRY_JAM));
     public static final DeferredBlock<Block> SWEET_BERRY_JAM_JAR = registerBlock("sweet_berry_jam_jar",
-            () -> new SweetBerryJamBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS)
-                    .strength(0.3f).sound(SoundType.GLASS)));
+            () -> createJamBlock(ModItems.SWEET_BERRY_JAM));
     public static final DeferredBlock<Block> GLOW_BERRY_JAM_JAR = registerBlock("glow_berry_jam_jar",
-            () -> new GlowBerryJamBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS)
-                    .strength(0.3f).sound(SoundType.GLASS)));
+            () -> createJamBlock(ModItems.GLOW_BERRY_JAM));
     public static final DeferredBlock<Block> APPLE_SAUCE_JAR = registerBlock("apple_sauce_jar",
-            () -> new AppleSauceBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS)
-                    .strength(0.3f).sound(SoundType.GLASS)));
+            () -> createJamBlock(ModItems.APPLE_SAUCE));
     public static final DeferredBlock<Block> NUT_MASH_JAR = registerBlock("nut_mash_jar",
-            () -> new NutMashBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS)
-                    .strength(0.3f).sound(SoundType.GLASS)));
+            () -> createJamBlock(ModItems.NUT_MASH));
     public static final DeferredBlock<Block> RELISH_JAR = registerBlock("relish_jar",
-            () -> new RelishBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS)
-                    .strength(0.3f).sound(SoundType.GLASS)));
+            () -> createJamBlock(ModItems.RELISH));
     public static final DeferredBlock<Block> HONEY_JAR = registerBlock("honey_jar",
-            () -> new HoneyJarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS)
-                    .strength(0.3f).sound(SoundType.GLASS)));
+            () -> createJamBlock(ModItems.HONEY_JAR));
+    
     public static final DeferredBlock<Block> CHEESE_WHEEL = BLOCKS.<Block>register("cheese_wheel",
             () -> new PieBlock(Block.Properties.ofFullCopy(Blocks.CAKE), ModItems.CHEESE_SLICE));
     public static final DeferredBlock<Block> MAGIC_VINE = registerBlock("magic_vine",
@@ -183,6 +175,23 @@ public static final DeferredBlock<Block> CUCUMBER_CRATE = registerBlock("cucumbe
             () -> new PizzaBlock(Block.Properties.ofFullCopy(Blocks.CAKE), ModItems.CHEESE_PIZZA_SLICE));
     public static final DeferredBlock<Block> MEAT_PIZZA = BLOCKS.<Block>register("meat_pizza",
             () -> new PizzaBlock(Block.Properties.ofFullCopy(Blocks.CAKE), ModItems.MEAT_PIZZA_SLICE));
+
+    private static Block createSaltLampBlock() {
+        return new SaltLampBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.GLOWSTONE)
+                .strength(0.3f)
+                .sound(SoundType.GLASS)
+                .noOcclusion()
+                .lightLevel(state -> 0)
+                .isRedstoneConductor((state, level, pos) -> false)
+                .isSuffocating((state, level, pos) -> false)
+                .isViewBlocking((state, level, pos) -> false));
+    }
+
+    private static Block createJamBlock(DeferredItem<Item> item) {
+        return new JamBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS)
+                .strength(0.3f)
+                .sound(SoundType.GLASS), item);
+    }
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
         DeferredBlock<T> toReturn = BLOCKS.register(name, block);

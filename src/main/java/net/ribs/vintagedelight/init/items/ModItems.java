@@ -8,7 +8,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.ribs.vintagedelight.VintageDelight;
 import net.ribs.vintagedelight.init.ModBlocks;
-import net.ribs.vintagedelight.item.custom.*;
+import net.ribs.vintagedelight.item.*;
 import vectorwing.farmersdelight.common.item.ConsumableItem;
 import vectorwing.farmersdelight.common.item.MilkBottleItem;
 

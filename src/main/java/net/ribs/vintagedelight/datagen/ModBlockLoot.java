@@ -20,11 +20,11 @@ import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.neoforged.neoforge.common.Tags;
-import net.ribs.vintagedelight.block.custom.SaltLayerBlock;
+import net.ribs.vintagedelight.block.GearoBerryBushBlock;
+import net.ribs.vintagedelight.block.OatBlock;
+import net.ribs.vintagedelight.block.SaltLayerBlock;
 import net.ribs.vintagedelight.init.ModBlocks;
 import net.ribs.vintagedelight.init.items.ModItems;
-import net.ribs.vintagedelight.block.custom.GearoBerryBushBlock;
-import net.ribs.vintagedelight.block.custom.OatBlock;
 import vectorwing.farmersdelight.common.block.PieBlock;
 
 import java.util.Set;
