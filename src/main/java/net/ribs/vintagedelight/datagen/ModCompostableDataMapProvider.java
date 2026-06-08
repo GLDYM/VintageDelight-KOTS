@@ -7,8 +7,8 @@ import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.common.data.DataMapProvider;
 import net.neoforged.neoforge.registries.datamaps.builtin.Compostable;
 import net.neoforged.neoforge.registries.datamaps.builtin.NeoForgeDataMaps;
-import net.ribs.vintagedelight.block.ModBlocks;
-import net.ribs.vintagedelight.item.ModItems;
+import net.ribs.vintagedelight.init.ModBlocks;
+import net.ribs.vintagedelight.init.items.ModItems;
 
 import java.util.concurrent.CompletableFuture;
 

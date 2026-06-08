@@ -1,4 +1,4 @@
-package net.ribs.vintagedelight.item;
+package net.ribs.vintagedelight.init;
 
 import net.ribs.vintagedelight.VintageDelight;
 import net.minecraft.core.registries.Registries;
@@ -8,7 +8,7 @@ import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.DeferredHolder;
-import net.ribs.vintagedelight.block.ModBlocks;
+import net.ribs.vintagedelight.init.items.ModItems;
 
 public class ModCreativeModTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS =

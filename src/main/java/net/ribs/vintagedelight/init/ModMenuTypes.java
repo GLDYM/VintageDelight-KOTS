@@ -1,4 +1,4 @@
-package net.ribs.vintagedelight.screen;
+package net.ribs.vintagedelight.init;
 
 import net.minecraft.core.registries.Registries;
 
@@ -10,6 +10,7 @@ import net.neoforged.neoforge.network.IContainerFactory;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.ribs.vintagedelight.VintageDelight;
+import net.ribs.vintagedelight.screen.FermentingJarMenu;
 
 public class ModMenuTypes {
     public static final DeferredRegister<MenuType<?>> MENUS =

@@ -9,7 +9,7 @@ import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.ribs.vintagedelight.block.ModBlocks;
+import net.ribs.vintagedelight.init.ModBlocks;
 
 public class SaltBlock extends Block {
     private final float growthSpeed;

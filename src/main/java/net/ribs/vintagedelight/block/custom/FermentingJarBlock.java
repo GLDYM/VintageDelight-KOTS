@@ -25,7 +25,8 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.ribs.vintagedelight.block.entity.FermentingJarBlockEntity;
-import net.ribs.vintagedelight.block.entity.ModBlockEntities;
+import net.ribs.vintagedelight.init.ModBlockEntities;
+
 import org.jetbrains.annotations.Nullable;
 
 public class FermentingJarBlock extends BaseEntityBlock implements SimpleWaterloggedBlock {

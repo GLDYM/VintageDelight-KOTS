@@ -10,12 +10,12 @@ import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.client.model.generators.MultiPartBlockStateBuilder;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.ribs.vintagedelight.VintageDelight;
-import net.ribs.vintagedelight.block.ModBlocks;
 import net.ribs.vintagedelight.block.custom.CheeseMoldBlock;
 import net.ribs.vintagedelight.block.custom.GearoBerryBushBlock;
 import net.ribs.vintagedelight.block.custom.MasonJarBlock;
 import net.ribs.vintagedelight.block.custom.OatBlock;
 import net.ribs.vintagedelight.block.custom.SaltLayerBlock;
+import net.ribs.vintagedelight.init.ModBlocks;
 import vectorwing.farmersdelight.common.block.PieBlock;
 
 import java.util.List;

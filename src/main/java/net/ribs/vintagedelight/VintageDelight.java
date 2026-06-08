@@ -6,14 +6,14 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
-import net.ribs.vintagedelight.block.ModBlocks;
-import net.ribs.vintagedelight.block.entity.ModBlockEntities;
-import net.ribs.vintagedelight.item.ModCreativeModTabs;
-import net.ribs.vintagedelight.item.ModItems;
-import net.ribs.vintagedelight.mobEffects.ModPotions;
-import net.ribs.vintagedelight.mobEffects.VDModEffects;
-import net.ribs.vintagedelight.recipe.ModRecipes;
-import net.ribs.vintagedelight.screen.ModMenuTypes;
+import net.ribs.vintagedelight.init.ModBlockEntities;
+import net.ribs.vintagedelight.init.ModBlocks;
+import net.ribs.vintagedelight.init.ModCreativeModTabs;
+import net.ribs.vintagedelight.init.ModMenuTypes;
+import net.ribs.vintagedelight.init.ModPotions;
+import net.ribs.vintagedelight.init.ModRecipes;
+import net.ribs.vintagedelight.init.items.ModItems;
+import net.ribs.vintagedelight.init.ModModEffects;
 import net.ribs.vintagedelight.worldgen.tree.ModTrunkPlacerTypes;
 
 @Mod(VintageDelight.MODID)
@@ -30,7 +30,7 @@ public class VintageDelight {
         ModRecipes.register(modEventBus);
         NeoForge.EVENT_BUS.register(this);
         ModTrunkPlacerTypes.register(modEventBus);
-        VDModEffects.MOB_EFFECTS.register(modEventBus);
+        ModModEffects.MOB_EFFECTS.register(modEventBus);
         ModPotions.POTIONS.register(modEventBus);
     }
 

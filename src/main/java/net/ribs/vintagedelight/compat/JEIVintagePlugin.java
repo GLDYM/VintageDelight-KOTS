@@ -16,8 +16,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.ribs.vintagedelight.VintageDelight;
-import net.ribs.vintagedelight.block.ModBlocks;
-import net.ribs.vintagedelight.item.ModItems;
+import net.ribs.vintagedelight.init.ModBlocks;
+import net.ribs.vintagedelight.init.items.ModItems;
 import net.ribs.vintagedelight.recipe.FermentingRecipe;
 import net.ribs.vintagedelight.screen.FermentingJarScreen;
 

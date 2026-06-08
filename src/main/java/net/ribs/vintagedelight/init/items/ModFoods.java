@@ -1,4 +1,4 @@
-package net.ribs.vintagedelight.item;
+package net.ribs.vintagedelight.init.items;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;

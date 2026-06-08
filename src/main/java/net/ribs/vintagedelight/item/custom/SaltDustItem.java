@@ -9,7 +9,7 @@ import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.SnowLayerBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.ribs.vintagedelight.block.ModBlocks;
+import net.ribs.vintagedelight.init.ModBlocks;
 
 public class SaltDustItem extends Item {
     public SaltDustItem(Properties properties) {

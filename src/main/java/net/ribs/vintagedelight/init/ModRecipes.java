@@ -1,4 +1,4 @@
-package net.ribs.vintagedelight.recipe;
+package net.ribs.vintagedelight.init;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.crafting.RecipeSerializer;
@@ -6,6 +6,8 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.ribs.vintagedelight.VintageDelight;
+import net.ribs.vintagedelight.recipe.FermentingRecipe;
+import net.ribs.vintagedelight.recipe.FermentingRecipe.Serializer;
 
 public class ModRecipes {
     public static final DeferredRegister<RecipeSerializer<?>> SERIALIZERS =

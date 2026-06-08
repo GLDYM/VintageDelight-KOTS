@@ -9,7 +9,8 @@ import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.common.ItemAbilities;
 import net.neoforged.neoforge.common.ItemAbility;
-import net.ribs.vintagedelight.block.ModBlocks;
+import net.ribs.vintagedelight.init.ModBlocks;
+
 import org.jetbrains.annotations.Nullable;
 
 

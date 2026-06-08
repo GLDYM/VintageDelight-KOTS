@@ -6,7 +6,7 @@ import net.minecraft.tags.BlockTags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.ribs.vintagedelight.VintageDelight;
-import net.ribs.vintagedelight.block.ModBlocks;
+import net.ribs.vintagedelight.init.ModBlocks;
 
 import java.util.concurrent.CompletableFuture;
 

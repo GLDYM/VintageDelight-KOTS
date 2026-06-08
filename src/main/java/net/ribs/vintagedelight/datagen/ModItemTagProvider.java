@@ -8,8 +8,8 @@ import net.minecraft.world.item.Items;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.ribs.vintagedelight.VintageDelight;
-import net.ribs.vintagedelight.item.ModItems;
-import net.ribs.vintagedelight.item.ModTags;
+import net.ribs.vintagedelight.init.ModTags;
+import net.ribs.vintagedelight.init.items.ModItems;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 import java.util.concurrent.CompletableFuture;

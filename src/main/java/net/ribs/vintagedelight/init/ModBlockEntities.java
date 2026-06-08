@@ -1,4 +1,4 @@
-package net.ribs.vintagedelight.block.entity;
+package net.ribs.vintagedelight.init;
 
 import net.minecraft.core.registries.Registries;
 
@@ -9,7 +9,7 @@ import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.ribs.vintagedelight.VintageDelight;
-import net.ribs.vintagedelight.block.ModBlocks;
+import net.ribs.vintagedelight.block.entity.FermentingJarBlockEntity;
 
 public class ModBlockEntities {
 

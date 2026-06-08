@@ -3,7 +3,8 @@ package net.ribs.vintagedelight.mixin;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.LevelSimulatedReader;
 import net.minecraft.world.level.levelgen.feature.Feature;
-import net.ribs.vintagedelight.block.ModBlocks;
+import net.ribs.vintagedelight.init.ModBlocks;
+
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;

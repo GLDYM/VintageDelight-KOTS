@@ -23,9 +23,9 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.ribs.vintagedelight.init.items.ModItems;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.ribs.vintagedelight.item.ModItems;
 
 import java.util.ArrayList;
 import java.util.List;

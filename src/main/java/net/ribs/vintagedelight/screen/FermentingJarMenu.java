@@ -1,5 +1,7 @@
 package net.ribs.vintagedelight.screen;
 
+import static net.ribs.vintagedelight.block.entity.FermentingJarBlockEntity.*;
+
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -8,11 +10,10 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.neoforged.neoforge.items.SlotItemHandler;
-import net.ribs.vintagedelight.block.ModBlocks;
 import net.ribs.vintagedelight.block.entity.FermentingJarBlockEntity;
-import net.ribs.vintagedelight.item.ModTags;
-
-import static net.ribs.vintagedelight.block.entity.FermentingJarBlockEntity.*;
+import net.ribs.vintagedelight.init.ModBlocks;
+import net.ribs.vintagedelight.init.ModMenuTypes;
+import net.ribs.vintagedelight.init.ModTags;
 
 public class FermentingJarMenu extends AbstractContainerMenu {
     private static final int HOTBAR_SLOT_COUNT = 9;

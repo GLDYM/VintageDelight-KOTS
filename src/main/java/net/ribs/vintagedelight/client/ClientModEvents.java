@@ -6,10 +6,10 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.ribs.vintagedelight.VintageDelight;
-import net.ribs.vintagedelight.block.entity.ModBlockEntities;
 import net.ribs.vintagedelight.block.entity.renderer.FermentingJarBlockEntityRenderer;
+import net.ribs.vintagedelight.init.ModBlockEntities;
+import net.ribs.vintagedelight.init.ModMenuTypes;
 import net.ribs.vintagedelight.screen.FermentingJarScreen;
-import net.ribs.vintagedelight.screen.ModMenuTypes;
 
 @EventBusSubscriber(modid = VintageDelight.MODID, value = Dist.CLIENT)
 public class ClientModEvents {

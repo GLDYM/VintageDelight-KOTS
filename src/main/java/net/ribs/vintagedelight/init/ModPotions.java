@@ -1,4 +1,4 @@
-package net.ribs.vintagedelight.mobEffects;
+package net.ribs.vintagedelight.init;
 
 import net.minecraft.core.registries.Registries;
 
@@ -13,10 +13,10 @@ public class ModPotions {
             DeferredRegister.create(Registries.POTION, VintageDelight.MODID);
 
     public static final DeferredHolder<Potion, Potion> DEHYDRATED_POTION = POTIONS.register("dehydrated",
-            () -> new Potion(new MobEffectInstance(VDModEffects.DEHYDRATED, 800, 0)));
+            () -> new Potion(new MobEffectInstance(ModModEffects.DEHYDRATED, 800, 0)));
     public static final DeferredHolder<Potion, Potion> LONG_DEHYDRATED_POTION = POTIONS.register("long_dehydrated",
-            () -> new Potion(new MobEffectInstance(VDModEffects.DEHYDRATED, 1600, 0)));
+            () -> new Potion(new MobEffectInstance(ModModEffects.DEHYDRATED, 1600, 0)));
     public static final DeferredHolder<Potion, Potion> STRONG_DEHYDRATED_POTION = POTIONS.register("strong_dehydrated",
-            () -> new Potion(new MobEffectInstance(VDModEffects.DEHYDRATED, 800, 1)));
+            () -> new Potion(new MobEffectInstance(ModModEffects.DEHYDRATED, 800, 1)));
 }
 

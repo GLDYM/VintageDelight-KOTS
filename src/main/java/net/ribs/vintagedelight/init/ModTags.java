@@ -1,4 +1,4 @@
-package net.ribs.vintagedelight.item;
+package net.ribs.vintagedelight.init;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;

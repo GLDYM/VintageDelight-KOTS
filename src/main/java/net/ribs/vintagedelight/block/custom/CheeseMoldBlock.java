@@ -27,7 +27,7 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.ribs.vintagedelight.item.ModItems;
+import net.ribs.vintagedelight.init.items.ModItems;
 
 public class CheeseMoldBlock extends Block implements WorldlyContainerHolder, SimpleWaterloggedBlock {
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;

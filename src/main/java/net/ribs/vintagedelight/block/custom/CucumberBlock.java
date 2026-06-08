@@ -16,7 +16,7 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.BlockHitResult;
-import net.ribs.vintagedelight.item.ModItems;
+import net.ribs.vintagedelight.init.items.ModItems;
 
 public class CucumberBlock extends CropBlock {
     public static final int MAX_AGE = 7;

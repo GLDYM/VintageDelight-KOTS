@@ -8,7 +8,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.SnowLayerBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.ribs.vintagedelight.item.ModItems;
+import net.ribs.vintagedelight.init.items.ModItems;
 
 
 public class SaltLayerBlock extends SnowLayerBlock {

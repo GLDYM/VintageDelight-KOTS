@@ -1,4 +1,4 @@
-package net.ribs.vintagedelight.item;
+package net.ribs.vintagedelight.init.items;
 
 
 import net.minecraft.world.food.FoodProperties;
@@ -7,13 +7,14 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.ribs.vintagedelight.VintageDelight;
-import net.ribs.vintagedelight.block.ModBlocks;
+import net.ribs.vintagedelight.init.ModBlocks;
 import net.ribs.vintagedelight.item.custom.*;
 import vectorwing.farmersdelight.common.item.ConsumableItem;
 import vectorwing.farmersdelight.common.item.MilkBottleItem;
 
 public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(VintageDelight.MODID);
+
     public static Item.Properties bowlFoodItem(FoodProperties food) {
         return new Item.Properties().food(food).craftRemainder(Items.BOWL).stacksTo(16);
     }

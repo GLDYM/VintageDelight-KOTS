@@ -1,4 +1,4 @@
-package net.ribs.vintagedelight.block;
+package net.ribs.vintagedelight.init;
 
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.BlockItem;
@@ -14,7 +14,7 @@ import net.ribs.vintagedelight.VintageDelight;
 import net.ribs.vintagedelight.block.custom.*;
 import net.ribs.vintagedelight.block.custom.mason_jars.*;
 import net.ribs.vintagedelight.block.custom.salt_lamps.*;
-import net.ribs.vintagedelight.item.ModItems;
+import net.ribs.vintagedelight.init.items.ModItems;
 import net.ribs.vintagedelight.worldgen.tree.MagicVineGrower;
 import vectorwing.farmersdelight.common.block.PieBlock;
 import vectorwing.farmersdelight.common.block.WildCropBlock;

@@ -10,7 +10,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.ribs.vintagedelight.block.custom.MasonJarBlock;
-import net.ribs.vintagedelight.item.ModItems;
+import net.ribs.vintagedelight.init.items.ModItems;
 
 public class PepperJamBlock extends MasonJarBlock {
     public PepperJamBlock(BlockBehaviour.Properties properties) {

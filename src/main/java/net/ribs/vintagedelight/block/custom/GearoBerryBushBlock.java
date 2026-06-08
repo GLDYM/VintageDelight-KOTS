@@ -22,7 +22,7 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.ribs.vintagedelight.item.ModItems;
+import net.ribs.vintagedelight.init.items.ModItems;
 
 public class GearoBerryBushBlock extends BushBlock implements BonemealableBlock {
     public static final MapCodec<GearoBerryBushBlock> CODEC = simpleCodec(GearoBerryBushBlock::new);

@@ -15,10 +15,10 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
-import net.ribs.vintagedelight.block.ModBlocks;
 import net.ribs.vintagedelight.block.custom.MasonJarBlock;
-import net.ribs.vintagedelight.item.ModFoods;
-import net.ribs.vintagedelight.item.ModItems;
+import net.ribs.vintagedelight.init.ModBlocks;
+import net.ribs.vintagedelight.init.items.ModFoods;
+import net.ribs.vintagedelight.init.items.ModItems;
 import vectorwing.farmersdelight.common.item.ConsumableItem;
 
 import java.util.List;
