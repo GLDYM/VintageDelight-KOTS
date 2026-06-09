@@ -151,7 +151,7 @@
     "item.vintagedelight.deluxe_burger": "巨无霸",
 
     "item.vintagedelight.mason_jar.tooltip": "可放置",
-    "farmersdelight.tooltip.nut_milk_bottle": "清除1个效果",
+    "tooltip.farmersdelight.nut_milk_bottle": "清除1个效果",
     "gui.jei.category.fermenting.time.seconds": "发酵时间",
 
     "vintagedelight.jei.info.salt_block": "放在水源附近可以缓慢析出盐分",

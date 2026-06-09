@@ -151,7 +151,7 @@
   "item.vintagedelight.deluxe_burger": "The Burger",
 
   "item.vintagedelight.mason_jar.tooltip": "Placeable",
-  "farmersdelight.tooltip.nut_milk_bottle": "Clears 1 Effect",
+  "tooltip.farmersdelight.nut_milk_bottle": "Clears 1 Effect",
   "gui.jei.category.fermenting.time.seconds": "Fermenting Time",
 
   "vintagedelight.jei.info.salt_block": "Place near a water source to grow salt.",
