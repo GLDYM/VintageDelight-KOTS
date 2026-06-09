@@ -1,6 +1,6 @@
 {
   "creativetab.vintage_tab": "Vintage Tab",
-  //Blocks
+
   "block.vintagedelight.fermenting_jar": "Fermenting Jar",
   "block.vintagedelight.lush_grass_block": "Lush Grass",
   "block.vintagedelight.salt_lamp_default": "Salt Lamp",
@@ -42,6 +42,7 @@
   "block.vintagedelight.salt_brick_stairs": "Salt Brick Stairs",
   "block.vintagedelight.salt_brick_slab": "Salt Brick Slab",
   "block.vintagedelight.salt_brick_wall": "Salt Brick Wall",
+  "block.vintagedelight.magic_peanut": "Magic Peanut",
   "block.vintagedelight.mixed_salt_bricks": "Mixed Salt Bricks",
   "block.vintagedelight.mixed_salt_brick_stairs": "Mixed Salt Brick Stairs",
   "block.vintagedelight.mixed_salt_brick_slab": "Mixed Salt Brick Slab",
@@ -64,9 +65,10 @@
   "block.vintagedelight.cheese_pizza": "Cheese Pizza",
   "block.vintagedelight.meat_pizza": "Meat Pizza",
   "block.vintagedelight.vine_net": "Vine Net",
-  //Items
+
   "item.vintagedelight.salt_dust": "Salt Dust",
   "item.vintagedelight.oat_dough": "Oat Dough",
+  "item.vintagedelight.cucumber_dough": "Cucumber Dough",
   "item.vintagedelight.cucumber_noodles": "Cucumber Noodles",
   "item.vintagedelight.stuffed_burrito": "Stuffed Burrito",
   "item.vintagedelight.ghost_charcoal": "Ghost Charcoal",
@@ -77,7 +79,6 @@
   "item.vintagedelight.oat_seeds": "Oat Seeds",
   "item.vintagedelight.peanut": "Peanut",
   "item.vintagedelight.roasted_peanut": "Roasted Peanut",
-  "block.vintagedelight.magic_peanut": "Magic Peanut",
   "item.vintagedelight.honey_roasted_peanut": "Honey Roasted Peanut",
   "item.vintagedelight.nut_milk_bottle": "Nut Milk Bottle",
   "item.vintagedelight.nut_mash_mason_jar": "Nut Mash Jar",
@@ -148,13 +149,16 @@
   "item.vintagedelight.pb_j": "PB & J",
   "item.vintagedelight.cheese_burger": "Cheese Burger",
   "item.vintagedelight.deluxe_burger": "The Burger",
+
   "item.vintagedelight.mason_jar.tooltip": "Placeable",
   "farmersdelight.tooltip.nut_milk_bottle": "Clears 1 Effect",
   "gui.jei.category.fermenting.time.seconds": "Fermenting Time",
+
   "vintagedelight.jei.info.salt_block": "Place near a water source to grow salt.",
   "vintagedelight.jei.info.evaporator": "Place near a water source to grow salt at a much faster rate than a Salt Block.",
   "vintagedelight.jei.info.organic_compost": "Fermented Organic mash, used as a enhanced fertilizer, Or used in making compost.",
   "vintagedelight.jei.info.cheese_wheel": "Place 4 Cheese Curds into a Cheese Mold to make a Cheese Wheel.",
+
   "vintagedelight.advancement.root": "Vintage Delight",
   "vintagedelight.advancement.root.desc": "Get to fermenting!",
   "vintagedelight.advancement.harvest_salt": "Salty",
@@ -177,6 +181,7 @@
   "vintagedelight.advancement.get_vinegar_item.desc": "Ferment jam into vinegar",
   "vintagedelight.advancement.get_cheese_item": "Cheese",
   "vintagedelight.advancement.get_cheese_item.desc": "Make some cheese",
+
   "effect.vintagedelight.dehydrated": "Dehydrated",
   "item.minecraft.lingering_potion.effect.dehydrated": "Lingering Potion of Dehydration",
   "item.minecraft.potion.effect.dehydrated": "Potion of Dehydration",

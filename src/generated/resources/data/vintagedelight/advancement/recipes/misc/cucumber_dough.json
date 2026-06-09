@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_honey_mason_jar": {
+    "has_cucumber": {
       "conditions": {
         "items": [
           {
-            "items": "vintagedelight:honey_mason_jar"
+            "items": "vintagedelight:cucumber"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "vintagedelight:honey_jar"
+        "recipe": "vintagedelight:cucumber_dough"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_honey_mason_jar"
+      "has_cucumber"
     ]
   ],
   "rewards": {
     "recipes": [
-      "vintagedelight:honey_jar"
+      "vintagedelight:cucumber_dough"
     ]
   }
 }

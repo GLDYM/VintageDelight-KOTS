@@ -110,7 +110,7 @@ public abstract class AbstractModRecipeProvider extends RecipeProvider {
     }
 
     protected Ingredient knifeIngredient() {
-        return Ingredient.of(ItemTags.create(ResourceLocation.parse("c:tools/knives")));
+        return Ingredient.of(ItemTags.create(ResourceLocation.parse("c:tools/knife")));
     }
 
     protected Ingredient bottleIngredient() {

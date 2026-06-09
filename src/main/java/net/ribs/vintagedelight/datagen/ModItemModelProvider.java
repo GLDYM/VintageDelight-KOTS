@@ -19,7 +19,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         generated(
                 "apple_sauce_bottle", "apple_sauce_jar", "century_egg", "cheese_burger", "cheese_curds",
                 "cheese_pasta", "cheese_pizza", "cheese_pizza_slice", "cheese_slice", "cheese_wheel",
-                "chocolate_nut_granola_bar", "cucumber", "cucumber_noodles", "cucumber_salad", "cucumber_seeds",
+                "chocolate_nut_granola_bar", "cucumber", "cucumber_dough", "cucumber_noodles", "cucumber_salad", "cucumber_seeds",
                 "deluxe_burger", "deluxe_granola_bar", "fruity_granola_bar", "gearo_berry",
                 "gearo_berry_jam_bottle", "gearo_berry_jam_jar", "ghostly_chili", "ghost_charcoal",
                 "ghost_pepper", "ghost_pepper_seeds", "glow_berry_jam_bottle", "glow_berry_jam_jar", "honey_jar",

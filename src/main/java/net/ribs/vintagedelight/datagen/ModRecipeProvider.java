@@ -7,6 +7,7 @@ import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ItemStack;
@@ -277,10 +278,6 @@ public class ModRecipeProvider extends AbstractModRecipeProvider {
                 .requires(ModItems.GHOST_PEPPER.get())
                 .unlockedBy(getHasName(ModItems.GHOST_PEPPER.get()), has(ModItems.GHOST_PEPPER.get()))
                 .save(output, id("ghost_pepper_to_seeds"));
-
-        jarToBottle(output, "honey_jar", Items.HONEY_BOTTLE, ModItems.HONEY_JAR.get());
-        bottleToJar(output, "honey_jar_deconstruct", ModItems.HONEY_JAR.get(), ModItems.HONEY_JAR.get(), 3);
-
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.HONEY_ROASTED_PEANUT.get(), 2)
                 .requires(ModItems.ROASTED_PEANUT.get())
                 .requires(ModItems.ROASTED_PEANUT.get())
@@ -391,23 +388,31 @@ public class ModRecipeProvider extends AbstractModRecipeProvider {
                 .requires(ItemTags.create(ResourceLocation.parse("c:foods/vegetable/chili_pepper")))
                 .unlockedBy(getHasName(vectorwing.farmersdelight.common.registry.ModItems.BEEF_PATTY.get()), has(vectorwing.farmersdelight.common.registry.ModItems.BEEF_PATTY.get()))
                 .save(output, id("stuffed_burrito"));
+        
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.CUCUMBER_DOUGH.get(), 2)
+                .requires(ModItems.CUCUMBER.get())
+                .requires(Tags.Items.FOODS_DOUGH)
+                .unlockedBy(getHasName(ModItems.CUCUMBER.get()), has(ModItems.CUCUMBER.get()))
+                .save(output, id("cucumber_dough"));
 
-        jarToBottle(output, "jam/apple_sauce_jar", ModItems.APPLE_SAUCE_BOTTLE.get(), ModItems.APPLE_SAUCE.get());
-        bottleToJar(output, "jam/apple_sauce_jar_deconstruct", ModItems.APPLE_SAUCE.get(), ModItems.APPLE_SAUCE.get(), 3);
-        jarToBottle(output, "jam/gearo_berry_jam_jar", ModItems.GEARO_BERRY_JAM_BOTTLE.get(), ModItems.GEARO_BERRY_JAM.get());
-        bottleToJar(output, "jam/gearo_berry_jam_jar_deconstruct", ModItems.GEARO_BERRY_JAM.get(), ModItems.GEARO_BERRY_JAM.get(), 3);
-        jarToBottle(output, "jam/glow_berry_jam_jar", ModItems.GLOW_BERRY_JAM_BOTTLE.get(), ModItems.GLOW_BERRY_JAM.get());
-        bottleToJar(output, "jam/glow_berry_jam_jar_deconstruct", ModItems.GLOW_BERRY_JAM.get(), ModItems.GLOW_BERRY_JAM.get(), 3);
-        jarToBottle(output, "jam/nut_mash_jar", ModItems.NUT_MASH_BOTTLE.get(), ModItems.NUT_MASH.get());
-        bottleToJar(output, "jam/nut_mash_jar_deconstruct", ModItems.NUT_MASH.get(), ModItems.NUT_MASH.get(), 3);
-        jarToBottle(output, "jam/pepper_jam_jar", ModItems.PEPPER_JAM_BOTTLE.get(), ModItems.PEPPER_JAM_JAR.get());
-        bottleToJar(output, "jam/pepper_jam_jar_deconstruct", ModItems.PEPPER_JAM_JAR.get(), ModItems.PEPPER_JAM_JAR.get(), 3);
-        jarToBottle(output, "jam/relish_jar", ModItems.RELISH_BOTTLE.get(), ModItems.RELISH.get());
-        bottleToJar(output, "jam/relish_jar_deconstruct", ModItems.RELISH.get(), ModItems.RELISH.get(), 3);
-        jarToBottle(output, "jam/sweet_berry_jam_jar", ModItems.SWEET_BERRY_JAM_BOTTLE.get(), ModItems.SWEET_BERRY_JAM.get());
-        bottleToJar(output, "jam/sweet_berry_jam_jar_deconstruct", ModItems.SWEET_BERRY_JAM.get(), ModItems.SWEET_BERRY_JAM.get(), 3);
-        jarToBottle(output, "jam/vinegar_jar", ModItems.VINEGAR_BOTTLE.get(), ModItems.VINEGAR.get());
-        bottleToJar(output, "jam/vinegar_jar_deconstruct", ModItems.VINEGAR.get(), ModItems.VINEGAR.get(), 3);
+        jarToBottle(output, "honey_jar_deconstruct", ModItems.HONEY_JAR.get(), Items.HONEY_BOTTLE);
+        bottleToJar(output, "honey_jar", ModItems.HONEY_JAR.get(), ModItems.HONEY_JAR.get());
+        jarToBottle(output, "jam/apple_sauce_jar_deconstruct", ModItems.APPLE_SAUCE.get(), ModItems.APPLE_SAUCE_BOTTLE.get());
+        bottleToJar(output, "jam/apple_sauce_jar", ModItems.APPLE_SAUCE_BOTTLE.get(), ModItems.APPLE_SAUCE.get());
+        jarToBottle(output, "jam/gearo_berry_jam_jar_deconstruct", ModItems.GEARO_BERRY_JAM.get(), ModItems.GEARO_BERRY_JAM_BOTTLE.get());
+        bottleToJar(output, "jam/gearo_berry_jam_jar", ModItems.GEARO_BERRY_JAM_BOTTLE.get(), ModItems.GEARO_BERRY_JAM.get());
+        jarToBottle(output, "jam/glow_berry_jam_jar_deconstruct", ModItems.GLOW_BERRY_JAM.get(), ModItems.GLOW_BERRY_JAM_BOTTLE.get());
+        bottleToJar(output, "jam/glow_berry_jam_jar", ModItems.GLOW_BERRY_JAM_BOTTLE.get(), ModItems.GLOW_BERRY_JAM.get());
+        jarToBottle(output, "jam/nut_mash_jar_deconstruct", ModItems.NUT_MASH.get(), ModItems.NUT_MASH_BOTTLE.get());
+        bottleToJar(output, "jam/nut_mash_jar", ModItems.NUT_MASH_BOTTLE.get(), ModItems.NUT_MASH.get());
+        jarToBottle(output, "jam/pepper_jam_jar_deconstruct", ModItems.PEPPER_JAM_JAR.get(), ModItems.PEPPER_JAM_BOTTLE.get());
+        bottleToJar(output, "jam/pepper_jam_jar", ModItems.PEPPER_JAM_BOTTLE.get(), ModItems.PEPPER_JAM_JAR.get());
+        jarToBottle(output, "jam/relish_jar_deconstruct", ModItems.RELISH.get(), ModItems.RELISH_BOTTLE.get());
+        bottleToJar(output, "jam/relish_jar", ModItems.RELISH_BOTTLE.get(), ModItems.RELISH.get());
+        jarToBottle(output, "jam/sweet_berry_jam_jar_deconstruct", ModItems.SWEET_BERRY_JAM.get(), ModItems.SWEET_BERRY_JAM_BOTTLE.get());
+        bottleToJar(output, "jam/sweet_berry_jam_jar", ModItems.SWEET_BERRY_JAM_BOTTLE.get(), ModItems.SWEET_BERRY_JAM.get());
+        jarToBottle(output, "jam/vinegar_jar_deconstruct", ModItems.VINEGAR.get(), ModItems.VINEGAR_BOTTLE.get());
+        bottleToJar(output, "jam/vinegar_jar", ModItems.VINEGAR_BOTTLE.get(), ModItems.VINEGAR.get());
     }
 
     private void registerSaltLampRecipes(RecipeOutput output) {
@@ -573,9 +578,9 @@ public class ModRecipeProvider extends AbstractModRecipeProvider {
                 .unlockedBy(getHasName(ModItems.CHEESE_WHEEL.get()), has(ModItems.CHEESE_WHEEL.get()))
                 .save(output, id("cutting/cheese_wheel_from_cutting"));
 
-        CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(ModItems.CUCUMBER.get()), knifeIngredient(), ModItems.CUCUMBER_NOODLES.get())
+        CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(ModItems.CUCUMBER_DOUGH.get()), knifeIngredient(), ModItems.CUCUMBER_NOODLES.get())
                 .unlockedBy(getHasName(ModItems.CUCUMBER.get()), has(ModItems.CUCUMBER.get()))
-                .save(output, id("cutting/cucumber_cutting"));
+                .save(output, id("cutting/cucumber_dough_cutting"));
 
         CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(ModBlocks.MAGIC_VINE.get()), knifeIngredient(), ModBlocks.STRIPPED_MAGIC_VINE.get())
                 .unlockedBy(getHasName(ModBlocks.MAGIC_VINE.get()), has(ModBlocks.MAGIC_VINE.get()))
@@ -882,7 +887,7 @@ public class ModRecipeProvider extends AbstractModRecipeProvider {
         shapelessBuilder.save(output, shapeless);
     }
 
-    private void jarToBottle(RecipeOutput output, String idPath, net.minecraft.world.level.ItemLike bottle, net.minecraft.world.level.ItemLike jar) {
+    private void bottleToJar(RecipeOutput output, String idPath, ItemLike bottle, ItemLike jar) {
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, jar)
                 .pattern("X#")
                 .pattern("##")
@@ -892,8 +897,8 @@ public class ModRecipeProvider extends AbstractModRecipeProvider {
                 .save(output, id(idPath));
     }
 
-    private void bottleToJar(RecipeOutput output, String idPath, net.minecraft.world.level.ItemLike jar, net.minecraft.world.level.ItemLike bottleResult, int count) {
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, bottleResult, count)
+    private void jarToBottle(RecipeOutput output, String idPath, ItemLike jar, ItemLike bottle) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, bottle, 3)
                 .pattern("X#")
                 .pattern("##")
                 .define('X', jar)
