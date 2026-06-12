@@ -734,8 +734,8 @@ public class ModRecipeProvider extends AbstractModRecipeProvider {
                 .requires(ModTags.SLIME_BALL_FERMENTING)
                 .requires(ModTags.SLIME_BALL_FERMENTING)
                 .requires(ModTags.SLIME_BALL_FERMENTING)
-                .requires(ModTags.SLIME_BALL_FERMENTING)
-                .processingTime(2400)
+                .requires(ItemTags.create(ResourceLocation.parse("c:salt")))
+                .processingTime(1200)
                 .save(output, id("fermenting/slime_block_from_fermenting"));
 
         FermentingRecipeBuilder.fermenting(ModItems.CENTURY_EGG.get())
