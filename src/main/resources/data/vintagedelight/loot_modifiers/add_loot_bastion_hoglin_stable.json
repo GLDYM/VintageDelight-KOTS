@@ -7,5 +7,5 @@
       "loot_table_id": "minecraft:chests/bastion_hoglin_stable"
     }
   ],
-  "lootTable": "vintagedelight:chests/vd_bastion_hoglin_stable"
+  "table": "vintagedelight:chests/vd_bastion_hoglin_stable"
 }

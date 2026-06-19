@@ -7,5 +7,5 @@
       "loot_table_id": "minecraft:chests/village/village_plains_house"
     }
   ],
-  "lootTable": "vintagedelight:chests/vd_village_plains_house"
+  "table": "vintagedelight:chests/vd_village_plains_house"
 }
