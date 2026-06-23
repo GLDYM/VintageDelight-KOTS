@@ -2,6 +2,6 @@
   "parent": "vintagedelight:block/tall_crop",
   "render_type": "cutout",
   "textures": {
-    "crop": "vintagedelight:block/oat_stage7"
+    "crop": "vintagedelight:block/oat_stage3"
   }
 }

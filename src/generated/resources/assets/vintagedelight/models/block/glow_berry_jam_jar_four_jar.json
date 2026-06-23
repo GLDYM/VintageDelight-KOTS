@@ -1,6 +1,6 @@
 {
   "parent": "vintagedelight:block/template_mason_jar_four",
-  "render_type": "minecraft:cutout",
+  "render_type": "cutout",
   "textures": {
     "2": "vintagedelight:block/glow_berry_jam_interior_texture"
   }

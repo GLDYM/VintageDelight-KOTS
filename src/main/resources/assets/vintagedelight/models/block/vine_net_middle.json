@@ -1,6 +1,6 @@
 {
   "credit": "Made with Blockbench",
-  "render_type": "minecraft:cutout",
+  "render_type": "cutout",
   "textures": {
     "net": "vintagedelight:block/vine_net",
     "particle": "vintagedelight:block/vine_net"

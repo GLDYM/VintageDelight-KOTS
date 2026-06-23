@@ -2,6 +2,6 @@
   "parent": "minecraft:block/cross",
   "render_type": "cutout",
   "textures": {
-    "cross": "vintagedelight:block/ghost_pepper_stage3"
+    "cross": "vintagedelight:block/peanuts_stage0"
   }
 }

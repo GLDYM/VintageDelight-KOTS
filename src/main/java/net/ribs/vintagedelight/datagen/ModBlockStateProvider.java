@@ -161,8 +161,14 @@ public class ModBlockStateProvider extends BlockStateProvider {
         cross("wild_oats");
         cross("wild_peanuts");
         cross("magic_peanut_sapling");
-        models().withExistingParent("oat_stage7", modLoc("block/tall_crop"))
-                .texture("tall_crop", modLoc("block/oat_stage7"));
+        for (int age = 0; age <= OatBlock.MAX_AGE; age++) {
+            models().withExistingParent("oat_stage" + age, modLoc("block/tall_crop"))
+                    .renderType("cutout")
+                    .texture("crop", modLoc("block/oat_stage" + age));
+        }
+        for (int age = 0; age <= 4; age++) {
+            cross("peanuts_stage" + age);
+        }
 
         ageMappedBlock(ModBlocks.CUCUMBER_CROP.get(), BlockStateProperties.AGE_7,
                 "cucumber_stage0", "cucumber_stage1", "cucumber_stage1", "cucumber_stage2",

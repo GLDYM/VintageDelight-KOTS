@@ -1,6 +1,6 @@
 {
 	"credit": "Made by Leftchaotix",
-	"render_type": "minecraft:cutout",
+	"render_type": "cutout",
 	"textures": {
 		"1": "vintagedelight:block/mason_jar_texture",
 		"particle": "vintagedelight:block/mason_jar_texture"
