@@ -1,0 +1,13 @@
+{
+  "neoforge:conditions": [
+    {
+      "modid": "botanypots",
+      "type": "neoforge:mod_loaded"
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "vintagedelight:peanut_crop",
+  "input": {
+    "item": "vintagedelight:peanut"
+  }
+}

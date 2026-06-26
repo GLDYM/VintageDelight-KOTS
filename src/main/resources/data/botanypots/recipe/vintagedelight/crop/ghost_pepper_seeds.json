@@ -1,0 +1,13 @@
+{
+  "neoforge:conditions": [
+    {
+      "modid": "botanypots",
+      "type": "neoforge:mod_loaded"
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "vintagedelight:ghost_pepper_crop",
+  "input": {
+    "item": "vintagedelight:ghost_pepper_seeds"
+  }
+}
