@@ -46,20 +46,22 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleTintedParentBlock(ModBlocks.RED_SALT_LAMP.get(), "salt_lamp_default", "salt_lamp_red");
         simpleTintedParentBlock(ModBlocks.WHITE_SALT_LAMP.get(), "salt_lamp_default", "salt_lamp_white");
         simpleTintedParentBlock(ModBlocks.YELLOW_SALT_LAMP.get(), "salt_lamp_default", "salt_lamp_yellow");
-        simpleBlock(ModBlocks.OAT_BAG.get(), models().cube("oat_bag",
-                modLoc("block/oat_bag_side"),
-                modLoc("block/oat_bag_top"),
-                modLoc("block/oat_bag_bottom"),
-                modLoc("block/oat_bag_side_tied"),
-                modLoc("block/oat_bag_side"),
-                modLoc("block/oat_bag_side_tied")));
-        simpleBlock(ModBlocks.GEARO_BERRY_BAG.get(), models().cube("gearo_berry_bag",
-                modLoc("block/oat_bag_side"),
-                modLoc("block/gearo_berry_bag_top"),
-                modLoc("block/oat_bag_bottom"),
-                modLoc("block/oat_bag_side_tied"),
-                modLoc("block/oat_bag_side"),
-                modLoc("block/oat_bag_side_tied")));
+        simpleBlock(ModBlocks.OAT_BAG.get(), models().withExistingParent("oat_bag", mcLoc("block/cube"))
+                .texture("down", modLoc("block/oat_bag_bottom"))
+                .texture("east", modLoc("block/oat_bag_side"))
+                .texture("north", modLoc("block/oat_bag_side_tied"))
+                .texture("particle", modLoc("block/oat_bag_top"))
+                .texture("south", modLoc("block/oat_bag_side_tied"))
+                .texture("up", modLoc("block/oat_bag_top"))
+                .texture("west", modLoc("block/oat_bag_side")));
+        simpleBlock(ModBlocks.GEARO_BERRY_BAG.get(), models().withExistingParent("gearo_berry_bag", mcLoc("block/cube"))
+                .texture("down", modLoc("block/oat_bag_bottom"))
+                .texture("east", modLoc("block/oat_bag_side"))
+                .texture("north", modLoc("block/oat_bag_side_tied"))
+                .texture("particle", modLoc("block/gearo_berry_bag_top"))
+                .texture("south", modLoc("block/oat_bag_side_tied"))
+                .texture("up", modLoc("block/gearo_berry_bag_top"))
+                .texture("west", modLoc("block/oat_bag_side")));
         simpleBlock(ModBlocks.PEANUT_CRATE.get(), models().cubeBottomTop("peanut_crate",
                 modLoc("block/peanut_crate_side"),
                 modLoc("block/crate_bottom"),
@@ -161,6 +163,18 @@ public class ModBlockStateProvider extends BlockStateProvider {
         cross("wild_oats");
         cross("wild_peanuts");
         cross("magic_peanut_sapling");
+        crop("oat_stage0");
+        crop("oat_stage1");
+        crop("oat_stage2");
+        crop("oat_stage3");
+        crop("oat_stage4");
+        crop("oat_stage5");
+        crop("oat_stage6");
+        crop("peanuts_stage0");
+        crop("peanuts_stage1");
+        crop("peanuts_stage2");
+        crop("peanuts_stage3");
+        crop("peanuts_stage4");
         models().withExistingParent("oat_stage7", modLoc("block/tall_crop"))
                 .texture("tall_crop", modLoc("block/oat_stage7"));
 
@@ -292,6 +306,10 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     private void cross(String modelName) {
         models().cross(modelName, modLoc("block/" + modelName)).renderType("cutout");
+    }
+
+    private void crop(String modelName) {
+        models().crop(modelName, modLoc("block/" + modelName)).renderType("cutout");
     }
 
     private ModelFile existingModel(String modelName) {

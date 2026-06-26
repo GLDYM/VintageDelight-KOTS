@@ -26,38 +26,6 @@
                   "condition": "minecraft:survives_explosion"
                 }
               ],
-              "name": "vintagedelight:wild_peanuts"
-            }
-          ]
-        }
-      ],
-      "rolls": 1.0
-    },
-    {
-      "bonus_rolls": 0.0,
-      "entries": [
-        {
-          "type": "minecraft:alternatives",
-          "children": [
-            {
-              "type": "minecraft:item",
-              "conditions": [
-                {
-                  "condition": "minecraft:match_tool",
-                  "predicate": {
-                    "items": "#c:tools/shear"
-                  }
-                }
-              ],
-              "name": "vintagedelight:wild_peanuts"
-            },
-            {
-              "type": "minecraft:item",
-              "conditions": [
-                {
-                  "condition": "minecraft:survives_explosion"
-                }
-              ],
               "functions": [
                 {
                   "enchantment": "minecraft:fortune",

@@ -63,7 +63,7 @@ public class ModBlockLoot extends BlockLootSubProvider {
         dropSelf(ModBlocks.GHOST_PEPPER_CRATE.get());
         dropSelf(ModBlocks.OAT_BALE.get());
         dropSelf(ModBlocks.CHEESE_MOLD.get());
-        dropSelf(ModBlocks.LUSH_GRASS_BLOCK.get());
+        add(ModBlocks.LUSH_GRASS_BLOCK.get(), lushGrassBlockDrops());
         dropSelf(ModBlocks.EMPTY_MASON_JAR.get());
         dropSelf(ModBlocks.VINEGAR_JAR.get());
         dropSelf(ModBlocks.PEPPER_JAM_JAR.get());
@@ -140,7 +140,7 @@ public class ModBlockLoot extends BlockLootSubProvider {
     }
 
     private LootTable.Builder wildCropDrops(Block block, Item seedItem, Item produceItem) {
-        var table = createSelfDropDispatchTable(block, hasShears(), applyExplosionCondition(block, LootItem.lootTableItem(block)));
+        var table = LootTable.lootTable();
         if (produceItem != null) {
             table.withPool(optionalWildProduce(produceItem));
         }
@@ -154,6 +154,11 @@ public class ModBlockLoot extends BlockLootSubProvider {
     private MatchTool.Builder hasKnife() {
         return MatchTool.toolMatches(net.minecraft.advancements.critereon.ItemPredicate.Builder.item()
                 .of(net.minecraft.tags.TagKey.create(Registries.ITEM, net.minecraft.resources.ResourceLocation.parse("farmersdelight:tools/knives"))));
+    }
+
+    private LootTable.Builder lushGrassBlockDrops() {
+        return createSilkTouchDispatchTable(ModBlocks.LUSH_GRASS_BLOCK.get(), applyExplosionCondition(ModBlocks.LUSH_GRASS_BLOCK.get(),
+                LootItem.lootTableItem(vectorwing.farmersdelight.common.registry.ModBlocks.RICH_SOIL.get())));
     }
 
     private LootTable.Builder oatCropDrops() {

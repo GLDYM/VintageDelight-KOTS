@@ -3,7 +3,7 @@
   "config": {
     "decorators": [
       {
-        "type": "minecraft:alter_ground",
+        "type": "vintagedelight:configurable_alter_ground",
         "provider": {
           "type": "minecraft:simple_state_provider",
           "state": {
