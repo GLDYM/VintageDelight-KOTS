@@ -139,11 +139,11 @@ public class ModBlocks {
     public static final DeferredBlock<Block> GOLDEN_EGG = registerBlock("golden_egg",
             () -> new GoldenEggBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.DRAGON_EGG).strength(0.3f).sound(SoundType.GLASS)));
     public static final DeferredBlock<Block> EVAPORATOR = registerBlock("evaporator",
-            () -> new SaltBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE), 50.0F));
+            () -> new SaltBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE).randomTicks(), 50.0F));
     public static final DeferredBlock<Block> SALT_LAYER = registerBlock("salt",
             () -> new SaltLayerBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SAND)));
     public static final DeferredBlock<Block> SALT_BLOCK = registerBlock("salt_block",
-            () -> new SaltBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SAND), 10.0F));
+            () -> new SaltBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SAND).randomTicks(), 10.0F));
     public static final DeferredBlock<Block> SMOOTH_SALT_BLOCK = registerBlock("smooth_salt_block",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.BRICKS)));
     public static final DeferredBlock<Block> VINE_TILE = registerBlock("vine_tile",

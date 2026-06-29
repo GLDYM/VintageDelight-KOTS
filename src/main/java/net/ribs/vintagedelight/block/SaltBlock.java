@@ -20,17 +20,19 @@ public class SaltBlock extends Block {
     }
 
     @Override
-    public void tick(BlockState state, ServerLevel world, BlockPos pos, RandomSource random) {
-        super.tick(state, world, pos, random);
+    public void randomTick(BlockState state, ServerLevel world, BlockPos pos, RandomSource random) {
+        super.randomTick(state, world, pos, random);
         if (!world.isClientSide) {
             if (random.nextFloat() < calculateGrowthProbability()) {
                 this.checkAndGrowSaltLayer(world, pos);
             }
         }
     }
+
     private float calculateGrowthProbability() {
         return Math.min(1.0F, growthSpeed / 100.0F);
     }
+
     private boolean hasWaterAround(LevelReader world, BlockPos pos) {
         for (Direction direction : Direction.values()) {
             if (direction != Direction.UP && direction != Direction.DOWN) {
@@ -47,7 +49,7 @@ public class SaltBlock extends Block {
         boolean isWaterNearby = hasWaterAround(world, pos);
         BlockPos abovePos = pos.above();
 
-        if (isWaterNearby && world.isEmptyBlock(abovePos) || canGrowSaltLayer(world, abovePos)) {
+        if (isWaterNearby && (world.isEmptyBlock(abovePos) || canGrowSaltLayer(world, abovePos))) {
             BlockState aboveState = world.getBlockState(abovePos);
             if (aboveState.is(ModBlocks.SALT_LAYER.get())) {
                 int layers = aboveState.getValue(SaltLayerBlock.LAYERS);
