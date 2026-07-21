@@ -26,6 +26,21 @@ import vectorwing.farmersdelight.data.builder.CuttingBoardRecipeBuilder;
 
 import java.util.concurrent.CompletableFuture;
 
+import static vectorwing.farmersdelight.common.registry.ModItems.BEEF_PATTY;
+import static vectorwing.farmersdelight.common.registry.ModItems.CABBAGE_LEAF;
+import static vectorwing.farmersdelight.common.registry.ModItems.COOKED_BACON;
+import static vectorwing.farmersdelight.common.registry.ModItems.FRIED_EGG;
+import static vectorwing.farmersdelight.common.registry.ModItems.MILK_BOTTLE;
+import static vectorwing.farmersdelight.common.registry.ModItems.MINCED_BEEF;
+import static vectorwing.farmersdelight.common.registry.ModItems.ORGANIC_COMPOST;
+import static vectorwing.farmersdelight.common.registry.ModItems.PUMPKIN_SLICE;
+import static vectorwing.farmersdelight.common.registry.ModItems.ROTTEN_TOMATO;
+import static vectorwing.farmersdelight.common.registry.ModItems.STRAW;
+import static vectorwing.farmersdelight.common.registry.ModItems.TOMATO;
+import static vectorwing.farmersdelight.common.registry.ModItems.TOMATO_SAUCE;
+import static vectorwing.farmersdelight.common.registry.ModItems.TOMATO_SEEDS;
+import static vectorwing.farmersdelight.common.registry.ModItems.TREE_BARK;
+
 public class ModRecipeProvider extends AbstractModRecipeProvider {
     public ModRecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
         super(output, VintageDelight.MODID, registries);
@@ -189,12 +204,12 @@ public class ModRecipeProvider extends AbstractModRecipeProvider {
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.CHEESE_BURGER.get())
                 .requires(ItemTags.create(ResourceLocation.parse("c:foods/bread")))
-                .requires(vectorwing.farmersdelight.common.registry.ModItems.BEEF_PATTY.get())
+                .requires(BEEF_PATTY.get())
                 .requires(ItemTags.create(ResourceLocation.parse("c:foods/vegetable")))
                 .requires(ItemTags.create(ResourceLocation.parse("c:crops/tomato")))
                 .requires(ItemTags.create(ResourceLocation.parse("c:crops/onion")))
                 .requires(ItemTags.create(ResourceLocation.parse("c:cheese")))
-                .unlockedBy(getHasName(vectorwing.farmersdelight.common.registry.ModItems.BEEF_PATTY.get()), has(vectorwing.farmersdelight.common.registry.ModItems.BEEF_PATTY.get()))
+                .unlockedBy(getHasName(BEEF_PATTY.get()), has(BEEF_PATTY.get()))
                 .save(output, id("cheese_burger"));
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.CHEESE_MOLD.get())
@@ -212,8 +227,8 @@ public class ModRecipeProvider extends AbstractModRecipeProvider {
                 .pattern("CEC")
                 .define('A', ItemTags.create(ResourceLocation.parse("c:cheese")))
                 .define('C', ItemTags.create(ResourceLocation.parse("c:foods/dough")))
-                .define('E', vectorwing.farmersdelight.common.registry.ModItems.TOMATO_SAUCE.get())
-                .unlockedBy(getHasName(vectorwing.farmersdelight.common.registry.ModItems.TOMATO_SAUCE.get()), has(vectorwing.farmersdelight.common.registry.ModItems.TOMATO_SAUCE.get()))
+                .define('E', TOMATO_SAUCE.get())
+                .unlockedBy(getHasName(TOMATO_SAUCE.get()), has(TOMATO_SAUCE.get()))
                 .save(output, id("cheese_pizza"));
 
         twoByTwo(RecipeCategory.MISC, ModBlocks.CHEESE_PIZZA.get(), 1, ModItems.CHEESE_PIZZA_SLICE.get())
@@ -246,14 +261,14 @@ public class ModRecipeProvider extends AbstractModRecipeProvider {
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.DELUXE_BURGER.get())
                 .requires(ItemTags.create(ResourceLocation.parse("c:foods/bread")))
-                .requires(vectorwing.farmersdelight.common.registry.ModItems.BEEF_PATTY.get())
+                .requires(BEEF_PATTY.get())
                 .requires(ItemTags.create(ResourceLocation.parse("c:foods/vegetable")))
                 .requires(ItemTags.create(ResourceLocation.parse("c:crops/tomato")))
                 .requires(ItemTags.create(ResourceLocation.parse("c:crops/onion")))
                 .requires(ItemTags.create(ResourceLocation.parse("c:cheese")))
-                .requires(vectorwing.farmersdelight.common.registry.ModItems.FRIED_EGG.get())
-                .requires(vectorwing.farmersdelight.common.registry.ModItems.COOKED_BACON.get())
-                .unlockedBy(getHasName(vectorwing.farmersdelight.common.registry.ModItems.BEEF_PATTY.get()), has(vectorwing.farmersdelight.common.registry.ModItems.BEEF_PATTY.get()))
+                .requires(FRIED_EGG.get())
+                .requires(COOKED_BACON.get())
+                .unlockedBy(getHasName(BEEF_PATTY.get()), has(BEEF_PATTY.get()))
                 .save(output, id("deluxe_burger"));
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.DELUXE_GRANOLA_BAR.get(), 4)
@@ -291,9 +306,9 @@ public class ModRecipeProvider extends AbstractModRecipeProvider {
                 .pattern("CEC")
                 .define('A', ItemTags.create(ResourceLocation.parse("c:cheese")))
                 .define('C', ItemTags.create(ResourceLocation.parse("c:foods/dough")))
-                .define('E', vectorwing.farmersdelight.common.registry.ModItems.TOMATO_SAUCE.get())
+                .define('E', TOMATO_SAUCE.get())
                 .define('Q', ItemTags.create(ResourceLocation.parse("c:foods/cooked_meat")))
-                .unlockedBy(getHasName(vectorwing.farmersdelight.common.registry.ModItems.TOMATO_SAUCE.get()), has(vectorwing.farmersdelight.common.registry.ModItems.TOMATO_SAUCE.get()))
+                .unlockedBy(getHasName(TOMATO_SAUCE.get()), has(TOMATO_SAUCE.get()))
                 .save(output, id("meat_pizza"));
 
         twoByTwo(RecipeCategory.MISC, ModBlocks.MEAT_PIZZA.get(), 1, ModItems.MEAT_PIZZA_SLICE.get())
@@ -313,12 +328,12 @@ public class ModRecipeProvider extends AbstractModRecipeProvider {
                 .unlockedBy(getHasName(ModItems.RAW_OAT.get()), has(ModItems.RAW_OAT.get()))
                 .save(output, id("oatmeal_cookie"));
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, vectorwing.farmersdelight.common.registry.ModItems.ORGANIC_COMPOST.get())
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ORGANIC_COMPOST.get())
                 .requires(Items.DIRT)
                 .requires(ModItems.ORGANIC_MASH.get())
                 .requires(ModItems.ORGANIC_MASH.get())
-                .requires(vectorwing.farmersdelight.common.registry.ModItems.STRAW.get())
-                .requires(vectorwing.farmersdelight.common.registry.ModItems.STRAW.get())
+                .requires(STRAW.get())
+                .requires(STRAW.get())
                 .requires(Items.BONE_MEAL)
                 .requires(Items.BONE_MEAL)
                 .requires(Items.BONE_MEAL)
@@ -326,16 +341,16 @@ public class ModRecipeProvider extends AbstractModRecipeProvider {
                 .unlockedBy(getHasName(ModItems.ORGANIC_MASH.get()), has(ModItems.ORGANIC_MASH.get()))
                 .save(output, id("organic_compost_from_rotten_flesh_mash"));
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, vectorwing.farmersdelight.common.registry.ModItems.ORGANIC_COMPOST.get())
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ORGANIC_COMPOST.get())
                 .requires(Items.DIRT)
-                .requires(vectorwing.farmersdelight.common.registry.ModItems.STRAW.get())
-                .requires(vectorwing.farmersdelight.common.registry.ModItems.STRAW.get())
+                .requires(STRAW.get())
+                .requires(STRAW.get())
                 .requires(Items.BONE_MEAL)
                 .requires(Items.BONE_MEAL)
                 .requires(ModItems.ORGANIC_MASH.get())
                 .requires(ModItems.ORGANIC_MASH.get())
-                .requires(vectorwing.farmersdelight.common.registry.ModItems.TREE_BARK.get())
-                .requires(vectorwing.farmersdelight.common.registry.ModItems.TREE_BARK.get())
+                .requires(TREE_BARK.get())
+                .requires(TREE_BARK.get())
                 .unlockedBy(getHasName(ModItems.ORGANIC_MASH.get()), has(ModItems.ORGANIC_MASH.get()))
                 .save(output, id("organic_compost_from_tree_bark_mash"));
 
@@ -381,12 +396,12 @@ public class ModRecipeProvider extends AbstractModRecipeProvider {
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.STUFFED_BURRITO.get())
                 .requires(ItemTags.create(ResourceLocation.parse("c:foods/bread")))
-                .requires(vectorwing.farmersdelight.common.registry.ModItems.BEEF_PATTY.get())
+                .requires(BEEF_PATTY.get())
                 .requires(ItemTags.create(ResourceLocation.parse("c:foods/vegetable")))
                 .requires(ItemTags.create(ResourceLocation.parse("c:crops/tomato")))
                 .requires(ItemTags.create(ResourceLocation.parse("c:cheese")))
                 .requires(ItemTags.create(ResourceLocation.parse("c:foods/vegetable/chili_pepper")))
-                .unlockedBy(getHasName(vectorwing.farmersdelight.common.registry.ModItems.BEEF_PATTY.get()), has(vectorwing.farmersdelight.common.registry.ModItems.BEEF_PATTY.get()))
+                .unlockedBy(getHasName(BEEF_PATTY.get()), has(BEEF_PATTY.get()))
                 .save(output, id("stuffed_burrito"));
         
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.CUCUMBER_DOUGH.get(), 2)
@@ -396,7 +411,7 @@ public class ModRecipeProvider extends AbstractModRecipeProvider {
                 .save(output, id("cucumber_dough"));
 
         jarToBottle(output, "honey_jar_deconstruct", ModItems.HONEY_JAR.get(), Items.HONEY_BOTTLE);
-        bottleToJar(output, "honey_jar", ModItems.HONEY_JAR.get(), ModItems.HONEY_JAR.get());
+        bottleToJar(output, "honey_jar", Items.HONEY_BOTTLE, ModItems.HONEY_JAR.get());
         jarToBottle(output, "jam/apple_sauce_jar_deconstruct", ModItems.APPLE_SAUCE.get(), ModItems.APPLE_SAUCE_BOTTLE.get());
         bottleToJar(output, "jam/apple_sauce_jar", ModItems.APPLE_SAUCE_BOTTLE.get(), ModItems.APPLE_SAUCE.get());
         jarToBottle(output, "jam/gearo_berry_jam_jar_deconstruct", ModItems.GEARO_BERRY_JAM.get(), ModItems.GEARO_BERRY_JAM_BOTTLE.get());
@@ -477,8 +492,8 @@ public class ModRecipeProvider extends AbstractModRecipeProvider {
                 .addIngredient(ModItems.GHOST_PEPPER.get())
                 .addIngredient(ModItems.GHOST_PEPPER.get())
                 .addIngredient(Items.CARROT)
-                .addIngredient(vectorwing.farmersdelight.common.registry.ModItems.TOMATO.get())
-                .addIngredient(vectorwing.farmersdelight.common.registry.ModItems.MINCED_BEEF.get())
+                .addIngredient(TOMATO.get())
+                .addIngredient(MINCED_BEEF.get())
                 .unlockedBy(getHasName(ModItems.GHOST_PEPPER.get()), has(ModItems.GHOST_PEPPER.get()))
                 .save(output, id("cooking/ghostly_chili"));
 
@@ -596,7 +611,7 @@ public class ModRecipeProvider extends AbstractModRecipeProvider {
                 .save(output, id("cutting/meat_pizza_from_cutting"));
 
         CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(ModItems.OAT.get()), knifeIngredient(), ModItems.RAW_OAT.get())
-                .addResult(vectorwing.farmersdelight.common.registry.ModItems.STRAW.get(), 1)
+                .addResult(STRAW.get(), 1)
                 .unlockedBy(getHasName(ModItems.OAT.get()), has(ModItems.OAT.get()))
                 .save(output, id("cutting/oat_cutting"));
 
@@ -606,12 +621,12 @@ public class ModRecipeProvider extends AbstractModRecipeProvider {
                 .save(output, id("cutting/pitcher_plant"));
 
         CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(ModBlocks.STRIPPED_MAGIC_VINE.get()), knifeIngredient(), ModItems.OAT.get(), 1)
-                .addResult(vectorwing.farmersdelight.common.registry.ModItems.TREE_BARK.get(), 1)
+                .addResult(TREE_BARK.get(), 1)
                 .unlockedBy(getHasName(ModBlocks.STRIPPED_MAGIC_VINE.get()), has(ModBlocks.STRIPPED_MAGIC_VINE.get()))
                 .save(output, id("cutting/stripped_magic_vine"));
 
         CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(ModBlocks.STRIPPED_MAGIC_VINE_BLOCK.get()), knifeIngredient(), ModItems.OAT.get(), 4)
-                .addResult(vectorwing.farmersdelight.common.registry.ModItems.TREE_BARK.get(), 1)
+                .addResult(TREE_BARK.get(), 1)
                 .unlockedBy(getHasName(ModBlocks.STRIPPED_MAGIC_VINE_BLOCK.get()), has(ModBlocks.STRIPPED_MAGIC_VINE_BLOCK.get()))
                 .save(output, id("cutting/stripped_magic_vine_block"));
 
@@ -634,10 +649,10 @@ public class ModRecipeProvider extends AbstractModRecipeProvider {
 
     private void registerFermentingRecipes(RecipeOutput output, HolderLookup.Provider registries) {
         FermentingRecipeBuilder.fermenting(ModItems.KIMCHI.get(), 4)
-                .requires(vectorwing.farmersdelight.common.registry.ModItems.CABBAGE_LEAF.get())
-                .requires(vectorwing.farmersdelight.common.registry.ModItems.CABBAGE_LEAF.get())
-                .requires(vectorwing.farmersdelight.common.registry.ModItems.CABBAGE_LEAF.get())
-                .requires(vectorwing.farmersdelight.common.registry.ModItems.CABBAGE_LEAF.get())
+                .requires(CABBAGE_LEAF.get())
+                .requires(CABBAGE_LEAF.get())
+                .requires(CABBAGE_LEAF.get())
+                .requires(CABBAGE_LEAF.get())
                 .requires(ItemTags.create(ResourceLocation.parse("c:salt")))
                 .requires(ItemTags.create(ResourceLocation.parse("c:foods/vegetable/chili_pepper")))
                 .withSecondaryOutput(ModItems.PICKLED_PEPPER.get(), 1)
@@ -750,7 +765,7 @@ public class ModRecipeProvider extends AbstractModRecipeProvider {
                 .requires(ModItems.RAW_OAT.get())
                 .requires(ItemTags.create(ResourceLocation.parse("c:foods/berry")))
                 .requires(ItemTags.create(ResourceLocation.parse("c:foods/berry")))
-                .requires(vectorwing.farmersdelight.common.registry.ModItems.PUMPKIN_SLICE.get())
+                .requires(PUMPKIN_SLICE.get())
                 .requires(Items.MELON_SLICE)
                 .requires(Items.APPLE)
                 .processingTime(1200)
@@ -815,7 +830,7 @@ public class ModRecipeProvider extends AbstractModRecipeProvider {
                 .requires(Items.SPIDER_EYE)
                 .requires(Items.SWEET_BERRIES)
                 .requires(Items.SUGAR)
-                .requires(vectorwing.farmersdelight.common.registry.ModItems.TOMATO_SEEDS.get())
+                .requires(TOMATO_SEEDS.get())
                 .processingTime(600)
                 .save(output, id("fermenting/brashing_tonic"));
 
@@ -830,8 +845,8 @@ public class ModRecipeProvider extends AbstractModRecipeProvider {
 
         FermentingRecipeBuilder.fermenting(potionStack(registries, "{id:\"minecraft:potion\",Count:1b,components:{\"minecraft:custom_name\":'{\"text\":\"Frost Fermenta\",\"italic\":false}',\"minecraft:dyed_color\":3937500,\"minecraft:potion_contents\":{custom_effects:[{id:\"minecraft:fire_resistance\",duration:3600},{id:\"minecraft:slowness\",duration:3600}]}}}"))
                 .requires(ModItems.GHOST_PEPPER_SEEDS.get())
-                .requires(vectorwing.farmersdelight.common.registry.ModItems.ROTTEN_TOMATO.get())
-                .requires(vectorwing.farmersdelight.common.registry.ModItems.MILK_BOTTLE.get())
+                .requires(ROTTEN_TOMATO.get())
+                .requires(MILK_BOTTLE.get())
                 .requires(Items.SNOWBALL)
                 .requires(Items.KELP)
                 .processingTime(600)
@@ -857,7 +872,7 @@ public class ModRecipeProvider extends AbstractModRecipeProvider {
                 .save(output, id("fermenting/oily_oaf"));
     }
 
-    private void saltLamp(RecipeOutput output, String name, String dyeTag, net.minecraft.world.level.ItemLike result, ResourceLocation shapedId) {
+    private void saltLamp(RecipeOutput output, String name, String dyeTag, ItemLike result, ResourceLocation shapedId) {
         ResourceLocation shaped = shapedId != null ? shapedId : id("salt_lamps/salt_lamp_" + name);
         ResourceLocation shapeless = id("salt_lamps/salt_lamp_" + name + ("default".equals(name) ? "2" : (name.equals("brown") || name.equals("cyan") || name.equals("gray") || name.equals("green") || name.equals("lime") ? "2" : "_2")));
 

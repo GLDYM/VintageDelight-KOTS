@@ -1,11 +1,15 @@
 package net.ribs.vintagedelight.datagen;
 
 import net.minecraft.core.HolderLookup;
+import net.minecraft.advancements.critereon.ItemPredicate;
+import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.AlternativesEntry;
@@ -26,8 +30,11 @@ import net.ribs.vintagedelight.block.SaltLayerBlock;
 import net.ribs.vintagedelight.init.ModBlocks;
 import net.ribs.vintagedelight.init.items.ModItems;
 import vectorwing.farmersdelight.common.block.PieBlock;
+import net.minecraft.tags.TagKey;
 
 import java.util.Set;
+
+import static vectorwing.farmersdelight.common.registry.ModBlocks.RICH_SOIL;
 
 public class ModBlockLoot extends BlockLootSubProvider {
     public ModBlockLoot(HolderLookup.Provider provider) {
@@ -103,11 +110,11 @@ public class ModBlockLoot extends BlockLootSubProvider {
         add(ModBlocks.WILD_GHOST_PEPPERS.get(), wildCropDrops(ModBlocks.WILD_GHOST_PEPPERS.get(), ModItems.GHOST_PEPPER_SEEDS.get(), ModItems.GHOST_PEPPER.get()));
         add(ModBlocks.OAT_CROP.get(), oatCropDrops());
         add(ModBlocks.PEANUT_CROP.get(), createCropDrops(ModBlocks.PEANUT_CROP.get(), ModItems.PEANUT.get(), ModItems.PEANUT.get(),
-                LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.PEANUT_CROP.get()).setProperties(net.minecraft.advancements.critereon.StatePropertiesPredicate.Builder.properties().hasProperty(OatBlock.AGE, 7))));
+                LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.PEANUT_CROP.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(OatBlock.AGE, 7))));
         add(ModBlocks.CUCUMBER_CROP.get(), createCropDrops(ModBlocks.CUCUMBER_CROP.get(), ModItems.CUCUMBER.get(), ModItems.CUCUMBER_SEEDS.get(),
-                LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.CUCUMBER_CROP.get()).setProperties(net.minecraft.advancements.critereon.StatePropertiesPredicate.Builder.properties().hasProperty(OatBlock.AGE, 7))));
+                LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.CUCUMBER_CROP.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(OatBlock.AGE, 7))));
         add(ModBlocks.GHOST_PEPPER_CROP.get(), createCropDrops(ModBlocks.GHOST_PEPPER_CROP.get(), ModItems.GHOST_PEPPER.get(), ModItems.GHOST_PEPPER_SEEDS.get(),
-                LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.GHOST_PEPPER_CROP.get()).setProperties(net.minecraft.advancements.critereon.StatePropertiesPredicate.Builder.properties().hasProperty(OatBlock.AGE, 7))));
+                LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.GHOST_PEPPER_CROP.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(OatBlock.AGE, 7))));
         add(ModBlocks.GEARO_BERRY_BUSH.get(), gearoBerryBushDrops());
         add(ModBlocks.CHEESE_WHEEL.get(), pieLikeDrops(ModBlocks.CHEESE_WHEEL.get(), ModItems.CHEESE_SLICE.get()));
         add(ModBlocks.CHEESE_PIZZA.get(), pieLikeDrops(ModBlocks.CHEESE_PIZZA.get(), ModItems.CHEESE_PIZZA_SLICE.get()));
@@ -148,22 +155,22 @@ public class ModBlockLoot extends BlockLootSubProvider {
     }
 
     private MatchTool.Builder hasShears() {
-        return MatchTool.toolMatches(net.minecraft.advancements.critereon.ItemPredicate.Builder.item().of(Tags.Items.TOOLS_SHEAR));
+        return MatchTool.toolMatches(ItemPredicate.Builder.item().of(Tags.Items.TOOLS_SHEAR));
     }
 
     private MatchTool.Builder hasKnife() {
-        return MatchTool.toolMatches(net.minecraft.advancements.critereon.ItemPredicate.Builder.item()
-                .of(net.minecraft.tags.TagKey.create(Registries.ITEM, net.minecraft.resources.ResourceLocation.parse("farmersdelight:tools/knives"))));
+        return MatchTool.toolMatches(ItemPredicate.Builder.item()
+                .of(TagKey.create(Registries.ITEM, ResourceLocation.parse("farmersdelight:tools/knives"))));
     }
 
     private LootTable.Builder lushGrassBlockDrops() {
         return createSilkTouchDispatchTable(ModBlocks.LUSH_GRASS_BLOCK.get(), applyExplosionCondition(ModBlocks.LUSH_GRASS_BLOCK.get(),
-                LootItem.lootTableItem(vectorwing.farmersdelight.common.registry.ModBlocks.RICH_SOIL.get())));
+                LootItem.lootTableItem(RICH_SOIL.get())));
     }
 
     private LootTable.Builder oatCropDrops() {
         var ripe = LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.OAT_CROP.get())
-                .setProperties(net.minecraft.advancements.critereon.StatePropertiesPredicate.Builder.properties().hasProperty(OatBlock.AGE, OatBlock.MAX_AGE));
+                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(OatBlock.AGE, OatBlock.MAX_AGE));
 
         return LootTable.lootTable()
                 .withPool(LootPool.lootPool()
@@ -180,9 +187,9 @@ public class ModBlockLoot extends BlockLootSubProvider {
 
     private LootTable.Builder gearoBerryBushDrops() {
         var age3 = LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.GEARO_BERRY_BUSH.get())
-                .setProperties(net.minecraft.advancements.critereon.StatePropertiesPredicate.Builder.properties().hasProperty(GearoBerryBushBlock.AGE, 3));
+                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(GearoBerryBushBlock.AGE, 3));
         var age4 = LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.GEARO_BERRY_BUSH.get())
-                .setProperties(net.minecraft.advancements.critereon.StatePropertiesPredicate.Builder.properties().hasProperty(GearoBerryBushBlock.AGE, GearoBerryBushBlock.MAX_AGE));
+                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(GearoBerryBushBlock.AGE, GearoBerryBushBlock.MAX_AGE));
         var fortune = registries.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.FORTUNE);
 
         return LootTable.lootTable()
@@ -204,23 +211,23 @@ public class ModBlockLoot extends BlockLootSubProvider {
         var fortune = registries.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.FORTUNE);
 
         return createSilkTouchDispatchTable(ModBlocks.GOLDEN_EGG.get(), applyExplosionCondition(ModBlocks.GOLDEN_EGG.get(),
-                LootItem.lootTableItem(net.minecraft.world.item.Items.GOLD_NUGGET)
+                LootItem.lootTableItem(Items.GOLD_NUGGET)
                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(8.0F, 32.0F)))
                         .apply(ApplyBonusCount.addUniformBonusCount(fortune, 1))))
                 .withPool(LootPool.lootPool()
                         .setRolls(ConstantValue.exactly(1))
                         .when(doesNotHaveSilkTouch())
-                        .add(LootItem.lootTableItem(net.minecraft.world.item.Items.GOLD_INGOT)
+                        .add(LootItem.lootTableItem(Items.GOLD_INGOT)
                                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 15.0F)))))
                 .withPool(LootPool.lootPool()
                         .setRolls(ConstantValue.exactly(1))
                         .when(doesNotHaveSilkTouch())
-                        .add(LootItem.lootTableItem(net.minecraft.world.item.Items.GOLDEN_APPLE)
+                        .add(LootItem.lootTableItem(Items.GOLDEN_APPLE)
                                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 7.0F)))))
                 .withPool(LootPool.lootPool()
                         .setRolls(ConstantValue.exactly(1))
                         .when(doesNotHaveSilkTouch())
-                        .add(LootItem.lootTableItem(net.minecraft.world.item.Items.GOLDEN_CARROT)
+                        .add(LootItem.lootTableItem(Items.GOLDEN_CARROT)
                                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 16.0F)))));
     }
 
@@ -229,7 +236,7 @@ public class ModBlockLoot extends BlockLootSubProvider {
         for (int bites = 0; bites < 4; bites++) {
             int remainingSlices = 4 - bites;
             var state = LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
-                    .setProperties(net.minecraft.advancements.critereon.StatePropertiesPredicate.Builder.properties().hasProperty(PieBlock.BITES, bites));
+                    .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(PieBlock.BITES, bites));
             table.withPool(applyExplosionCondition(block, LootPool.lootPool()
                     .setRolls(ConstantValue.exactly(1))
                     .when(state)
@@ -243,7 +250,7 @@ public class ModBlockLoot extends BlockLootSubProvider {
         var table = LootTable.lootTable();
         for (int layers = 1; layers <= 8; layers++) {
             var state = LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.SALT_LAYER.get())
-                    .setProperties(net.minecraft.advancements.critereon.StatePropertiesPredicate.Builder.properties().hasProperty(SaltLayerBlock.LAYERS, layers));
+                    .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(SaltLayerBlock.LAYERS, layers));
             table.withPool(LootPool.lootPool()
                     .setRolls(ConstantValue.exactly(1))
                     .add(AlternativesEntry.alternatives(

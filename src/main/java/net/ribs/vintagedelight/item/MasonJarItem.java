@@ -51,7 +51,7 @@ public class MasonJarItem extends Item {
         return super.use(world, player, hand);
     }
     @Override
-    public void appendHoverText(ItemStack itemStack, net.minecraft.world.item.Item.TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+    public void appendHoverText(ItemStack itemStack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
         super.appendHoverText(itemStack, context, tooltip, flag);
         tooltip.add(Component.translatable("item.vintagedelight.mason_jar.tooltip")
                 .withStyle(ChatFormatting.GRAY)

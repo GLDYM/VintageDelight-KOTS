@@ -22,6 +22,7 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.neoforged.neoforge.common.CommonHooks;
 import net.ribs.vintagedelight.init.items.ModItems;
 
 public class GearoBerryBushBlock extends BushBlock implements BonemealableBlock {
@@ -60,10 +61,10 @@ public class GearoBerryBushBlock extends BushBlock implements BonemealableBlock 
     @Override
     public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         int currentAge = state.getValue(AGE);
-        if (currentAge < MAX_AGE && level.getRawBrightness(pos.above(), 0) >= 9 && net.neoforged.neoforge.common.CommonHooks.canCropGrow(level, pos, state, random.nextInt(5) == 0)) {
+        if (currentAge < MAX_AGE && level.getRawBrightness(pos.above(), 0) >= 9 && CommonHooks.canCropGrow(level, pos, state, random.nextInt(5) == 0)) {
             BlockState newState = state.setValue(AGE, currentAge + 1);
             level.setBlock(pos, newState, 2);
-            net.neoforged.neoforge.common.CommonHooks.fireCropGrowPost(level, pos, state);
+            CommonHooks.fireCropGrowPost(level, pos, state);
         }
     }
 

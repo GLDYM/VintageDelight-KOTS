@@ -12,6 +12,7 @@ import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.data.recipes.SingleItemRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -121,7 +122,7 @@ public abstract class AbstractModRecipeProvider extends RecipeProvider {
         return Ingredient.of(item);
     }
 
-    protected Ingredient tagIngredient(net.minecraft.tags.TagKey<Item> tag) {
+    protected Ingredient tagIngredient(TagKey<Item> tag) {
         return Ingredient.of(tag);
     }
 }

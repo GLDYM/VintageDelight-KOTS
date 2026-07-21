@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_honey_mason_jar": {
+    "has_honey_bottle": {
       "conditions": {
         "items": [
           {
-            "items": "vintagedelight:honey_mason_jar"
+            "items": "minecraft:honey_bottle"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_honey_mason_jar"
+      "has_honey_bottle"
     ]
   ],
   "rewards": {

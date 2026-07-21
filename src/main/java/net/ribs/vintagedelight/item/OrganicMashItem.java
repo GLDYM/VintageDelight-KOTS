@@ -12,6 +12,7 @@ import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.neoforge.event.EventHooks;
 
 public class OrganicMashItem extends BoneMealItem {
     public OrganicMashItem(Properties pProperties) {
@@ -51,7 +52,7 @@ public class OrganicMashItem extends BoneMealItem {
 
     private static boolean applyBonemealWithoutConsume(ItemStack stack, Level level, BlockPos pos, Player player) {
         BlockState blockState = level.getBlockState(pos);
-        var event = net.neoforged.neoforge.event.EventHooks.fireBonemealEvent(player, level, pos, blockState, stack);
+        var event = EventHooks.fireBonemealEvent(player, level, pos, blockState, stack);
         if (event.isCanceled()) {
             return event.isSuccessful();
         }

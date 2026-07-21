@@ -1,7 +1,9 @@
 package net.ribs.vintagedelight.datagen;
 
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
@@ -77,7 +79,6 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
     }
 
     private static TagKey<Block> commonBlockTag(String path) {
-        return TagKey.create(net.minecraft.core.registries.Registries.BLOCK,
-                net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("c", path));
+        return TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("c", path));
     }
 }

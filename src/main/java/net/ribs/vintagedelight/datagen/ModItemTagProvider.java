@@ -1,12 +1,15 @@
 package net.ribs.vintagedelight.datagen;
 
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.ribs.vintagedelight.VintageDelight;
@@ -228,12 +231,12 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.PEANUT.get());
     }
 
-    private static TagKey<net.minecraft.world.level.block.Block> commonBlockTag(String path) {
-        return TagKey.create(net.minecraft.core.registries.Registries.BLOCK,
+    private static TagKey<Block> commonBlockTag(String path) {
+        return TagKey.create(Registries.BLOCK,
                 ResourceLocation.fromNamespaceAndPath("c", path));
     }
 
-    private static TagKey<net.minecraft.world.item.Item> commonItemTag(String path) {
+    private static TagKey<Item> commonItemTag(String path) {
         return ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", path));
     }
 }

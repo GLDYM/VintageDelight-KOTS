@@ -17,6 +17,7 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -244,7 +245,7 @@ public class FermentingJarBlockEntity extends BlockEntity implements MenuProvide
         }
         return recipeManager.getAllRecipesFor(FermentingRecipe.Type.INSTANCE).stream()
                 .filter(recipe -> recipe.value().matches(new FermentingRecipeInput(inventory), level))
-                .map(net.minecraft.world.item.crafting.RecipeHolder::value)
+                .map(RecipeHolder::value)
                 .findFirst();
     }
 
