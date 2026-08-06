@@ -7,5 +7,5 @@
       "loot_table_id": "minecraft:chests/ruined_portal"
     }
   ],
-  "lootTable": "vintagedelight:chests/vd_ruined_portal"
+  "table": "vintagedelight:chests/vd_ruined_portal"
 }

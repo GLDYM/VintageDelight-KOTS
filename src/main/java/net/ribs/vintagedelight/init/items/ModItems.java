@@ -57,7 +57,7 @@ public class ModItems {
     public static final DeferredItem<Item> GHOST_PEPPER = ITEMS.register("ghost_pepper",
             () -> new Item(new Item.Properties().food(ModFoods.GHOST_PEPPER)));
     public static final DeferredItem<Item> GHOST_PEPPER_SEEDS = ITEMS.register("ghost_pepper_seeds",
-            () -> new ItemNameBlockItem(ModBlocks.GHOST_PEPPER_CROP.get(), new Item.Properties()));
+            () -> new GhostPepperPlantingItem(ModBlocks.GHOST_PEPPER_CROP.get(), new Item.Properties()));
     public static final DeferredItem<Item> PICKLED_PEPPER = ITEMS.register("pickled_pepper",
             () -> new ConsumableItem( new Item.Properties().food(ModFoods.PICKLED_PEPPER), true));
     public static final DeferredItem<Item> CUCUMBER = ITEMS.register("cucumber",

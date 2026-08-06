@@ -16,6 +16,7 @@ import net.ribs.vintagedelight.init.ModMenuTypes;
 import net.ribs.vintagedelight.init.ModTags;
 
 public class FermentingJarMenu extends AbstractContainerMenu {
+    private static final int DATA_SLOT_COUNT = 2;
     private static final int HOTBAR_SLOT_COUNT = 9;
     private static final int PLAYER_INVENTORY_ROW_COUNT = 3;
     private static final int PLAYER_INVENTORY_COLUMN_COUNT = 9;
@@ -27,17 +28,17 @@ public class FermentingJarMenu extends AbstractContainerMenu {
     private static final int INPUT_SLOT_INDEX_END = INPUT_SLOT_INDEX_START + INPUT_SLOT_COUNT;
     private static final int CONTAINER_SLOT_INDEX = TE_INVENTORY_FIRST_SLOT_INDEX + CONTAINER_SLOT;
     private static final int OUTPUT_SLOT_INDEX_START = TE_INVENTORY_FIRST_SLOT_INDEX + FIRST_OUTPUT_SLOT;
-
     public final FermentingJarBlockEntity blockEntity;
     private final Level level;
     private final ContainerData data;
 
     public FermentingJarMenu(int pContainerId, Inventory inv, FriendlyByteBuf extraData) {
-        this(pContainerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(8));
+        this(pContainerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(DATA_SLOT_COUNT));
     }
     public FermentingJarMenu(int pContainerId, Inventory inv, BlockEntity entity, ContainerData data) {
         super(ModMenuTypes.FERMENTING_MENU.get(), pContainerId);
         checkContainerSize(inv, 7);
+        checkContainerDataCount(data, DATA_SLOT_COUNT);
         blockEntity = ((FermentingJarBlockEntity) entity);
         this.level = inv.player.level();
         this.data = data;
