@@ -22,7 +22,7 @@
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "vintagedelight:cheese_wheel"
+      "id": "vintagedelight:cheese_wheel"
     },
     "show_toast": true,
     "title": {

@@ -21,7 +21,7 @@
     "frame": "goal",
     "hidden": false,
     "icon": {
-      "item": "vintagedelight:evaporator"
+      "id": "vintagedelight:evaporator"
     },
     "show_toast": true,
     "title": {

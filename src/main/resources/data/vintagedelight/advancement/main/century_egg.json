@@ -1,0 +1,41 @@
+{
+  "parent": "vintagedelight:main/pickled_item",
+  "criteria": {
+    "obtain_century_egg": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "vintagedelight:century_egg"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "vintagedelight.advancement.obtain_century_egg.desc"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "id": "vintagedelight:century_egg"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "vintagedelight.advancement.obtain_century_egg"
+    }
+  },
+  "requirements": [
+    [
+      "obtain_century_egg"
+    ]
+  ],
+  "rewards": {
+    "experience": 400
+  },
+  "sends_telemetry_event": true
+}

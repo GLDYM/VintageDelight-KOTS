@@ -1,41 +1,37 @@
 {
   "parent": "vintagedelight:main/root",
   "criteria": {
-    "obtain_magic_peanut": {
+    "jam": {
       "conditions": {
         "items": [
           {
-            "items": [
-              "vintagedelight:magic_peanut"
-            ]
+            "tag": "vintagedelight:jam_jars"
           }
         ]
       },
       "trigger": "minecraft:inventory_changed"
     }
   },
+
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "vintagedelight.advancement.obtain_magic_peanut.desc"
+      "translate": "vintagedelight.advancement.get_jam_item.desc"
     },
-    "frame": "challenge",
-    "hidden": true,
+    "frame": "task",
+    "hidden": false,
     "icon": {
-      "item": "vintagedelight:magic_peanut"
+      "id": "vintagedelight:gearo_berry_mason_jar"
     },
     "show_toast": true,
     "title": {
-      "translate": "vintagedelight.advancement.obtain_magic_peanut"
+      "translate": "vintagedelight.advancement.get_jam_item"
     }
   },
   "requirements": [
     [
-      "obtain_magic_peanut"
+        "jam"
     ]
   ],
-  "rewards": {
-    "experience": 200
-  },
   "sends_telemetry_event": true
 }

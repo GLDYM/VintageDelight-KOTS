@@ -182,7 +182,7 @@ public class ModBlockLoot extends BlockLootSubProvider {
                 .withPool(applyExplosionCondition(ModBlocks.OAT_CROP.get(), LootPool.lootPool()
                         .setRolls(ConstantValue.exactly(1))
                         .add(LootItem.lootTableItem(ModItems.OAT_SEEDS.get())
-                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)).when(ripe).when(hasKnife())))));
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)).when(ripe)))));
     }
 
     private LootTable.Builder gearoBerryBushDrops() {

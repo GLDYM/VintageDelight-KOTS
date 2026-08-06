@@ -1,12 +1,12 @@
 {
-  "parent": "vintagedelight:main/pickled_item",
+  "parent": "vintagedelight:main/root",
   "criteria": {
-    "obtain_century_egg": {
+    "obtain_magic_peanut": {
       "conditions": {
         "items": [
           {
             "items": [
-              "vintagedelight:century_egg"
+              "vintagedelight:magic_peanut"
             ]
           }
         ]
@@ -17,25 +17,25 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "vintagedelight.advancement.obtain_century_egg.desc"
+      "translate": "vintagedelight.advancement.obtain_magic_peanut.desc"
     },
     "frame": "challenge",
-    "hidden": false,
+    "hidden": true,
     "icon": {
-      "item": "vintagedelight:century_egg"
+      "id": "vintagedelight:magic_peanut"
     },
     "show_toast": true,
     "title": {
-      "translate": "vintagedelight.advancement.obtain_century_egg"
+      "translate": "vintagedelight.advancement.obtain_magic_peanut"
     }
   },
   "requirements": [
     [
-      "obtain_century_egg"
+      "obtain_magic_peanut"
     ]
   ],
   "rewards": {
-    "experience": 400
+    "experience": 200
   },
   "sends_telemetry_event": true
 }

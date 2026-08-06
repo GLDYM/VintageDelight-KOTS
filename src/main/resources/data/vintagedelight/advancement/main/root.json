@@ -14,7 +14,7 @@
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "vintagedelight:fermenting_jar"
+      "id": "vintagedelight:fermenting_jar"
     },
     "show_toast": false,
     "title": {

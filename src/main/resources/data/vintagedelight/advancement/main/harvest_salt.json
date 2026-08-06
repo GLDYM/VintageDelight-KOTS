@@ -22,7 +22,7 @@
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "vintagedelight:salt_dust"
+      "id": "vintagedelight:salt_dust"
     },
     "show_toast": true,
     "title": {

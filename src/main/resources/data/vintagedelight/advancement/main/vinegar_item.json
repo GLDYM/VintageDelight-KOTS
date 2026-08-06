@@ -34,7 +34,7 @@
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "vintagedelight:vinegar_bottle"
+      "id": "vintagedelight:vinegar_bottle"
     },
     "show_toast": true,
     "title": {
