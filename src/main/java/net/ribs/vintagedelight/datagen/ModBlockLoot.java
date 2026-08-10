@@ -110,8 +110,7 @@ public class ModBlockLoot extends BlockLootSubProvider {
         add(ModBlocks.WILD_CUCUMBERS.get(), wildCropDrops(ModBlocks.WILD_CUCUMBERS.get(), ModItems.CUCUMBER_SEEDS.get(), ModItems.CUCUMBER.get()));
         add(ModBlocks.WILD_GHOST_PEPPERS.get(), wildCropDrops(ModBlocks.WILD_GHOST_PEPPERS.get(), ModItems.GHOST_PEPPER_SEEDS.get(), ModItems.GHOST_PEPPER.get()));
         add(ModBlocks.OAT_CROP.get(), oatCropDrops());
-        add(ModBlocks.PEANUT_CROP.get(), createCropDrops(ModBlocks.PEANUT_CROP.get(), ModItems.PEANUT.get(), ModItems.PEANUT.get(),
-                LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.PEANUT_CROP.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(OatBlock.AGE, 7))));
+        add(ModBlocks.PEANUT_CROP.get(), peanutCropDrops());
         add(ModBlocks.CUCUMBER_CROP.get(), createCropDrops(ModBlocks.CUCUMBER_CROP.get(), ModItems.CUCUMBER.get(), ModItems.CUCUMBER_SEEDS.get(),
                 LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.CUCUMBER_CROP.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(OatBlock.AGE, 7))));
         add(ModBlocks.GHOST_PEPPER_CROP.get(), createCropDrops(ModBlocks.GHOST_PEPPER_CROP.get(), ModItems.GHOST_PEPPER.get(), ModItems.GHOST_PEPPER_SEEDS.get(),
@@ -161,7 +160,7 @@ public class ModBlockLoot extends BlockLootSubProvider {
 
     private MatchTool.Builder hasKnife() {
         return MatchTool.toolMatches(ItemPredicate.Builder.item()
-                .of(TagKey.create(Registries.ITEM, ResourceLocation.parse("farmersdelight:tools/knives"))));
+                .of(TagKey.create(Registries.ITEM, ResourceLocation.parse("c:tools/knife"))));
     }
 
     private LootTable.Builder lushGrassBlockDrops() {
@@ -188,7 +187,19 @@ public class ModBlockLoot extends BlockLootSubProvider {
                         .setRolls(ConstantValue.exactly(1))
                         .when(ripe)
                         .when(hasKnife())
-                        .add(LootItem.lootTableItem(STRAW.get()))));
+                .add(LootItem.lootTableItem(STRAW.get()))));
+    }
+
+    private LootTable.Builder peanutCropDrops() {
+        var ripe = LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.PEANUT_CROP.get())
+                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(OatBlock.AGE, OatBlock.MAX_AGE));
+
+        return createCropDrops(ModBlocks.PEANUT_CROP.get(), ModItems.PEANUT.get(), ModItems.PEANUT.get(), ripe)
+                .withPool(applyExplosionCondition(ModBlocks.PEANUT_CROP.get(), LootPool.lootPool()
+                        .setRolls(ConstantValue.exactly(1))
+                        .when(ripe)
+                        .when(LootItemRandomChanceCondition.randomChance(0.01F))
+                        .add(LootItem.lootTableItem(ModBlocks.MAGIC_PEANUT.get().asItem()))));
     }
 
     private LootTable.Builder gearoBerryBushDrops() {

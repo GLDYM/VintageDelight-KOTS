@@ -20,7 +20,7 @@
                 {
                   "condition": "minecraft:match_tool",
                   "predicate": {
-                    "items": "#farmersdelight:tools/knives"
+                    "items": "#c:tools/knife"
                   }
                 }
               ],
@@ -92,7 +92,7 @@
         {
           "condition": "minecraft:match_tool",
           "predicate": {
-            "items": "#farmersdelight:tools/knives"
+            "items": "#c:tools/knife"
           }
         },
         {
