@@ -26,6 +26,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.ribs.vintagedelight.init.items.ModItems;
+import net.ribs.vintagedelight.item.MasonJarItem;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 
@@ -138,24 +139,21 @@ public class MasonJarBlock extends Block implements SimpleWaterloggedBlock {
         return getJarItemStack();
     }
 
-    public boolean tryPlaceJar(Level world, BlockPos pos, Player player, ItemStack itemStack) {
-        if (!world.getBlockState(pos).is(this)) {
-            pos = pos.relative(player.getDirection().getOpposite());
-        }
-        BlockState state = world.getBlockState(pos);
-        if (state.is(this)) {
-            int jars = state.getValue(JARS);
-            if (jars < MAX_JARS) {
-                world.setBlock(pos, state.setValue(JARS, jars + 1), 3);
-                itemStack.shrink(1);
-                return true;
+    public boolean tryIncreaseCount(Level level, BlockPos pos, BlockState state, ItemStack stack, Player player) {
+        if (state.is(this) && state.getValue(JARS) < MAX_JARS) {
+            if (!level.isClientSide) {
+                level.setBlock(pos, state.setValue(JARS, state.getValue(JARS) + 1), 3);
+                consumePlacedItem(player, stack);
             }
-        } else if (world.isEmptyBlock(pos)) {
-            world.setBlock(pos, this.defaultBlockState(), 3);
-            itemStack.shrink(1);
             return true;
         }
         return false;
+    }
+
+    public static void consumePlacedItem(Player player, ItemStack itemStack) {
+        if (!player.isCreative()) {
+            itemStack.shrink(1);
+        }
     }
     @Override
     public BlockState rotate(BlockState state, Rotation rotation) {
@@ -167,19 +165,30 @@ public class MasonJarBlock extends Block implements SimpleWaterloggedBlock {
     }
     @Override
     protected InteractionResult useWithoutItem(BlockState state, Level world, BlockPos pos, Player player, BlockHitResult hit) {
+        if (player.getMainHandItem().getItem() instanceof MasonJarItem
+                || player.getOffhandItem().getItem() instanceof MasonJarItem) {
+            return InteractionResult.PASS;
+        }
         if (!world.isClientSide) {
             int jars = state.getValue(JARS);
             if (jars > 1) {
                 world.setBlock(pos, state.setValue(JARS, jars - 1), 3);
-                popResource(world, pos, getJarItemStack());
+                giveJarToPlayerOrDrop(world, pos, player);
                 return InteractionResult.SUCCESS;
             } else if (jars == 1) {
                 world.removeBlock(pos, false);
-                popResource(world, pos, getJarItemStack());
+                giveJarToPlayerOrDrop(world, pos, player);
                 return InteractionResult.SUCCESS;
             }
         }
         return super.useWithoutItem(state, world, pos, player, hit);
+    }
+
+    private void giveJarToPlayerOrDrop(Level level, BlockPos pos, Player player) {
+        ItemStack stack = getJarItemStack();
+        if (!player.getInventory().add(stack)) {
+            popResource(level, pos, stack);
+        }
     }
 
 }

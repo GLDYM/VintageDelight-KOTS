@@ -1,3 +1,6 @@
 {
-  "parent": "vintagedelight:block/wild_ghost_peppers"
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "vintagedelight:block/wild_ghost_peppers"
+  }
 }

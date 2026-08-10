@@ -1,7 +1,124 @@
 {
   "variants": {
-    "": {
+    "facing=east,jars=1,waterlogged=false": {
+      "model": "vintagedelight:block/vinegar_jar_one_jar",
+      "y": 90
+    },
+    "facing=east,jars=1,waterlogged=true": {
+      "model": "vintagedelight:block/vinegar_jar_one_jar",
+      "y": 90
+    },
+    "facing=east,jars=2,waterlogged=false": {
+      "model": "vintagedelight:block/vinegar_jar_two_jar",
+      "y": 90
+    },
+    "facing=east,jars=2,waterlogged=true": {
+      "model": "vintagedelight:block/vinegar_jar_two_jar",
+      "y": 90
+    },
+    "facing=east,jars=3,waterlogged=false": {
+      "model": "vintagedelight:block/vinegar_jar_three_jar",
+      "y": 90
+    },
+    "facing=east,jars=3,waterlogged=true": {
+      "model": "vintagedelight:block/vinegar_jar_three_jar",
+      "y": 90
+    },
+    "facing=east,jars=4,waterlogged=false": {
+      "model": "vintagedelight:block/vinegar_jar_four_jar",
+      "y": 90
+    },
+    "facing=east,jars=4,waterlogged=true": {
+      "model": "vintagedelight:block/vinegar_jar_four_jar",
+      "y": 90
+    },
+    "facing=north,jars=1,waterlogged=false": {
       "model": "vintagedelight:block/vinegar_jar_one_jar"
+    },
+    "facing=north,jars=1,waterlogged=true": {
+      "model": "vintagedelight:block/vinegar_jar_one_jar"
+    },
+    "facing=north,jars=2,waterlogged=false": {
+      "model": "vintagedelight:block/vinegar_jar_two_jar"
+    },
+    "facing=north,jars=2,waterlogged=true": {
+      "model": "vintagedelight:block/vinegar_jar_two_jar"
+    },
+    "facing=north,jars=3,waterlogged=false": {
+      "model": "vintagedelight:block/vinegar_jar_three_jar"
+    },
+    "facing=north,jars=3,waterlogged=true": {
+      "model": "vintagedelight:block/vinegar_jar_three_jar"
+    },
+    "facing=north,jars=4,waterlogged=false": {
+      "model": "vintagedelight:block/vinegar_jar_four_jar"
+    },
+    "facing=north,jars=4,waterlogged=true": {
+      "model": "vintagedelight:block/vinegar_jar_four_jar"
+    },
+    "facing=south,jars=1,waterlogged=false": {
+      "model": "vintagedelight:block/vinegar_jar_one_jar",
+      "y": 180
+    },
+    "facing=south,jars=1,waterlogged=true": {
+      "model": "vintagedelight:block/vinegar_jar_one_jar",
+      "y": 180
+    },
+    "facing=south,jars=2,waterlogged=false": {
+      "model": "vintagedelight:block/vinegar_jar_two_jar",
+      "y": 180
+    },
+    "facing=south,jars=2,waterlogged=true": {
+      "model": "vintagedelight:block/vinegar_jar_two_jar",
+      "y": 180
+    },
+    "facing=south,jars=3,waterlogged=false": {
+      "model": "vintagedelight:block/vinegar_jar_three_jar",
+      "y": 180
+    },
+    "facing=south,jars=3,waterlogged=true": {
+      "model": "vintagedelight:block/vinegar_jar_three_jar",
+      "y": 180
+    },
+    "facing=south,jars=4,waterlogged=false": {
+      "model": "vintagedelight:block/vinegar_jar_four_jar",
+      "y": 180
+    },
+    "facing=south,jars=4,waterlogged=true": {
+      "model": "vintagedelight:block/vinegar_jar_four_jar",
+      "y": 180
+    },
+    "facing=west,jars=1,waterlogged=false": {
+      "model": "vintagedelight:block/vinegar_jar_one_jar",
+      "y": 270
+    },
+    "facing=west,jars=1,waterlogged=true": {
+      "model": "vintagedelight:block/vinegar_jar_one_jar",
+      "y": 270
+    },
+    "facing=west,jars=2,waterlogged=false": {
+      "model": "vintagedelight:block/vinegar_jar_two_jar",
+      "y": 270
+    },
+    "facing=west,jars=2,waterlogged=true": {
+      "model": "vintagedelight:block/vinegar_jar_two_jar",
+      "y": 270
+    },
+    "facing=west,jars=3,waterlogged=false": {
+      "model": "vintagedelight:block/vinegar_jar_three_jar",
+      "y": 270
+    },
+    "facing=west,jars=3,waterlogged=true": {
+      "model": "vintagedelight:block/vinegar_jar_three_jar",
+      "y": 270
+    },
+    "facing=west,jars=4,waterlogged=false": {
+      "model": "vintagedelight:block/vinegar_jar_four_jar",
+      "y": 270
+    },
+    "facing=west,jars=4,waterlogged=true": {
+      "model": "vintagedelight:block/vinegar_jar_four_jar",
+      "y": 270
     }
   }
 }

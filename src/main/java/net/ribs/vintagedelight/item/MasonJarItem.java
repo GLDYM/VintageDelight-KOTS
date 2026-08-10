@@ -2,57 +2,52 @@ package net.ribs.vintagedelight.item;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.ClipContext;
+import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.HitResult;
 import net.ribs.vintagedelight.block.MasonJarBlock;
-import net.ribs.vintagedelight.init.ModBlocks;
 
 import java.util.List;
 
-public class MasonJarItem extends Item {
-        public MasonJarItem() {
-            super(new Item.Properties());
-        }
-    @Override
-    public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
-        ItemStack itemStack = player.getItemInHand(hand);
-        BlockHitResult hitResult = getPlayerPOVHitResult(world, player, ClipContext.Fluid.NONE);
-
-        if (hitResult.getType() == HitResult.Type.BLOCK) {
-            BlockPos blockPos = hitResult.getBlockPos();
-            Direction direction = hitResult.getDirection();
-            BlockPos placePos = player.isCrouching() ? blockPos.relative(direction) : blockPos;
-            MasonJarBlock masonJarBlock = (MasonJarBlock) ModBlocks.EMPTY_MASON_JAR.get();
-            BlockState existingState = world.getBlockState(placePos);
-
-            if (existingState.getBlock() instanceof MasonJarBlock && !player.isCrouching()) {
-                if (masonJarBlock.tryPlaceJar(world, placePos, player, itemStack)) {
-                    return InteractionResultHolder.success(itemStack);
-                }
-            } else if (player.isCrouching() && existingState.canBeReplaced(new BlockPlaceContext(player, hand, itemStack, hitResult))) {
-                Direction facingDirection = player.getDirection().getOpposite();
-                world.setBlock(placePos, masonJarBlock.defaultBlockState().setValue(MasonJarBlock.FACING, facingDirection), 3);
-                itemStack.shrink(1);
-                return InteractionResultHolder.success(itemStack);
-            }
-        }
-        return super.use(world, player, hand);
+public class MasonJarItem extends BlockItem {
+    public MasonJarItem(Block block, Item.Properties properties) {
+        super(block, properties);
     }
+
     @Override
-    public void appendHoverText(ItemStack itemStack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-        super.appendHoverText(itemStack, context, tooltip, flag);
+    public InteractionResult useOn(UseOnContext context) {
+        Level level = context.getLevel();
+        Player player = context.getPlayer();
+        BlockPos pos = context.getClickedPos();
+        ItemStack stack = context.getItemInHand();
+        BlockState state = level.getBlockState(pos);
+
+        if (player != null && getBlock() instanceof MasonJarBlock jar
+                && jar.tryIncreaseCount(level, pos, state, stack, player)) {
+            return InteractionResult.CONSUME;
+        }
+
+        if (player == null || player.isShiftKeyDown()) {
+            return this.place(new BlockPlaceContext(context));
+        }
+
+        InteractionResult result = this.use(level, player, context.getHand()).getResult();
+        return result == InteractionResult.CONSUME ? InteractionResult.CONSUME_PARTIAL : result;
+    }
+
+    @Override
+    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip,
+                                TooltipFlag flag) {
+        super.appendHoverText(stack, context, tooltip, flag);
         tooltip.add(Component.translatable("item.vintagedelight.mason_jar.tooltip")
                 .withStyle(ChatFormatting.GRAY)
                 .withStyle(style -> style.withItalic(true)));

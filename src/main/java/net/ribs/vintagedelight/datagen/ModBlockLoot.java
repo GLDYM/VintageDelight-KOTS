@@ -35,6 +35,7 @@ import net.minecraft.tags.TagKey;
 import java.util.Set;
 
 import static vectorwing.farmersdelight.common.registry.ModBlocks.RICH_SOIL;
+import static vectorwing.farmersdelight.common.registry.ModItems.STRAW;
 
 public class ModBlockLoot extends BlockLootSubProvider {
     public ModBlockLoot(HolderLookup.Provider provider) {
@@ -182,7 +183,12 @@ public class ModBlockLoot extends BlockLootSubProvider {
                 .withPool(applyExplosionCondition(ModBlocks.OAT_CROP.get(), LootPool.lootPool()
                         .setRolls(ConstantValue.exactly(1))
                         .add(LootItem.lootTableItem(ModItems.OAT_SEEDS.get())
-                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)).when(ripe)))));
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F)).when(ripe)))))
+                .withPool(applyExplosionCondition(ModBlocks.OAT_CROP.get(), LootPool.lootPool()
+                        .setRolls(ConstantValue.exactly(1))
+                        .when(ripe)
+                        .when(hasKnife())
+                        .add(LootItem.lootTableItem(STRAW.get()))));
     }
 
     private LootTable.Builder gearoBerryBushDrops() {

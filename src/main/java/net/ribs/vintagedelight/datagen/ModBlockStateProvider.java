@@ -89,15 +89,24 @@ public class ModBlockStateProvider extends BlockStateProvider {
         jarModels("honey_jar", "honey_interior_texture");
         jarModels("nut_mash_jar", "nut_mash_interior_texture");
 
-        simpleGeneratedBlock(ModBlocks.EMPTY_MASON_JAR.get(), "mason_jar_one_jar");
-        simpleGeneratedBlock(ModBlocks.VINEGAR_JAR.get(), "vinegar_jar_one_jar");
-        simpleGeneratedBlock(ModBlocks.PEPPER_JAM_JAR.get(), "pepper_jam_jar_one_jar");
-        simpleGeneratedBlock(ModBlocks.GEARO_BERRY_JAM_JAR.get(), "gearo_berry_jam_jar_one_jar");
-        simpleGeneratedBlock(ModBlocks.SWEET_BERRY_JAM_JAR.get(), "sweet_berry_jam_jar_one_jar");
-        simpleGeneratedBlock(ModBlocks.GLOW_BERRY_JAM_JAR.get(), "glow_berry_jam_jar_one_jar");
-        simpleGeneratedBlock(ModBlocks.APPLE_SAUCE_JAR.get(), "apple_sauce_jar_one_jar");
-        simpleGeneratedBlock(ModBlocks.RELISH_JAR.get(), "relish_jar_one_jar");
-        simpleGeneratedBlock(ModBlocks.HONEY_JAR.get(), "honey_jar_one_jar");
+        jarBlock(ModBlocks.EMPTY_MASON_JAR.get(), "mason_jar_one_jar", "mason_jar_two_jar",
+                "mason_jar_three_jar", "mason_jar_four_jar");
+        jarBlock(ModBlocks.VINEGAR_JAR.get(), "vinegar_jar_one_jar", "vinegar_jar_two_jar",
+                "vinegar_jar_three_jar", "vinegar_jar_four_jar");
+        jarBlock(ModBlocks.PEPPER_JAM_JAR.get(), "pepper_jam_jar_one_jar", "pepper_jam_jar_two_jar",
+                "pepper_jam_jar_three_jar", "pepper_jam_jar_four_jar");
+        jarBlock(ModBlocks.GEARO_BERRY_JAM_JAR.get(), "gearo_berry_jam_jar_one_jar", "gearo_berry_jam_jar_two_jar",
+                "gearo_berry_jam_jar_three_jar", "gearo_berry_jam_jar_four_jar");
+        jarBlock(ModBlocks.SWEET_BERRY_JAM_JAR.get(), "sweet_berry_jam_jar_one_jar", "sweet_berry_jam_jar_two_jar",
+                "sweet_berry_jam_jar_three_jar", "sweet_berry_jam_jar_four_jar");
+        jarBlock(ModBlocks.GLOW_BERRY_JAM_JAR.get(), "glow_berry_jam_jar_one_jar", "glow_berry_jam_jar_two_jar",
+                "glow_berry_jam_jar_three_jar", "glow_berry_jam_jar_four_jar");
+        jarBlock(ModBlocks.APPLE_SAUCE_JAR.get(), "apple_sauce_jar_one_jar", "apple_sauce_jar_two_jar",
+                "apple_sauce_jar_three_jar", "apple_sauce_jar_four_jar");
+        jarBlock(ModBlocks.RELISH_JAR.get(), "relish_jar_one_jar", "relish_jar_two_jar",
+                "relish_jar_three_jar", "relish_jar_four_jar");
+        jarBlock(ModBlocks.HONEY_JAR.get(), "honey_jar_one_jar", "honey_jar_two_jar",
+                "honey_jar_three_jar", "honey_jar_four_jar");
         simpleExistingBlock(ModBlocks.GOLDEN_EGG.get(), "golden_egg");
         simpleBlock(ModBlocks.EVAPORATOR.get(), models().cubeBottomTop("evaporator",
                 modLoc("block/evaporator_side"),
@@ -278,7 +287,17 @@ public class ModBlockStateProvider extends BlockStateProvider {
         String[] models = {one, two, three, four};
         getVariantBuilder(block).forAllStates(state -> ConfiguredModel.builder()
                 .modelFile(existingModel(models[state.getValue(MasonJarBlock.JARS) - 1]))
+                .rotationY(horizontalRotation(state.getValue(MasonJarBlock.FACING)))
                 .build());
+    }
+
+    private int horizontalRotation(net.minecraft.core.Direction direction) {
+        return switch (direction) {
+            case EAST -> 90;
+            case SOUTH -> 180;
+            case WEST -> 270;
+            default -> 0;
+        };
     }
 
     private void saltLayerBlock(Block block) {

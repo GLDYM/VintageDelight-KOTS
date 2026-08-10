@@ -34,7 +34,7 @@ public class ModItems {
         return new Item.Properties();
     }
     public static final DeferredItem<Item> MASON_JAR = ITEMS.register("mason_jar",
-            MasonJarItem::new);
+            () -> new MasonJarItem(ModBlocks.EMPTY_MASON_JAR.get(), new Item.Properties()));
     public static final DeferredItem<Item> SALT_BUCKET = ITEMS.register("salt_bucket",
             () -> new Item(new Item.Properties().stacksTo(1).craftRemainder(Items.BUCKET)));
     public static final DeferredItem<Item> OAT = ITEMS.register("oat",
@@ -95,37 +95,37 @@ public class ModItems {
     public static final DeferredItem<Item> DELUXE_GRANOLA_BAR = ITEMS.register("deluxe_granola_bar",
             () -> new ConsumableItem(basicItem(ModFoods.DELUXE_GRANOLA_BAR), true));
     public static final DeferredItem<Item> RELISH = ITEMS.register("relish_mason_jar",
-            RelishItem::new);
+            () -> new MasonJarItem(ModBlocks.RELISH_JAR.get(), jarItem(ModFoods.RELISH)));
     public static final DeferredItem<Item> RELISH_BOTTLE = ITEMS.register("relish_bottle",
             () -> new ConsumableItem(bottleItem(ModFoods.RELISH_BOTTLE), true));
     public static final DeferredItem<Item> APPLE_SAUCE = ITEMS.register("apple_sauce_mason_jar",
-            AppleSauceItem::new);
+            () -> new MasonJarItem(ModBlocks.APPLE_SAUCE_JAR.get(), jarItem(ModFoods.APPLE_SAUCE)));
 
     public static final DeferredItem<Item> HONEY_JAR = ITEMS.register("honey_mason_jar",
-            HoneyItem::new);
+            () -> new MasonJarItem(ModBlocks.HONEY_JAR.get(), jarItem(ModFoods.HONEY_JAR)));
     public static final DeferredItem<Item> APPLE_SAUCE_BOTTLE = ITEMS.register("apple_sauce_bottle",
             () -> new ConsumableItem(bottleItem(ModFoods.APPLE_SAUCE_BOTTLE), true));
 
     public static final DeferredItem<Item> SWEET_BERRY_JAM = ITEMS.register("sweet_berry_mason_jar",
-            SweetBerryJamItem::new);
+            () -> new MasonJarItem(ModBlocks.SWEET_BERRY_JAM_JAR.get(), jarItem(ModFoods.SWEET_BERRY_JAM)));
     public static final DeferredItem<Item> SWEET_BERRY_JAM_BOTTLE = ITEMS.register("sweet_berry_jam_bottle",
             () -> new ConsumableItem(bottleItem(ModFoods.SWEET_BERRY_JAM_BOTTLE), true));
 
     public static final DeferredItem<Item> GLOW_BERRY_JAM = ITEMS.register("glow_berry_mason_jar",
-            GlowBerryJamItem::new);
+            () -> new MasonJarItem(ModBlocks.GLOW_BERRY_JAM_JAR.get(), jarItem(ModFoods.GLOW_BERRY_JAM)));
     public static final DeferredItem<Item> GLOW_BERRY_JAM_BOTTLE = ITEMS.register("glow_berry_jam_bottle",
             () -> new ConsumableItem(bottleItem(ModFoods.GLOW_BERRY_JAM_BOTTLE), true));
 
     public static final DeferredItem<Item> GEARO_BERRY_JAM = ITEMS.register("gearo_berry_mason_jar",
-            GearoBerryJamItem::new);
+            () -> new MasonJarItem(ModBlocks.GEARO_BERRY_JAM_JAR.get(), jarItem(ModFoods.GEARO_BERRY_JAM)));
     public static final DeferredItem<Item> GEARO_BERRY_JAM_BOTTLE = ITEMS.register("gearo_berry_jam_bottle",
             () -> new ConsumableItem(bottleItem(ModFoods.GEARO_BERRY_JAM_BOTTLE), true));
     public static final DeferredItem<Item> PEPPER_JAM_JAR = ITEMS.register("pepper_jam_mason_jar",
-            PepperJamItem::new);
+            () -> new MasonJarItem(ModBlocks.PEPPER_JAM_JAR.get(), jarItem(ModFoods.PEPPER_JAM)));
     public static final DeferredItem<Item> PEPPER_JAM_BOTTLE = ITEMS.register("pepper_jam_bottle",
             () -> new ConsumableItem(bottleItem(ModFoods.PEPPER_JAM_BOTTLE), true));
     public static final DeferredItem<Item> NUT_MASH = ITEMS.register("nut_mash_mason_jar",
-            NutMashItem::new);
+            () -> new MasonJarItem(ModBlocks.NUT_MASH_JAR.get(), jarItem(ModFoods.NUT_MASH)));
     public static final DeferredItem<Item> NUT_MASH_BOTTLE = ITEMS.register("nut_mash_bottle",
             () -> new ConsumableItem(bottleItem(ModFoods.NUT_MASH_BOTTLE), true));
     public static final DeferredItem<Item> NUT_MILK = ITEMS.register("nut_milk_bottle",
@@ -133,7 +133,7 @@ public class ModItems {
     public static final DeferredItem<Item> SALT_DUST = ITEMS.register("salt_dust",
             () -> new SaltDustItem(new Item.Properties()));
     public static final DeferredItem<Item> VINEGAR = ITEMS.register("vinegar_mason_jar",
-            VinegarItem::new);
+            () -> new MasonJarItem(ModBlocks.VINEGAR_JAR.get(), jarItem(ModFoods.VINEGAR_JAR)));
     public static final DeferredItem<Item> VINEGAR_BOTTLE = ITEMS.register("vinegar_bottle",
             () -> new ConsumableItem(bottleItem(ModFoods.VINEGAR), true));
     public static final DeferredItem<Item> ORGANIC_MASH = ITEMS.register("organic_mash",

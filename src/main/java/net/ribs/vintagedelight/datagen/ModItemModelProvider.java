@@ -100,10 +100,10 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleBlockItem(ModBlocks.VINE_TILE.get());
         simpleBlockItem(ModBlocks.VINE_TILE_SLAB.get());
         simpleBlockItem(ModBlocks.VINE_TILE_STAIRS.get());
-        simpleGeneratedBlockItem(ModBlocks.WILD_CUCUMBERS.get());
-        simpleGeneratedBlockItem(ModBlocks.WILD_GHOST_PEPPERS.get());
-        simpleGeneratedBlockItem(ModBlocks.WILD_OATS.get());
-        simpleGeneratedBlockItem(ModBlocks.WILD_PEANUTS.get());
+        blockTextureItem("wild_cucumbers", "wild_cucumbers");
+        blockTextureItem("wild_ghost_peppers", "wild_ghost_peppers");
+        blockTextureItem("wild_oats", "wild_oats");
+        blockTextureItem("wild_peanuts", "wild_peanuts");
         aliasedBlockItem(ModBlocks.APPLE_SAUCE_JAR.get(), "apple_sauce_jar_one_jar");
     }
 
