@@ -78,7 +78,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 modLoc("block/oat_block_side"),
                 modLoc("block/oat_block_top"));
         simpleExistingBlock(ModBlocks.LUSH_GRASS_BLOCK.get(), "lush_grass_block");
-        jarModels("mason_jar", "mason_jar_texture");
+        emptyJarModels();
         jarModels("vinegar_jar", "vinegar_interior_texture");
         jarModels("pepper_jam_jar", "pepper_jam_interior_texture");
         jarModels("gearo_berry_jam_jar", "gearo_berry_jam_interior_texture");
@@ -321,6 +321,12 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 .withExistingParent(prefix + "_" + size + "_jar", modLoc("block/template_mason_jar_" + size))
                 .renderType("cutout")
                 .texture("2", modLoc("block/" + interiorTexture)));
+    }
+
+    private void emptyJarModels() {
+        List.of("one", "two", "three", "four").forEach(size -> models()
+                .withExistingParent("mason_jar_" + size + "_jar", modLoc("block/template_empty_mason_jar_" + size))
+                .renderType("cutout"));
     }
 
     private void cross(String modelName) {

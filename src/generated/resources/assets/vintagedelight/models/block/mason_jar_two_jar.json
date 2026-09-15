@@ -1,7 +1,4 @@
 {
-  "parent": "vintagedelight:block/template_mason_jar_two",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "2": "vintagedelight:block/mason_jar_texture"
-  }
+  "parent": "vintagedelight:block/template_empty_mason_jar_two",
+  "render_type": "minecraft:cutout"
 }

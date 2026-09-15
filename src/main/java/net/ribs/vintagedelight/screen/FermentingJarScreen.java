@@ -12,9 +12,17 @@ import net.ribs.vintagedelight.VintageDelight;
 public class FermentingJarScreen extends AbstractContainerScreen<FermentingJarMenu> {
     private static final ResourceLocation TEXTURE =
             ResourceLocation.fromNamespaceAndPath(VintageDelight.MODID, "textures/gui/fermenting_jar_gui.png");
+    private static final int BACKGROUND_WIDTH = 176;
+    private static final int BACKGROUND_HEIGHT = 166;
+    private static final int PROGRESS_ARROW_U = 176;
+    private static final int PROGRESS_ARROW_V = 0;
+    private static final int PROGRESS_ARROW_HEIGHT = 17;
+
 
     public FermentingJarScreen(FermentingJarMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
         super(pMenu, pPlayerInventory, pTitle);
+        this.imageWidth = BACKGROUND_WIDTH;
+        this.imageHeight = BACKGROUND_HEIGHT;
     }
 
     @Override
@@ -38,13 +46,10 @@ public class FermentingJarScreen extends AbstractContainerScreen<FermentingJarMe
 
     private void renderProgressArrow(GuiGraphics guiGraphics, int x, int y) {
         if (menu.isCrafting()) {
-            int arrowStaticWidth = 30;
-            int textureArrowX = 176;
-            int textureArrowY = 0;
             int arrowX = x + 84;
             int arrowY = y + 32;
             int drawWidth = menu.getScaledProgress();
-            guiGraphics.blit(TEXTURE, arrowX, arrowY, textureArrowX, textureArrowY, drawWidth, arrowStaticWidth);
+            guiGraphics.blit(TEXTURE, arrowX, arrowY, PROGRESS_ARROW_U, PROGRESS_ARROW_V, drawWidth, PROGRESS_ARROW_HEIGHT);
         }
     }
     @Override

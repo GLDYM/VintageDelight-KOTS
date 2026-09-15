@@ -160,7 +160,10 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.GLOW_BERRY_JAM.get())
                 .add(ModItems.GEARO_BERRY_JAM.get())
                 .add(ModItems.HONEY_JAR.get());
+        tag(commonItemTag("milk"))
+                .add(Items.MILK_BUCKET);
         tag(commonItemTag("foods/milk"))
+                .addTag(commonItemTag("milk"))
                 .add(ModItems.NUT_MILK.get());
         tag(commonItemTag("crops/oat"))
                 .add(ModItems.OAT.get());
