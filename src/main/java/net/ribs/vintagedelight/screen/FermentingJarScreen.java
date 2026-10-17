@@ -15,7 +15,7 @@ public class FermentingJarScreen extends AbstractContainerScreen<FermentingJarMe
     private static final int BACKGROUND_WIDTH = 176;
     private static final int BACKGROUND_HEIGHT = 166;
     private static final int PROGRESS_ARROW_U = 176;
-    private static final int PROGRESS_ARROW_V = 0;
+    private static final int PROGRESS_ARROW_V = 15;
     private static final int PROGRESS_ARROW_HEIGHT = 17;
 
 
@@ -47,7 +47,7 @@ public class FermentingJarScreen extends AbstractContainerScreen<FermentingJarMe
     private void renderProgressArrow(GuiGraphics guiGraphics, int x, int y) {
         if (menu.isCrafting()) {
             int arrowX = x + 84;
-            int arrowY = y + 32;
+            int arrowY = y + 47;
             int drawWidth = menu.getScaledProgress();
             guiGraphics.blit(TEXTURE, arrowX, arrowY, PROGRESS_ARROW_U, PROGRESS_ARROW_V, drawWidth, PROGRESS_ARROW_HEIGHT);
         }

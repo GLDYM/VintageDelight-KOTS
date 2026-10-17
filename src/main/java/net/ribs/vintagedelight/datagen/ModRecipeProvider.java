@@ -687,7 +687,8 @@ public class ModRecipeProvider extends AbstractModRecipeProvider {
                 .processingTime(2400)
                 .save(output, id("fermenting/pickled_egg_from_fermenting"));
 
-        FermentingRecipeBuilder.fermenting(ModItems.PICKLED_PEPPER.get(), 4)
+        FermentingRecipeBuilder.fermenting(ModItems.PICKLED_PEPPER.get(), 5)
+                .requires(ModItems.GHOST_PEPPER.get())
                 .requires(ModItems.GHOST_PEPPER.get())
                 .requires(ModItems.GHOST_PEPPER.get())
                 .requires(ModItems.GHOST_PEPPER.get())
